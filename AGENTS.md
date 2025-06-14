@@ -11,6 +11,7 @@ This file summarises **how to keep the repo healthy**.
 
 The pipeline lives at `.github/workflows/ci.yml` and skips tests when
 all changed files are Markdown.
+It always builds the Sphinx docs with `sphinx-build`.
 
 ## 2. Workflow
 
