@@ -3,10 +3,11 @@
 This file summarises **how to keep the repo healthy**.
 
 ## 1. CI policy
+
 | Rule | Why |
 |------|-----|
-| Every code‑touching commit **must** pass the full test‑suite and linters. | Prevents silent breakage |
-| Docs‑only commits run a fast markdown‑lint + link‑check job. | Saves CI minutes |
+| Each code commit must pass tests and linters. | Prevents breakage |
+| Docs-only commits run the markdown lint job. | Saves CI minutes |
 
 ## 2. Workflow
 
@@ -18,17 +19,20 @@ This file summarises **how to keep the repo healthy**.
 6. A task is *done* only when CI is **all green**.
 
 ## 3. Coding standards
+
 * ≤ 20 lines per function, ≤ 2 nesting levels.
 * 4‑space indent, `black` line length = 88.
 * Validate inputs early; raise on bad data.
 * End every file with a newline; keep Markdown lines ≤ 80 chars.
 
 ## 4. Documentation style
+
 * Use fenced code blocks with language hint.
-* Surround headings/lists/code with blank lines.
+* Surround headings, lists and code with blank lines.
 * Run `npx markdownlint-cli '**/*.md'` before pushing.
 
 ## 5. File roles
+
 | File | Purpose |
 |------|---------|
 | `README.md` | user‑facing explainer & quick‑start |
