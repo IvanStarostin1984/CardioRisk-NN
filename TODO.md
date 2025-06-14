@@ -27,6 +27,7 @@
 - [ ] Add model diagram in `docs/overview.md`
 - [ ] Publish API reference via Sphinx
 - [ ] Fix README placeholders and remove stray tokens
+- [x] Align README with current `train.py` stub
 
 ## 4. Stretch goals
 

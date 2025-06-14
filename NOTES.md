@@ -20,3 +20,6 @@
 - 2025-07-05: Cleaned README duplication and removed stale references.
   Merged AGENTS workflow sections and kept single roadmap in TODO.
   Reason: tidy docs and reflect actual CI behaviour.
+- 2025-07-07: Clarified README that `train.py` is a stub and removed CLI
+  commands. Reason: keep docs in sync with TODO item about implementing the
+  training CLI.
