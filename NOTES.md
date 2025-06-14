@@ -65,3 +65,5 @@
 - 2025-07-15: Cleaned README and overview docs after scikit-learn migration.
   Clarified `--fast`, `--model-path` and `model.pkl` behaviour. Reason: align
   documentation with the simplified trainer.
+- 2025-07-16: Clarified evaluate.py quick run default and `.env` unused.
+  Reason: docs cleanup.
