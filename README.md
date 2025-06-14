@@ -53,6 +53,9 @@ AGENTS.md             ← contributor & CI guidelines
 .github/workflows/ci.yml ← CI pipeline
 ```
 
+See [docs/overview.md](docs/overview.md) for a sketch of the MLP and
+the training workflow.
+
 ### `.env` file
 
 Stores runtime defaults such as `EPOCHS=200`. Future CLI commands will read
