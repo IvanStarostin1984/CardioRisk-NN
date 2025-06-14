@@ -88,6 +88,11 @@
   `evaluate.py` and moved imports to the top. Reason: cleanup duplicate
   entry point so tests and flake8 pass.
 
+
+- 2025-07-20: Removed unused `.env` file and cleaned docs.
+  Reason: default epochs come from code; no env vars used.
+  Updated README and AGENTS to stay consistent.
+
 - 2025-07-20: Marked Dockerfile and PyTorch loop tasks done in TODO and
   removed duplicate lines. Reason: tidy roadmap and reflect current
   code state. Decisions: verified `train.py` uses `build_mlp` and
@@ -97,3 +102,4 @@
   Updated setup.sh to install TensorFlow and documented usage in README and
   overview. Sphinx docs now include `train_tf` module. Reason: implement
   stretch goal from TODO.
+

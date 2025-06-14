@@ -16,6 +16,7 @@
 - [x] Implement `evaluate.py` to load saved model & print test metrics
 - [x] Fail `train.py` with exit 1 if ROC-AUC < 0.90
 - [x] Remove duplicate `main(args=None)` from `evaluate.py`
+- [x] Remove unused `.env` file; docs updated accordingly
 
 ## 2. Testing
 

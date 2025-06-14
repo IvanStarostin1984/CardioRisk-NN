@@ -66,7 +66,6 @@ train.py              ← MLP training script
 train_tf.py           ← Keras training script
 evaluate.py           ← model metrics helper
 
-.env                  ← unused placeholder
 README.md             ← you are here
 TODO.md               ← roadmap tasks
 NOTES.md              ← running decisions log
@@ -76,6 +75,8 @@ AGENTS.md             ← contributor & CI guidelines
 
 See [docs/overview.md](docs/overview.md) for a sketch of the MLP and
 the training workflow.
+
+
 
 ### `.env` file
 
