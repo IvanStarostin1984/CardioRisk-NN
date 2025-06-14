@@ -1,18 +1,9 @@
-# CardioRisk‑NN
-
-Training a lightweight multi‑layer perceptron (MLP) to predict presence of
-coronary artery disease
-
-> **A clinical‑themed, CPU‑only PyTorch prototype that predicts coronary artery
-> disease from 13 routine variables in under 60 s.**
-
 <!-- markdownlint-disable MD013 -->
 # CardioRisk-NN
 
 Training a lightweight multi-layer perceptron (MLP) to predict coronary artery disease.
 
 > **A clinical-themed, CPU-only PyTorch prototype that predicts coronary artery disease from 13 routine variables in under 60 s.**
-
 
 [![Build & Test](https://img.shields.io/github/actions/workflow/status/example/CardioRisk-NN/ci.yml?branch=main)](https://github.com/example/CardioRisk-NN/actions)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
@@ -34,21 +25,11 @@ Training a lightweight multi-layer perceptron (MLP) to predict coronary artery d
 
 ## Quick-start
 
-
 ### One-shot run (installs deps on first call)
 
 ```bash
-make run
+bash setup.sh && python train.py --epochs 200
 ```
-
-`make run` calls `setup.sh` to install torch, pandas and scikit-learn then runs
-`python train.py --epochs 200`.
-
-```bash
-# install deps on first call, then run full training
-make run
-```
-
 
 Expected console tail:
 
@@ -63,14 +44,12 @@ Repository layout:
 data/heart.csv        ← 303 × 14 (13 features + target)
 setup.sh              ← fast dependency installer (≤ 45 s)
 train.py              ← full train + evaluation
-quick_test.sh         ← 10-epoch smoke test (<15 s)
-requirements.txt      ← pinned deps for CI
 .env                  ← runner configuration (see below)
 README.md             ← you are here
 TODO.md               ← roadmap tasks
 NOTES.md              ← running decisions log
 AGENTS.md             ← contributor & CI guidelines
-.github/workflows/    ← CI pipeline (to be added)
+.github/workflows/ci.yml ← CI pipeline
 ```
 
 Command-line options:
@@ -78,20 +57,9 @@ Command-line options:
 ```bash
 python train.py --epochs 200 --lr 1e-3    # default full run
 python train.py --epochs 10 --fast        # smoke test
-python evaluate.py                        # metric-only re-run
 ```
 
 All scripts are CPU-only and keep RAM use < 100 MB.
-
-References
-UCI ML Repository – Heart Disease data set
-archive.ics.uci.edu
-
-Kaggle mirror with cleaned CSV
-kaggle.com
-
-Typical logistic‑regression baseline ROC‑AUC ≈ 0.84‑0.90
-pmc.ncbi.nlm.nih.gov
 
 ---
 
@@ -100,4 +68,3 @@ pmc.ncbi.nlm.nih.gov
 * [UCI ML Repository – Heart Disease data set](https://archive.ics.uci.edu)
 * [Kaggle mirror with cleaned CSV](https://kaggle.com)
 * [Typical logistic-regression baseline ROC-AUC ≈ 0.84-0.90](https://pmc.ncbi.nlm.nih.gov)
-
