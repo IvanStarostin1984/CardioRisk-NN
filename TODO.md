@@ -11,6 +11,8 @@
 ## 0. Bootstrap
  - [x] ✅ Commit starter files (README, NOTES, TODO, AGENTS, .env, setup.sh)
 - [ ] ⬜ Add CI workflow: black, flake8, pytest, markdown‑lint
+- [x] ✅ Vendored Cleveland dataset `data/heart.csv`
+- [x] ✅ Add placeholder `train.py`
 
 ## 1. Core functionality
 - [ ] ⬜ Implement `train.py` MLP with CLI flags (epochs, lr, fast)
