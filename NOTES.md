@@ -29,3 +29,5 @@
 - 2025-07-10: Pinned `torch==2.3.*` in `setup.sh` and documented the pin in
   `README`. Reason: keep installs reproducible on CPU-only boxes; decisions:
   limit to minor version to stay compatible with docs.
+- 2025-07-12: Added evaluate.py to load model and report ROC-AUC.
+  Updated README quick-start. Reason: implement TODO item.
