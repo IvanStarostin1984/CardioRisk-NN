@@ -23,3 +23,5 @@
 - 2025-07-07: Clarified README that `train.py` is a stub and removed CLI
   commands. Reason: keep docs in sync with TODO item about implementing the
   training CLI.
+- 2025-07-09: Marked README placeholders task done in TODO.
+  Reason: reflect prior docs cleanup; decisions: none.
