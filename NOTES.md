@@ -67,3 +67,6 @@
   documentation with the simplified trainer.
 - 2025-07-16: Clarified evaluate.py quick run default and `.env` unused.
   Reason: docs cleanup.
+
+- 2025-07-17: Documented evaluate.py default model path and test helper in
+  README. Reason: keep docs synced with evaluate.py behaviour.

@@ -46,8 +46,9 @@ file. The script saves `model.pkl` and exits with status 1 when ROC‑AUC is bel
 0.90.
 
 `train.py` trains the MLP and saves `model.pkl` when ROC‑AUC ≥ 0.90.
-`evaluate.py` runs a quick training by default and prints ROC‑AUC. Pass
-`--model-path file.pt` to load a saved `.pt` model instead.
+`evaluate.py` loads a saved `model.pt` by default via the `--model-path`
+argument and prints ROC‑AUC. The module's `evaluate()` function (not the CLI)
+performs a short training run used in the tests.
 
 Repository layout:
 
