@@ -4,12 +4,15 @@ from train import train_model
 
 
 def evaluate(seed: int = 0) -> float:
-    return train_model(fast=True, seed=seed)
+    """Run a short training to compute ROC-AUC."""
+    return train_model(fast=True, seed=seed, model_path=None)
 
 
-def main(args=None):
+
+def main(args=None) -> None:
     auc = evaluate()
     print(f"ROC-AUC: {auc:.3f}")
+
 
 import argparse
 from pathlib import Path
@@ -29,7 +32,7 @@ def load_data(batch_size: int = 64) -> DataLoader:
     return DataLoader(dataset, batch_size=batch_size)
 
 
-def evaluate(model_path: Path) -> float:
+def evaluate_saved_model(model_path: Path) -> float:
     """Load a saved model and print ROC-AUC."""
     loader = load_data()
     model = torch.load(model_path, map_location="cpu")
@@ -53,7 +56,8 @@ def main() -> None:
         "--model-path", default="model.pt", type=Path, help="Path to .pt file"
     )
     args = parser.parse_args()
-    evaluate(args.model_path)
+    evaluate_saved_model(args.model_path)
+
 
 if __name__ == "__main__":
     main()
