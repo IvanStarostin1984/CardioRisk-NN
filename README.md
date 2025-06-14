@@ -51,7 +51,6 @@ split.
 `train.py` trains the MLP and saves `model.pt` when ROC-AUC ≥ 0.90.
 `evaluate.py` loads this file and prints the metric.
 
-
 Repository layout:
 
 ```text
