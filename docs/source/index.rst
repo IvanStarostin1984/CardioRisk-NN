@@ -4,6 +4,9 @@ CardioRisk-NN API
 .. automodule:: train
    :members:
 
+.. automodule:: train_tf
+   :members:
+
 .. automodule:: evaluate
    :members:
 

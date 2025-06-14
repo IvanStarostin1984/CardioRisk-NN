@@ -87,3 +87,8 @@
 - 2025-07-19: Removed redundant `main(args=None)` wrapper from
   `evaluate.py` and moved imports to the top. Reason: cleanup duplicate
   entry point so tests and flake8 pass.
+
+- 2025-07-20: Added `train_tf.py` with Keras MLP, fast mode and seed options.
+  Updated setup.sh to install TensorFlow and documented usage in README and
+  overview. Sphinx docs now include `train_tf` module. Reason: implement
+  stretch goal from TODO.
