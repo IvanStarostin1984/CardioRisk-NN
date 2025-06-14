@@ -41,9 +41,16 @@ Run the training script with, for example:
 python train.py --epochs 200 --lr 0.01
 ```
 
+
 Add `--fast` to run a short 10‑epoch demo. The script saves `model.pkl` and
 exits with status 1 when ROC-AUC is below 0.90. Use `--seed` for reproducible
 results. `evaluate.py` runs a quick training to report ROC-AUC.
+
+Add `--fast` to run a short 10-epoch demo. Use `--seed` to fix the random
+split.
+`train.py` trains the MLP and saves `model.pt` when ROC-AUC ≥ 0.90.
+`evaluate.py` loads this file and prints the metric.
+
 
 Repository layout:
 
@@ -51,7 +58,11 @@ Repository layout:
 data/heart.csv        ← 303 × 14 (13 features + target)
 setup.sh              ← fast dependency installer (≤ 45 s)
 
+
 train.py              ← training script
+=======
+train.py              ← MLP training script
+
 evaluate.py           ← model metrics helper
 
 .env                  ← runtime defaults
