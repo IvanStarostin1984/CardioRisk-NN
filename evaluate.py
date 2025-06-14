@@ -8,7 +8,6 @@ def evaluate(seed: int = 0) -> float:
     return train_model(fast=True, seed=seed, model_path=None)
 
 
-
 def main(args=None) -> None:
     auc = evaluate()
     print(f"ROC-AUC: {auc:.3f}")

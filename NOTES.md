@@ -72,3 +72,5 @@
   README. Reason: keep docs synced with evaluate.py behaviour.
 - 2025-07-18: Added TODO item to migrate training script to PyTorch to
   highlight core PyTorch skills. Reason: match future showcase goal.
+- 2025-07-19: Added Sphinx docs scaffold and CI docs build step.
+  Reason: complete TODO item on publishing API docs via Sphinx.
