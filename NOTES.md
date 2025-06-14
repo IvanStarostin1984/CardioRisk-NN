@@ -61,3 +61,7 @@
   introduced evaluate_saved_model for loading saved models. Updated CLI to use
   the new function and removed duplicate main. Reason: avoid function override
   issues; decisions: rename for clarity per instructions.
+
+- 2025-07-15: Cleaned README and overview docs after scikit-learn migration.
+  Clarified `--fast`, `--model-path` and `model.pkl` behaviour. Reason: align
+  documentation with the simplified trainer.

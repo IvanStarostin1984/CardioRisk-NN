@@ -30,6 +30,7 @@
 - [ ] Publish API reference via Sphinx
 - [x] Fix README placeholders and remove stray tokens
 - [x] Align README with current `train.py` stub
+- [x] Refresh README/doc overview after scikit-learn migration
 
 ## 4. Stretch goals
 
