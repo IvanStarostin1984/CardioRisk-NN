@@ -88,6 +88,10 @@
   `evaluate.py` and moved imports to the top. Reason: cleanup duplicate
   entry point so tests and flake8 pass.
 
+- 2025-07-20: Added calibrate.py with Brier score and reliability plot.
+  Tests cover fast model calibration. Updated README, Sphinx docs and
+  setup.sh. Reason: implement optional calibration feature from TODO.
+
 
 - 2025-07-20: Removed unused `.env` file and cleaned docs.
   Reason: default epochs come from code; no env vars used.
@@ -102,4 +106,3 @@
   Updated setup.sh to install TensorFlow and documented usage in README and
   overview. Sphinx docs now include `train_tf` module. Reason: implement
   stretch goal from TODO.
-

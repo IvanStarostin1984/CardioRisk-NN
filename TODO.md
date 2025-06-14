@@ -28,7 +28,7 @@
 
 - [x] Flesh out README Quick-start once CLI stabilises
 - [x] Add model diagram in `docs/overview.md`
-- [x] Document CLI usage in `docs/overview.md` once the training script has a CLI
+- [x] Document CLI usage in `docs/overview.md` once training has a CLI
 - [x] Publish API reference via Sphinx
 - [x] Fix README placeholders and remove stray tokens
 - [x] Align README with current `train.py` stub
@@ -38,7 +38,7 @@
 
 ## 4. Stretch goals
 
+- [x] Optional calibration script & reliability plot
 - [x] TensorFlow backend (`train_tf.py`, CLI `--backend tf`)
-- [ ] Optional calibration script & reliability plot
 - [x] Dockerfile for exact reproducibility
 - [x] Switch `train.py` to a PyTorch loop using `build_mlp`

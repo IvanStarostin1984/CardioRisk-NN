@@ -24,4 +24,7 @@ inputs.
 3. The scripts save `model.pt` or `model_tf.h5` and exit with code `1` if
    ROC-AUC < 0.90.
 
+4. Run `python calibrate.py` to print the Brier score and save a
+   reliability plot for the saved model.
+
 Future docs will detail the dataset and training options once implemented.

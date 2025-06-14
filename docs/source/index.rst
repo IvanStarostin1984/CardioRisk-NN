@@ -10,6 +10,9 @@ CardioRisk-NN API
 .. automodule:: evaluate
    :members:
 
+.. automodule:: calibrate
+   :members:
+
 .. automodule:: model
    :members:
 
