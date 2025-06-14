@@ -1,4 +1,8 @@
-# Notes
+# Engineering notes
+
+- 2025-06-14: Added CI workflow with black, flake8, pytest and markdownlint. Tests
+  skip when commits touch only Markdown. Updated AGENTS and ticked TODO.
+  Reason: bootstrap CI from roadmap.
 
 - 2025-06-14: Added setup.sh for installing PyTorch CPU, pandas and scikit-learn
   Created sample .env file. Updated AGENTS workflow per TODO.
@@ -12,4 +16,3 @@
 
 - 2025-06-14: added Cleveland dataset and empty train.py placeholder. Reason: prepare for training scripts.
 Decisions: used UCI CSV and simple main guard as per TODO roadmap.
-

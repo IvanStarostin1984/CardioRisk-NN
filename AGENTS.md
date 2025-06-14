@@ -6,6 +6,20 @@ This file summarises **how to keep the repo healthy**.
 
 | Rule | Why |
 |------|-----|
+| Every code commit **must** pass all tests and linters. | Prevents breakage |
+| Docs‑only commits run markdown‑lint + link‑check. | Saves CI minutes |
+
+The pipeline lives at `.github/workflows/ci.yml` and skips tests when
+all changed files are Markdown.
+
+## 2. Workflow
+
+1. Branch off **main** – name `feat/<topic>`  
+2. Keep edits to *distinct* source files where possible.  
+3. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).  
+4. If you change tests, linters, or build scripts, also update **AGENTS.md**.  
+5. A task is *done* only when CI is **all green**.
+
 | Each code commit must pass tests and linters. | Prevents breakage |
 | Docs-only commits run the markdown lint job. | Saves CI minutes |
 
@@ -28,8 +42,11 @@ This file summarises **how to keep the repo healthy**.
 ## 4. Documentation style
 
 * Use fenced code blocks with language hint.
+
+* Surround headings/lists/code with blank lines.
 * Surround headings, lists and code with blank lines.
 * Run `npx markdownlint-cli '**/*.md'` before pushing.
+
 
 ## 5. File roles
 
@@ -41,3 +58,4 @@ This file summarises **how to keep the repo healthy**.
 | `AGENTS.md` | *this* contributor guide |
 | `.env` | runtime variables for the sandbox |
 | `setup.sh` | dependency installer |
+| `.github/workflows/ci.yml` | lints & tests in CI |
