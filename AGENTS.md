@@ -16,12 +16,13 @@ It always builds the Sphinx docs with `sphinx-build`.
 ## 2. Workflow
 
 1. Run `./setup.sh` once after cloning to install the Python deps.
-2. Branch off **main** – name `feat/<topic>`.
-3. Keep edits to *distinct* source files where possible.
-4. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
-5. Run `npx markdownlint-cli '**/*.md'` before pushing.
-6. If you change tests, linters, or build scripts, also update **AGENTS.md**.
-7. A task is *done* only when CI is **all green**.
+2. *(Optional)* build the Docker image with `docker build -t cardiorisk .`.
+3. Branch off **main** – name `feat/<topic>`.
+4. Keep edits to *distinct* source files where possible.
+5. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
+6. Run `npx markdownlint-cli '**/*.md'` before pushing.
+7. If you change tests, linters, or build scripts, also update **AGENTS.md**.
+8. A task is *done* only when CI is **all green**.
    Docs-only commits run only the markdown jobs; code commits run the full test suite.
 
 ## 3. Coding standards
@@ -49,3 +50,4 @@ It always builds the Sphinx docs with `sphinx-build`.
 | `.env` | runtime variables for the sandbox |
 | `setup.sh` | dependency installer |
 | `.github/workflows/ci.yml` | lints & tests in CI |
+| `Dockerfile` | optional container image |
