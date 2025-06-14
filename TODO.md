@@ -8,6 +8,7 @@
 - [x] ✅ Add CI workflow: black, flake8, pytest, markdown-lint
 - [x] ✅ Vendored Cleveland dataset `data/heart.csv`
 - [x] ✅ Add placeholder `train.py`
+- [x] ✅ Pin `torch==2.3.*` in setup.sh for CPU-only installs
 
 ## 1. Core functionality
 

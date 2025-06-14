@@ -33,6 +33,9 @@ disease.
 bash setup.sh
 ```
 
+`setup.sh` installs **PyTorch 2.3.x** from the CPU wheel index so runs stay
+GPU-free and reproducible.
+
 `train.py` is a placeholder script. CLI options will be added in a future
 milestone.
 
