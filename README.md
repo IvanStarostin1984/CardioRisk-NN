@@ -41,11 +41,11 @@ Run the training script with, for example:
 python train.py --seed 0
 ```
 
-Add `--fast` for a 10‑epoch demo and `--model-path` to set the output `.pkl`
-file. The script saves `model.pkl` and exits with status 1 when ROC‑AUC is below
+Add `--fast` for a 10‑epoch demo and `--model-path` to set the output `.pt`
+file. The script saves `model.pt` and exits with status 1 when ROC‑AUC is below
 0.90.
 
-`train.py` trains the MLP and saves `model.pkl` when ROC‑AUC ≥ 0.90.
+`train.py` trains the MLP and saves `model.pt` when ROC‑AUC ≥ 0.90.
 `evaluate.py` loads a saved `model.pt` by default via the `--model-path`
 argument and prints ROC‑AUC. The module's `evaluate()` function (not the CLI)
 performs a short training run used in the tests.

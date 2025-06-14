@@ -20,6 +20,6 @@ inputs.
 
 2. Run `python train.py --fast --seed 0` for a quick demo.
 
-3. The script saves `model.pkl` and exits with code `1` if ROC-AUC < 0.90.
+3. The script saves `model.pt` and exits with code `1` if ROC-AUC < 0.90.
 
 Future docs will detail the dataset and training options once implemented.
