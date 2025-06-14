@@ -77,7 +77,6 @@ environment variables.
 
 All scripts are CPU-only and keep RAM use < 100 MB.
 
-
 ### Docker usage
 
 An optional container builds from the repo and installs packages via
@@ -99,7 +98,6 @@ sphinx-build -b html docs/source docs/_build
 ```
 
 The HTML pages appear in `docs/_build`.
-
 
 ---
 

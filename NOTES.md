@@ -87,3 +87,7 @@
 - 2025-07-19: Removed redundant `main(args=None)` wrapper from
   `evaluate.py` and moved imports to the top. Reason: cleanup duplicate
   entry point so tests and flake8 pass.
+- 2025-07-20: Marked Dockerfile and PyTorch loop tasks done in TODO and
+  removed duplicate lines. Reason: tidy roadmap and reflect current
+  code state. Decisions: verified `train.py` uses `build_mlp` and
+  Dockerfile exists.
