@@ -18,7 +18,10 @@ def evaluate(seed: int = 0) -> float:
 
 def load_data(batch_size: int = 64) -> DataLoader:
     """Load the Cleveland heart dataset as a DataLoader."""
-    df = pd.read_csv(Path("data") / "heart.csv")
+    df = pd.read_csv(Path("data") / "heart.csv", na_values="?")
+    df = df.fillna(df.mean(numeric_only=True))
+    df = df.astype(float)
+    df["target"] = (df["target"] > 0).astype(float)
     X = df.drop(columns=["target"]).to_numpy(dtype="float32")
     y = df["target"].to_numpy(dtype="float32")
     dataset = TensorDataset(torch.from_numpy(X), torch.from_numpy(y))

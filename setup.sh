@@ -6,4 +6,4 @@ set -e
 pip install --extra-index-url https://download.pytorch.org/whl/cpu torch==2.3.*
 
 # Core libraries
-pip install pandas scikit-learn
+pip install pandas scikit-learn matplotlib

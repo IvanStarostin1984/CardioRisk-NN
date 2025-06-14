@@ -49,6 +49,8 @@ file. The script saves `model.pt` and exits with status 1 when ROC‑AUC is belo
 `evaluate.py` loads a saved `model.pt` by default via the `--model-path`
 argument and prints ROC‑AUC. The module's `evaluate()` function (not the CLI)
 performs a short training run used in the tests.
+`calibrate.py` reports the Brier score and saves a reliability plot image for
+any saved model.
 
 Repository layout:
 
@@ -58,6 +60,7 @@ setup.sh              ← fast dependency installer (≤ 45 s)
 
 train.py              ← MLP training script
 evaluate.py           ← model metrics helper
+calibrate.py          ← reliability plot helper
 
 .env                  ← unused placeholder
 README.md             ← you are here
@@ -74,9 +77,7 @@ the training workflow.
 
 This file is currently unused and only kept as a placeholder for potential
 environment variables.
-
 All scripts are CPU-only and keep RAM use < 100 MB.
-
 
 ### Docker usage
 
@@ -99,7 +100,6 @@ sphinx-build -b html docs/source docs/_build
 ```
 
 The HTML pages appear in `docs/_build`.
-
 
 ---
 

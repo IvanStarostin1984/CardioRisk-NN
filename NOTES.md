@@ -87,3 +87,6 @@
 - 2025-07-19: Removed redundant `main(args=None)` wrapper from
   `evaluate.py` and moved imports to the top. Reason: cleanup duplicate
   entry point so tests and flake8 pass.
+- 2025-07-20: Added calibrate.py with Brier score and reliability plot.
+  Tests cover fast model calibration. Updated README, Sphinx docs and
+  setup.sh. Reason: implement optional calibration feature from TODO.
