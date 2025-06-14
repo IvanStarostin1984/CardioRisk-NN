@@ -37,7 +37,7 @@ bash setup.sh
 GPU-free and reproducible.
 
 `train.py` is a placeholder script. CLI options will be added in a future
-milestone.
+milestone. `evaluate.py` loads a saved `model.pt` and prints ROC-AUC.
 
 Repository layout:
 
@@ -45,6 +45,7 @@ Repository layout:
 data/heart.csv        ← 303 × 14 (13 features + target)
 setup.sh              ← fast dependency installer (≤ 45 s)
 train.py              ← training script (placeholder)
+evaluate.py           ← model metrics helper
 .env                  ← runtime defaults
 README.md             ← you are here
 TODO.md               ← roadmap tasks
@@ -52,6 +53,9 @@ NOTES.md              ← running decisions log
 AGENTS.md             ← contributor & CI guidelines
 .github/workflows/ci.yml ← CI pipeline
 ```
+
+See [docs/overview.md](docs/overview.md) for a sketch of the MLP and
+the training workflow.
 
 ### `.env` file
 
