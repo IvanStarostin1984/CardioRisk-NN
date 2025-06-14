@@ -41,12 +41,13 @@ Run the training script with, for example:
 python train.py --seed 0
 ```
 
-Add `--fast` for a 10‑epoch demo and `--model-path` to set the output file.
-The script saves `model.pkl` and exits with status 1 when ROC-AUC is below
-0.90. `evaluate.py` runs a quick training to report ROC‑AUC.
+Add `--fast` for a 10‑epoch demo and `--model-path` to set the output `.pkl`
+file. The script saves `model.pkl` and exits with status 1 when ROC‑AUC is below
+0.90.
 
 `train.py` trains the MLP and saves `model.pkl` when ROC‑AUC ≥ 0.90.
-`evaluate.py` loads this file and prints the metric.
+`evaluate.py` runs a quick training by default and prints ROC‑AUC. Pass
+`--model-path file.pt` to load a saved `.pt` model instead.
 
 Repository layout:
 
@@ -57,7 +58,7 @@ setup.sh              ← fast dependency installer (≤ 45 s)
 train.py              ← MLP training script
 evaluate.py           ← model metrics helper
 
-.env                  ← runtime defaults
+.env                  ← unused placeholder
 README.md             ← you are here
 TODO.md               ← roadmap tasks
 NOTES.md              ← running decisions log
@@ -70,8 +71,8 @@ the training workflow.
 
 ### `.env` file
 
-Stores runtime defaults such as `EPOCHS=200`. The CLI falls back to these
-values when no flags are provided.
+This file is currently unused and only kept as a placeholder for potential
+environment variables.
 
 All scripts are CPU-only and keep RAM use < 100 MB.
 
