@@ -15,6 +15,7 @@
 - [x] Implement `train.py` MLP with CLI flags (epochs, lr, fast)
 - [x] Implement `evaluate.py` to load saved model & print test metrics
 - [x] Fail `train.py` with exit 1 if ROC-AUC < 0.90
+- [x] Remove duplicate `main(args=None)` from `evaluate.py`
 
 ## 2. Testing
 
@@ -27,7 +28,7 @@
 - [x] Flesh out README Quick-start once CLI stabilises
 - [x] Add model diagram in `docs/overview.md`
 - [x] Document CLI usage in `docs/overview.md` once the training script has a CLI
-- [ ] Publish API reference via Sphinx
+- [x] Publish API reference via Sphinx
 - [x] Fix README placeholders and remove stray tokens
 - [x] Align README with current `train.py` stub
 - [x] Refresh README/doc overview after scikit-learn migration
@@ -40,3 +41,6 @@
 - [ ] Optional calibration script & reliability plot
 - [ ] Dockerfile for exact reproducibility
 - [x] Switch `train.py` to a PyTorch loop using `build_mlp`
+
+- [x] Dockerfile for exact reproducibility
+- [ ] Switch `train.py` to a PyTorch loop using `build_mlp`

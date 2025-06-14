@@ -72,7 +72,18 @@
   README. Reason: keep docs synced with evaluate.py behaviour.
 - 2025-07-18: Added TODO item to migrate training script to PyTorch to
   highlight core PyTorch skills. Reason: match future showcase goal.
+
 - 2025-06-14: Replaced scikit-learn trainer with PyTorch loop using
   `build_mlp`, saved models to `model.pt` and updated docs/tests.
   Reason: implement PyTorch migration from TODO; decisions: simple
   Adam/BCE setup keeps code under style limits.
+
+- 2025-07-19: Added Dockerfile and docs on optional Docker usage.
+  Reason: to complete stretch goal and provide containerised setup.
+
+- 2025-07-19: Added Sphinx docs scaffold and CI docs build step.
+  Reason: complete TODO item on publishing API docs via Sphinx.
+
+- 2025-07-19: Removed redundant `main(args=None)` wrapper from
+  `evaluate.py` and moved imports to the top. Reason: cleanup duplicate
+  entry point so tests and flake8 pass.
