@@ -44,3 +44,7 @@
 
 - 2025-07-12: Added docs/overview.md with MLP sketch and linked from README.
   Reason: implement TODO diagram; decisions: simple ASCII for clarity.
+- 2025-07-13: Refactored evaluate.py to keep seed-based evaluate for tests and
+  introduced evaluate_saved_model for loading saved models. Updated CLI to use
+  the new function and removed duplicate main. Reason: avoid function override
+  issues; decisions: rename for clarity per instructions.
