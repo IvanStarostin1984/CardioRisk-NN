@@ -77,6 +77,7 @@ environment variables.
 
 All scripts are CPU-only and keep RAM use < 100 MB.
 
+
 ### Docker usage
 
 An optional container builds from the repo and installs packages via
@@ -88,6 +89,17 @@ docker run --rm cardiorisk --fast --seed 0
 ```
 
 The second command runs the demo training inside the container.
+
+### Building the docs
+
+Install Sphinx and run:
+
+```bash
+sphinx-build -b html docs/source docs/_build
+```
+
+The HTML pages appear in `docs/_build`.
+
 
 ---
 

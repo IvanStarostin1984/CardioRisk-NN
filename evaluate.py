@@ -1,18 +1,5 @@
 """Evaluation helpers for CardioRisk-NN."""
 
-from train import train_model
-
-
-def evaluate(seed: int = 0) -> float:
-    """Run a short training to compute ROC-AUC."""
-    return train_model(fast=True, seed=seed, model_path=None)
-
-
-def main(args=None) -> None:
-    auc = evaluate()
-    print(f"ROC-AUC: {auc:.3f}")
-
-
 import argparse
 from pathlib import Path
 
@@ -20,6 +7,13 @@ import pandas as pd
 import torch
 from sklearn.metrics import roc_auc_score
 from torch.utils.data import DataLoader, TensorDataset
+
+from train import train_model
+
+
+def evaluate(seed: int = 0) -> float:
+    """Run a short training to compute ROC-AUC."""
+    return train_model(fast=True, seed=seed, model_path=None)
 
 
 def load_data(batch_size: int = 64) -> DataLoader:
