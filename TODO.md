@@ -12,15 +12,9 @@
 
 ## 1. Core functionality
 
-
 - [x] Implement `train.py` MLP with CLI flags (epochs, lr, fast)
-- [ ] Implement `evaluate.py` to load saved model & print test metrics
-- [x] Fail `train.py` with exit 1 if ROC-AUC < 0.90
-
-- [ ] Implement `train.py` MLP with CLI flags (epochs, lr, fast)
 - [x] Implement `evaluate.py` to load saved model & print test metrics
-- [ ] Fail `train.py` with exit 1 if ROC-AUC < 0.90
-
+- [x] Fail `train.py` with exit 1 if ROC-AUC < 0.90
 
 ## 2. Testing
 

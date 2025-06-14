@@ -36,7 +36,6 @@ bash setup.sh
 `setup.sh` installs **PyTorch 2.3.x** from the CPU wheel index so runs stay
 GPU-free and reproducible.
 
-
 Run the training script with, for example:
 
 ```bash
@@ -47,7 +46,6 @@ Add `--fast` to run a short 10‑epoch demo.
 
 `train.py` is a placeholder script. CLI options will be added in a future
 milestone. `evaluate.py` loads a saved `model.pt` and prints ROC-AUC.
-
 
 Repository layout:
 

@@ -1,27 +1,23 @@
 """Evaluation helpers for CardioRisk-NN."""
 
-from train import train_model
-
-
-def evaluate(seed: int = 0) -> float:
-    return train_model(fast=True, seed=seed)
-
-
-def main(args=None):
-    auc = evaluate()
-    print(f"ROC-AUC: {auc:.3f}")
-
-import argparse
 from pathlib import Path
 
+import argparse
 import pandas as pd
 import torch
 from sklearn.metrics import roc_auc_score
 from torch.utils.data import DataLoader, TensorDataset
 
+from train import train_model
 
-def load_data(batch_size: int = 64) -> DataLoader:
-    """Load the Cleveland heart dataset as a DataLoader."""
+
+def evaluate(seed: int = 0) -> float:
+    """Run fast training with a fixed seed and return ROC-AUC."""
+    return train_model(fast=True, seed=seed)
+
+
+def _load_dataloader(batch_size: int = 64) -> DataLoader:
+    """Return DataLoader for the heart dataset."""
     df = pd.read_csv(Path("data") / "heart.csv")
     X = df.drop(columns=["target"]).to_numpy(dtype="float32")
     y = df["target"].to_numpy(dtype="float32")
@@ -29,9 +25,9 @@ def load_data(batch_size: int = 64) -> DataLoader:
     return DataLoader(dataset, batch_size=batch_size)
 
 
-def evaluate(model_path: Path) -> float:
-    """Load a saved model and print ROC-AUC."""
-    loader = load_data()
+def evaluate_saved(model_path: Path) -> float:
+    """Evaluate a saved model file and print ROC-AUC."""
+    loader = _load_dataloader()
     model = torch.load(model_path, map_location="cpu")
     model.eval()
 
@@ -47,13 +43,17 @@ def evaluate(model_path: Path) -> float:
     return auc
 
 
-def main() -> None:
+def main(args=None) -> None:
     parser = argparse.ArgumentParser(description="Evaluate a saved model")
     parser.add_argument(
-        "--model-path", default="model.pt", type=Path, help="Path to .pt file"
+        "--model-path",
+        type=Path,
+        default="model.pt",
+        help="Path to .pt file",
     )
-    args = parser.parse_args()
-    evaluate(args.model_path)
+    parsed = parser.parse_args(args)
+    evaluate_saved(parsed.model_path)
+
 
 if __name__ == "__main__":
     main()

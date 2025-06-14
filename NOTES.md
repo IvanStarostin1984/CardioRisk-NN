@@ -44,3 +44,7 @@
 
 - 2025-07-12: Added docs/overview.md with MLP sketch and linked from README.
   Reason: implement TODO diagram; decisions: simple ASCII for clarity.
+
+- 2025-07-13: Fixed evaluate.py function clash. Added `evaluate_saved` for
+  loading model and retained `evaluate(seed)`. Reason: tests expected
+  seed-based evaluation but the CLI needed a model file.
