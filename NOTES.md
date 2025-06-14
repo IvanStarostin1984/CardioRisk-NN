@@ -44,3 +44,6 @@
 
 - 2025-07-12: Added docs/overview.md with MLP sketch and linked from README.
   Reason: implement TODO diagram; decisions: simple ASCII for clarity.
+- 2025-07-14: Documented `--fast` and `--seed` CLI options in README and
+  overview. Removed placeholder wording and updated the layout table.
+  Reason: keep docs aligned with the current training script.

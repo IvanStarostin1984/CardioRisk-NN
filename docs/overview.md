@@ -17,7 +17,7 @@ inputs.
 ## Workflow steps
 
 1. Install dependencies with `bash setup.sh`.
-2. Run `python train.py` (CLI flags will be added later).
+2. Run `python train.py --fast` for a quick demo.
 3. Analyse test metrics once the CLI exposes them.
 
 Future docs will detail the dataset and training options once implemented.
