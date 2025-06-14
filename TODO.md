@@ -9,7 +9,7 @@
 *(Created 2025‑06‑14 from empty repo state.)*
 
 ## 0. Bootstrap
-- [ ] ⬜ Commit starter files (README, NOTES, TODO, AGENTS, .env, setup.sh)
+ - [x] ✅ Commit starter files (README, NOTES, TODO, AGENTS, .env, setup.sh)
 - [ ] ⬜ Add CI workflow: black, flake8, pytest, markdown‑lint
 
 ## 1. Core functionality
