@@ -15,6 +15,7 @@
 - [x] Implement `train.py` MLP with CLI flags (epochs, lr, fast)
 - [x] Implement `evaluate.py` to load saved model & print test metrics
 - [x] Fail `train.py` with exit 1 if ROC-AUC < 0.90
+- [x] Remove duplicate `main(args=None)` from `evaluate.py`
 
 ## 2. Testing
 
