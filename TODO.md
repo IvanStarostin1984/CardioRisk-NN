@@ -12,20 +12,27 @@
 
 ## 1. Core functionality
 
+
 - [x] Implement `train.py` MLP with CLI flags (epochs, lr, fast)
 - [ ] Implement `evaluate.py` to load saved model & print test metrics
 - [x] Fail `train.py` with exit 1 if ROC-AUC < 0.90
 
+- [ ] Implement `train.py` MLP with CLI flags (epochs, lr, fast)
+- [x] Implement `evaluate.py` to load saved model & print test metrics
+- [ ] Fail `train.py` with exit 1 if ROC-AUC < 0.90
+
+
 ## 2. Testing
 
-- [ ] `tests/test_smoke.py` – import modules
-- [ ] `tests/test_train_fast.py` – 10-epoch fast run under 20 s
-- [ ] `tests/test_metrics.py` – check AUC ≥ 0.85 on fixed seed
+- [x] `tests/test_smoke.py` – import modules
+- [x] `tests/test_train_fast.py` – 10-epoch fast run under 20 s
+- [x] `tests/test_metrics.py` – check AUC ≥ 0.85 on fixed seed
 
 ## 3. Documentation
 
 - [ ] Flesh out README Quick-start once CLI stabilises
-- [ ] Add model diagram in `docs/overview.md`
+- [x] Add model diagram in `docs/overview.md`
+- [ ] Document CLI usage in `docs/overview.md` once the training script has a CLI
 - [ ] Publish API reference via Sphinx
 - [x] Fix README placeholders and remove stray tokens
 - [x] Align README with current `train.py` stub

@@ -29,7 +29,18 @@
 - 2025-07-10: Pinned `torch==2.3.*` in `setup.sh` and documented the pin in
   `README`. Reason: keep installs reproducible on CPU-only boxes; decisions:
   limit to minor version to stay compatible with docs.
+
 - 2025-07-11: Added training pipeline with CLI. Created `data_utils.py` and
   `model.py`; `train.py` trains the MLP and saves `model.pt` if ROC-AUC ≥ 0.90.
   Updated README usage and ticked TODO items. Reason: implement core
   functionality from roadmap.
+
+- 2025-07-11: Added basic MLP training and evaluation modules with tests for
+  fast run and ROC-AUC. Reason: implement TODO testing tasks; decisions: used
+  scikit-learn MLP for speed.
+
+- 2025-07-12: Added evaluate.py to load model and report ROC-AUC.
+  Updated README quick-start. Reason: implement TODO item.
+
+- 2025-07-12: Added docs/overview.md with MLP sketch and linked from README.
+  Reason: implement TODO diagram; decisions: simple ASCII for clarity.

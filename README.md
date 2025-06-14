@@ -36,6 +36,7 @@ bash setup.sh
 `setup.sh` installs **PyTorch 2.3.x** from the CPU wheel index so runs stay
 GPU-free and reproducible.
 
+
 Run the training script with, for example:
 
 ```bash
@@ -44,12 +45,19 @@ python train.py --epochs 200 --lr 0.01
 
 Add `--fast` to run a short 10‑epoch demo.
 
+`train.py` is a placeholder script. CLI options will be added in a future
+milestone. `evaluate.py` loads a saved `model.pt` and prints ROC-AUC.
+
+
 Repository layout:
 
 ```text
 data/heart.csv        ← 303 × 14 (13 features + target)
 setup.sh              ← fast dependency installer (≤ 45 s)
-train.py              ← training script with CLI options
+
+train.py              ← training script (placeholder)
+evaluate.py           ← model metrics helper
+
 .env                  ← runtime defaults
 README.md             ← you are here
 TODO.md               ← roadmap tasks
@@ -57,6 +65,9 @@ NOTES.md              ← running decisions log
 AGENTS.md             ← contributor & CI guidelines
 .github/workflows/ci.yml ← CI pipeline
 ```
+
+See [docs/overview.md](docs/overview.md) for a sketch of the MLP and
+the training workflow.
 
 ### `.env` file
 
