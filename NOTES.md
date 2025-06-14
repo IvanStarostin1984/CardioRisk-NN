@@ -44,3 +44,6 @@
 
 - 2025-07-12: Added docs/overview.md with MLP sketch and linked from README.
   Reason: implement TODO diagram; decisions: simple ASCII for clarity.
+- 2025-07-13: Removed unused PyTorch trainer. The scikit-learn version now
+  saves `model.pkl` and exits with code 1 when ROC-AUC < 0.90. Updated tests
+  and docs accordingly. Reason: simplify training per instructions.

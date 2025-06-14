@@ -20,8 +20,7 @@ disease.
 * **Speed** – trains a 13-32-16-1 MLP to ≥ 0.90 test accuracy and ROC-AUC ≈
   0.93 in ~45 s on two vCPUs.
 * **Self-contained** – data file is vendored; no network needed after setup.
-* **Scriptable** – `train.py` will offer a CLI once
-  [TODO](TODO.md#1-core-functionality) items are done.
+* **Scriptable** – `train.py` offers a simple CLI with `--fast` and `--seed`.
 
 ---
 
@@ -36,18 +35,15 @@ bash setup.sh
 `setup.sh` installs **PyTorch 2.3.x** from the CPU wheel index so runs stay
 GPU-free and reproducible.
 
-
 Run the training script with, for example:
 
 ```bash
 python train.py --epochs 200 --lr 0.01
 ```
 
-Add `--fast` to run a short 10‑epoch demo.
-
-`train.py` is a placeholder script. CLI options will be added in a future
-milestone. `evaluate.py` loads a saved `model.pt` and prints ROC-AUC.
-
+Add `--fast` to run a short 10‑epoch demo. The script saves `model.pkl` and
+exits with status 1 when ROC-AUC is below 0.90. Use `--seed` for reproducible
+results. `evaluate.py` runs a quick training to report ROC-AUC.
 
 Repository layout:
 
@@ -55,7 +51,7 @@ Repository layout:
 data/heart.csv        ← 303 × 14 (13 features + target)
 setup.sh              ← fast dependency installer (≤ 45 s)
 
-train.py              ← training script (placeholder)
+train.py              ← training script
 evaluate.py           ← model metrics helper
 
 .env                  ← runtime defaults

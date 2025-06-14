@@ -2,71 +2,13 @@
 
 import argparse
 import sys
-
-import torch
-import torch.nn.functional as F
-from sklearn.metrics import roc_auc_score
-from torch.utils.data import DataLoader, TensorDataset
-
-from data_utils import load_data
-from model import build_mlp
-
-
-def parse_args() -> argparse.Namespace:
-    """CLI arguments."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", type=int, default=200)
-    parser.add_argument("--lr", type=float, default=0.01)
-    parser.add_argument("--fast", action="store_true")
-    return parser.parse_args()
-
-
-def train(
-    model: torch.nn.Module,
-    loader: DataLoader,
-    optimizer: torch.optim.Optimizer,
-) -> None:
-    """Run one training epoch."""
-    model.train()
-    for xb, yb in loader:
-        optimizer.zero_grad()
-        out = model(xb).squeeze()
-        loss = F.binary_cross_entropy_with_logits(out, yb)
-        loss.backward()
-        optimizer.step()
-
-
-def main() -> None:
-    args = parse_args()
-    epochs = 10 if args.fast else args.epochs
-
-    x_train, x_test, y_train, y_test = load_data()
-    train_ds = TensorDataset(x_train, y_train)
-    train_loader = DataLoader(train_ds, batch_size=32, shuffle=True)
-
-    model = build_mlp(x_train.shape[1])
-    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
-
-    for _ in range(epochs):
-        train(model, train_loader, optimizer)
-
-    model.eval()
-    with torch.no_grad():
-        logits = model(x_test).squeeze()
-        probs = torch.sigmoid(logits).numpy()
-        auc = roc_auc_score(y_test.numpy(), probs)
-
-    print(f"Test ROC-AUC: {auc:.3f}")
-    if auc < 0.90:
-        sys.exit(1)
-    torch.save(model.state_dict(), "model.pt")
-
 import numpy as np
 import pandas as pd
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
+import joblib
 
 
 def _load_split(seed: int):
@@ -82,7 +24,11 @@ def _load_split(seed: int):
     return x_train, x_test, y_train, y_test
 
 
-def train_model(fast: bool, seed: int) -> float:
+def train_model(
+    fast: bool,
+    seed: int,
+    model_path: str | None = "model.pkl",
+) -> float:
     x_train, x_test, y_train, y_test = _load_split(seed)
     epochs = 10 if fast else 200
     clf = MLPClassifier(
@@ -91,6 +37,8 @@ def train_model(fast: bool, seed: int) -> float:
         random_state=seed,
     )
     clf.fit(x_train, y_train)
+    if model_path:
+        joblib.dump(clf, model_path)
     proba = clf.predict_proba(x_test)[:, 1]
     return roc_auc_score(y_test, proba)
 
@@ -99,10 +47,12 @@ def main(args=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--fast", action="store_true")
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--model-path", default="model.pkl")
     parsed = parser.parse_args(args)
-    auc = train_model(parsed.fast, parsed.seed)
+    auc = train_model(parsed.fast, parsed.seed, parsed.model_path)
     print(f"ROC-AUC: {auc:.3f}")
-
+    if auc < 0.90:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
