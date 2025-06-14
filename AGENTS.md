@@ -9,11 +9,13 @@ This file summarises **how to keep the repo healthy**.
 | Docs‑only commits run a fast markdown‑lint + link‑check job. | Saves CI minutes |
 
 ## 2. Workflow
-1. Branch off **main** – name `feat/<topic>`  
-2. Keep edits to *distinct* source files where possible.  
-3. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).  
-4. If you change tests, linters, or build scripts, also update **AGENTS.md**.  
-5. A task is *done* only when CI is **all green**.
+
+1. Run `./setup.sh` once after cloning to install the Python deps.
+2. Branch off **main** – name `feat/<topic>`.
+3. Keep edits to *distinct* source files where possible.
+4. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
+5. If you change tests, linters, or build scripts, also update **AGENTS.md**.
+6. A task is *done* only when CI is **all green**.
 
 ## 3. Coding standards
 * ≤ 20 lines per function, ≤ 2 nesting levels.
