@@ -87,3 +87,7 @@
 - 2025-07-19: Removed redundant `main(args=None)` wrapper from
   `evaluate.py` and moved imports to the top. Reason: cleanup duplicate
   entry point so tests and flake8 pass.
+
+- 2025-07-20: Removed unused `.env` file and cleaned docs.
+  Reason: default epochs come from code; no env vars used.
+  Updated README and AGENTS to stay consistent.

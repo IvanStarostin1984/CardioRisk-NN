@@ -59,7 +59,6 @@ setup.sh              ← fast dependency installer (≤ 45 s)
 train.py              ← MLP training script
 evaluate.py           ← model metrics helper
 
-.env                  ← unused placeholder
 README.md             ← you are here
 TODO.md               ← roadmap tasks
 NOTES.md              ← running decisions log
@@ -69,14 +68,6 @@ AGENTS.md             ← contributor & CI guidelines
 
 See [docs/overview.md](docs/overview.md) for a sketch of the MLP and
 the training workflow.
-
-### `.env` file
-
-This file is currently unused and only kept as a placeholder for potential
-environment variables.
-
-All scripts are CPU-only and keep RAM use < 100 MB.
-
 
 ### Docker usage
 
@@ -99,7 +90,6 @@ sphinx-build -b html docs/source docs/_build
 ```
 
 The HTML pages appear in `docs/_build`.
-
 
 ---
 

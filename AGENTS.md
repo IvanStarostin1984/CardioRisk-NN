@@ -47,7 +47,6 @@ It always builds the Sphinx docs with `sphinx-build`.
 | `TODO.md` | roadmap of work items |
 | `NOTES.md` | chronological engineering log |
 | `AGENTS.md` | *this* contributor guide |
-| `.env` | runtime variables for the sandbox |
 | `setup.sh` | dependency installer |
 | `.github/workflows/ci.yml` | lints & tests in CI |
 | `Dockerfile` | optional container image |
