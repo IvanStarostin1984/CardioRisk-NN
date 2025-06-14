@@ -3,9 +3,12 @@
 > Created 2025-06-14 from empty repo state.
 
 ## 0. Bootstrap
-
 - [ ] Commit starter files (README, NOTES, TODO, AGENTS, .env, setup.sh)
 - [ ] Add CI workflow: black, flake8, pytest, markdown-lint
+ - [x] ✅ Commit starter files (README, NOTES, TODO, AGENTS, .env, setup.sh)
+- [ ] ⬜ Add CI workflow: black, flake8, pytest, markdown‑lint
+- [x] ✅ Vendored Cleveland dataset `data/heart.csv`
+- [x] ✅ Add placeholder `train.py`
 
 ## 1. Core functionality
 
