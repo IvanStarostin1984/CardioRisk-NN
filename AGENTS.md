@@ -15,7 +15,8 @@ It always builds the Sphinx docs with `sphinx-build`.
 
 ## 2. Workflow
 
-1. Run `./setup.sh` once after cloning to install the Python deps.
+1. Run `./setup.sh` once after cloning to install the Python deps
+   (PyTorch, TensorFlow, pandas, scikit-learn).
 2. *(Optional)* build the Docker image with `docker build -t cardiorisk .`.
 3. Branch off **main** – name `feat/<topic>`.
 4. Keep edits to *distinct* source files where possible.
@@ -47,6 +48,11 @@ It always builds the Sphinx docs with `sphinx-build`.
 | `TODO.md` | roadmap of work items |
 | `NOTES.md` | chronological engineering log |
 | `AGENTS.md` | *this* contributor guide |
+
 | `setup.sh` | dependency installer |
+
+| `.env` | runtime variables for the sandbox |
+| `setup.sh` | dependency installer (PyTorch & TensorFlow) |
+
 | `.github/workflows/ci.yml` | lints & tests in CI |
 | `Dockerfile` | optional container image |

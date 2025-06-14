@@ -38,10 +38,7 @@
 
 ## 4. Stretch goals
 
-- [ ] TensorFlow backend (`train_tf.py`, CLI `--backend tf`)
+- [x] TensorFlow backend (`train_tf.py`, CLI `--backend tf`)
 - [ ] Optional calibration script & reliability plot
-- [ ] Dockerfile for exact reproducibility
-- [x] Switch `train.py` to a PyTorch loop using `build_mlp`
-
 - [x] Dockerfile for exact reproducibility
-- [ ] Switch `train.py` to a PyTorch loop using `build_mlp`
+- [x] Switch `train.py` to a PyTorch loop using `build_mlp`
