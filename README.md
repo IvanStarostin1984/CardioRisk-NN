@@ -1,7 +1,7 @@
-# CardioRisk-NN-
-Training a lightweight multi‑layer perceptron (MLP) to predict presence of coronary artery disease
-
 # CardioRisk‑NN
+
+Training a lightweight multi‑layer perceptron (MLP) to predict presence of
+coronary artery disease
 
 > **A clinical‑themed, CPU‑only PyTorch prototype that predicts coronary artery
 > disease from 13 routine variables in under 60 s.**
@@ -26,10 +26,14 @@ Training a lightweight multi‑layer perceptron (MLP) to predict presence of cor
 
 ## Quick‑start
 
-# one‑shot run (installs deps on first call)
+### One-shot run (installs deps on first call)
+
+```bash
 make run
-make run calls setup.sh (installs torch, pandas, scikit‑learn)
-and then python train.py --epochs 200.
+```
+
+`make run` calls `setup.sh` to install torch, pandas and scikit-learn then runs
+`python train.py --epochs 200`.
 
 Expected console tail:
 
@@ -60,11 +64,11 @@ python evaluate.py                        # metric‑only re‑run
 All scripts are CPU‑only and keep RAM use < 100 MB.
 
 References
-UCI ML Repository – Heart Disease data set 
+UCI ML Repository – Heart Disease data set
 archive.ics.uci.edu
 
-Kaggle mirror with cleaned CSV 
+Kaggle mirror with cleaned CSV
 kaggle.com
 
-Typical logistic‑regression baseline ROC‑AUC ≈ 0.84‑0.90 
+Typical logistic‑regression baseline ROC‑AUC ≈ 0.84‑0.90
 pmc.ncbi.nlm.nih.gov
