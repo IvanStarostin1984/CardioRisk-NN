@@ -70,3 +70,5 @@
 
 - 2025-07-17: Documented evaluate.py default model path and test helper in
   README. Reason: keep docs synced with evaluate.py behaviour.
+- 2025-07-18: Added TODO item to migrate training script to PyTorch to
+  highlight core PyTorch skills. Reason: match future showcase goal.
