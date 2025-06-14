@@ -32,18 +32,24 @@ disease.
 bash setup.sh
 ```
 
-`setup.sh` installs **PyTorch 2.3.x** from the CPU wheel index so runs stay
-GPU-free and reproducible.
+`setup.sh` installs **PyTorch 2.3.x** and **TensorFlow 2.x** from CPU wheels so
+runs stay GPU-free and reproducible.
 
-Run the training script with, for example:
+Run the PyTorch training script with, for example:
 
 ```bash
 python train.py --seed 0
 ```
 
-Add `--fast` for a 10‑epoch demo and `--model-path` to set the output `.pt`
-file. The script saves `model.pt` and exits with status 1 when ROC‑AUC is below
-0.90.
+The Keras variant runs similarly:
+
+```bash
+python train_tf.py --seed 0
+```
+
+Add `--fast` for a 10‑epoch demo and `--model-path` to set the output file.
+`train.py` saves `model.pt` while `train_tf.py` defaults to `model_tf.h5`. Both
+exit with status 1 when ROC‑AUC is below 0.90.
 
 `train.py` trains the MLP and saves `model.pt` when ROC‑AUC ≥ 0.90.
 `evaluate.py` loads a saved `model.pt` by default via the `--model-path`
@@ -59,10 +65,10 @@ data/heart.csv        ← 303 × 14 (13 features + target)
 setup.sh              ← fast dependency installer (≤ 45 s)
 
 train.py              ← MLP training script
+train_tf.py           ← Keras training script
 evaluate.py           ← model metrics helper
 calibrate.py          ← reliability plot helper
 
-.env                  ← unused placeholder
 README.md             ← you are here
 TODO.md               ← roadmap tasks
 NOTES.md              ← running decisions log
@@ -72,6 +78,8 @@ AGENTS.md             ← contributor & CI guidelines
 
 See [docs/overview.md](docs/overview.md) for a sketch of the MLP and
 the training workflow.
+
+
 
 ### `.env` file
 

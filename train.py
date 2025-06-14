@@ -33,7 +33,9 @@ def train_model(
     criterion = nn.BCEWithLogitsLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     loader = DataLoader(
-        TensorDataset(x_train, y_train.unsqueeze(1)), batch_size=64, shuffle=True
+        TensorDataset(x_train, y_train.unsqueeze(1)),
+        batch_size=64,
+        shuffle=True,
     )
     epochs = 3 if fast else 200
     for _ in range(epochs):

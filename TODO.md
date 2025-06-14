@@ -16,6 +16,7 @@
 - [x] Implement `evaluate.py` to load saved model & print test metrics
 - [x] Fail `train.py` with exit 1 if ROC-AUC < 0.90
 - [x] Remove duplicate `main(args=None)` from `evaluate.py`
+- [x] Remove unused `.env` file; docs updated accordingly
 
 ## 2. Testing
 
@@ -37,10 +38,7 @@
 
 ## 4. Stretch goals
 
-- [ ] TensorFlow backend (`train_tf.py`, CLI `--backend tf`)
 - [x] Optional calibration script & reliability plot
-- [ ] Dockerfile for exact reproducibility
-- [x] Switch `train.py` to a PyTorch loop using `build_mlp`
-
+- [x] TensorFlow backend (`train_tf.py`, CLI `--backend tf`)
 - [x] Dockerfile for exact reproducibility
-- [ ] Switch `train.py` to a PyTorch loop using `build_mlp`
+- [x] Switch `train.py` to a PyTorch loop using `build_mlp`

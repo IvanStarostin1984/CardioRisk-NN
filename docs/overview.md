@@ -18,9 +18,11 @@ inputs.
 
 1. Install dependencies with `bash setup.sh`.
 
-2. Run `python train.py --fast --seed 0` for a quick demo.
+2. Run `python train.py --fast --seed 0` for a PyTorch demo or
+   `python train_tf.py --fast --seed 0` for the Keras version.
 
-3. The script saves `model.pt` and exits with code `1` if ROC-AUC < 0.90.
+3. The scripts save `model.pt` or `model_tf.h5` and exit with code `1` if
+   ROC-AUC < 0.90.
 
 4. Run `python calibrate.py` to print the Brier score and save a
    reliability plot for the saved model.
