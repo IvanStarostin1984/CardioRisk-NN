@@ -49,9 +49,6 @@ It always builds the Sphinx docs with `sphinx-build`.
 | `NOTES.md` | chronological engineering log |
 | `AGENTS.md` | *this* contributor guide |
 
-| `setup.sh` | dependency installer |
-
-| `.env` | runtime variables for the sandbox |
 | `setup.sh` | dependency installer (PyTorch & TensorFlow) |
 
 | `.github/workflows/ci.yml` | lints & tests in CI |

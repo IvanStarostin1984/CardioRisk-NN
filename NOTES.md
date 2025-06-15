@@ -92,7 +92,6 @@
   Tests cover fast model calibration. Updated README, Sphinx docs and
   setup.sh. Reason: implement optional calibration feature from TODO.
 
-
 - 2025-07-20: Removed unused `.env` file and cleaned docs.
   Reason: default epochs come from code; no env vars used.
   Updated README and AGENTS to stay consistent.
@@ -106,3 +105,7 @@
   Updated setup.sh to install TensorFlow and documented usage in README and
   overview. Sphinx docs now include `train_tf` module. Reason: implement
   stretch goal from TODO.
+
+- 2025-07-21: Updated README fast-mode docs to 3 epochs, removed `.env` entry
+  and cleaned AGENTS file roles. Ticked TODO item to mention the 3-epoch test.
+  Reason: keep documentation consistent with the code.
