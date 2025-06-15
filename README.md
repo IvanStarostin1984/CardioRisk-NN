@@ -47,7 +47,7 @@ The Keras variant runs similarly:
 python train_tf.py --seed 0
 ```
 
-Add `--fast` for a 10‑epoch demo and `--model-path` to set the output file.
+Add `--fast` for a 3‑epoch demo and `--model-path` to set the output file.
 `train.py` saves `model.pt` while `train_tf.py` defaults to `model_tf.h5`. Both
 exit with status 1 when ROC‑AUC is below 0.90.
 
@@ -79,13 +79,10 @@ AGENTS.md             ← contributor & CI guidelines
 See [docs/overview.md](docs/overview.md) for a sketch of the MLP and
 the training workflow.
 
-
-
 ### `.env` file
 
-This file is currently unused and only kept as a placeholder for potential
-environment variables.
-All scripts are CPU-only and keep RAM use < 100 MB.
+No `.env` file is provided because the scripts run without extra
+environment variables. All jobs stay CPU‑only and use under 100 MB of RAM.
 
 ### Docker usage
 

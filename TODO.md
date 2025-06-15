@@ -21,7 +21,7 @@
 ## 2. Testing
 
 - [x] `tests/test_smoke.py` – import modules
-- [x] `tests/test_train_fast.py` – 10-epoch fast run under 20 s
+- [x] `tests/test_train_fast.py` – 3-epoch fast run under 20 s
 - [x] `tests/test_metrics.py` – check AUC ≥ 0.85 on fixed seed
 
 ## 3. Documentation
