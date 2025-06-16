@@ -136,4 +136,6 @@
   Reason: meet refactor request and style limits; decisions: created
   `_init_model`, `_make_loader`, and `_build_model` helpers.
 
-- 2025-07-23: Reduced blank lines before args in tests/test_calibrate.py and ran black/flake8. Reason: fix style per guidelines.
+- 2025-07-23: Reduced blank lines before args in tests/test_calibrate.py
+  and ran black/flake8. Reason: fix style per guidelines.
+- 2025-07-24: Fixed NOTES.md line length to satisfy markdownlint.
