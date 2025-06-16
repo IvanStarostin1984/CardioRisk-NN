@@ -126,3 +126,6 @@
 
 - 2025-07-22: Wrapped `calibrate.main` call in tests to satisfy flake8 line
   length. Installed TensorFlow so tests run. Reason: fix style error.
+- 2025-06-16: Pinned torch and tensorflow in requirements.txt to match
+  setup.sh and added note in AGENTS. Reason: keep installs reproducible
+  across devs and CI.
