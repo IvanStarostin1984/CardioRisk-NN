@@ -26,6 +26,7 @@
 - [x] Add test for `evaluate_saved_model` ensuring ROC-AUC ≥ 0.90
 - [x] Adapt tests to call `train.train_model()` or `train_tf.train_model()`
   to avoid exit code failures when AUC < 0.90
+- [x] Use train.train_model in saved-model test to avoid SystemExit.
 
 ## 3. Documentation
 

@@ -9,14 +9,10 @@ import evaluate  # noqa: E402
 def test_evaluate_saved_model(tmp_path):
     model_path = tmp_path / "model.pt"
     seed = 17
-    train.main(
-        [
-            "--fast",
-            "--seed",
-            str(seed),
-            "--model-path",
-            str(model_path),
-        ]
+    train.train_model(
+        True,
+        seed=seed,
+        model_path=str(model_path),
     )
     assert model_path.exists()
 
