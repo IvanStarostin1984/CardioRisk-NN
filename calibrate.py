@@ -11,6 +11,17 @@ import matplotlib.pyplot as plt
 from evaluate import load_data
 
 
+def _save_reliability_plot(
+    labels: list[float], probs: list[float], plot_path: Path
+) -> None:
+    """Save calibration curve."""
+    disp = CalibrationDisplay.from_predictions(labels, probs, n_bins=10)
+    disp.ax_.set_title("Reliability curve")
+    disp.figure_.tight_layout()
+    disp.figure_.savefig(plot_path)
+    plt.close(disp.figure_)
+
+
 def calibrate_model(model_path: Path, plot_path: Path) -> float:
     """Compute Brier score and save reliability plot."""
     loader = load_data()
@@ -26,11 +37,7 @@ def calibrate_model(model_path: Path, plot_path: Path) -> float:
             labels.extend(target.tolist())
 
     brier = brier_score_loss(labels, probs)
-    disp = CalibrationDisplay.from_predictions(labels, probs, n_bins=10)
-    disp.ax_.set_title("Reliability curve")
-    disp.figure_.tight_layout()
-    disp.figure_.savefig(plot_path)
-    plt.close(disp.figure_)
+    _save_reliability_plot(labels, probs, plot_path)
     print(f"Brier score: {brier:.3f}")
     return brier
 

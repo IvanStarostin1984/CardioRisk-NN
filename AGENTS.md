@@ -16,12 +16,15 @@ It always builds the Sphinx docs with `sphinx-build`.
 ## 2. Workflow
 
 1. Run `./setup.sh` once after cloning to install the Python deps
-   (PyTorch, TensorFlow, pandas, scikit-learn).
+   (PyTorch, TensorFlow, pandas, scikit-learn). CI installs the same
+   packages with `pip install -r requirements.txt` and then calls
+   `bash setup.sh` for parity.
 2. *(Optional)* build the Docker image with `docker build -t cardiorisk .`.
 3. Branch off **main** – name `feat/<topic>`.
 4. Keep edits to *distinct* source files where possible.
 5. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
-6. Run `npx markdownlint-cli '**/*.md'` before pushing.
+6. Run `npx markdownlint-cli '**/*.md'` before pushing. The file `codex.md`
+   is excluded via `.markdownlintignore`.
 7. If you change tests, linters, or build scripts, also update **AGENTS.md**.
 8. A task is *done* only when CI is **all green**.
    Docs-only commits run only the markdown jobs; code commits run the full test suite.
