@@ -126,3 +126,8 @@
 
 - 2025-07-22: Wrapped `calibrate.main` call in tests to satisfy flake8 line
   length. Installed TensorFlow so tests run. Reason: fix style error.
+
+- 2025-07-23: Refactored `train.py` and `train_tf.py` to move loader and model
+  setup into helper functions. `train_model` bodies now stay under 20 lines.
+  Reason: meet refactor request and style limits; decisions: created
+  `_init_model`, `_make_loader`, and `_build_model` helpers.
