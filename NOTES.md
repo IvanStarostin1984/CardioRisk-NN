@@ -187,3 +187,7 @@
 - 2025-08-04: Added cross_validate.py for k-fold evaluation with tests and docs.
   Reason: expose simple validation helper. Decisions: use seeded splits calling
   train.train_model.
+- 2025-08-05: Added baseline.py logistic regression with CLI flags `--seed` and
+  `--model-path`. Created test_baseline.py and documented usage in README and
+  docs/overview. Reason: provide a simple reference model. Decisions: exit with
+  code 1 when AUC < 0.84 to mirror train.py behaviour.

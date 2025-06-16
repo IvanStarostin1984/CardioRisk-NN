@@ -41,6 +41,8 @@ It always builds the Sphinx docs with `sphinx-build`.
 * `train.py` and `train_tf.py` exit with code 1 when ROC-AUC < 0.90.
   In tests, call `train.train_model()` or `train_tf.train_model()`
   to avoid exits.
+* `baseline.py` exits with code 1 when ROC-AUC < 0.84.
+  Call `baseline.train_model()` in tests to avoid the exit.
 
 ## 4. Documentation style
 
