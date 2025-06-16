@@ -38,6 +38,9 @@ It always builds the Sphinx docs with `sphinx-build`.
 * End every file with a newline; keep Markdown lines ≤ 80 chars.
 * Run `npx --yes markdownlint-cli '**/*.md'` (or install globally) to ensure
   Markdown lines stay within 80 characters. This catches issues before pushing.
+* `train.py` and `train_tf.py` exit with code 1 when ROC-AUC < 0.90.
+  In tests, call `train.train_model()` or `train_tf.train_model()`
+  to avoid exits.
 
 ## 4. Documentation style
 
