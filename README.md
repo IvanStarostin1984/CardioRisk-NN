@@ -47,6 +47,12 @@ The Keras variant runs similarly:
 python train_tf.py --seed 0
 ```
 
+The logistic-regression baseline runs as:
+
+```bash
+python baseline.py --seed 0
+```
+
 Add `--fast` for a quick demo with early stopping. Use `--patience N` (default
 5, max 20 epochs in fast mode) and `--model-path` to set the output file.
 `train.py` saves `model.pt` while `train_tf.py` defaults to `model_tf.h5`. Both
@@ -74,6 +80,7 @@ train_tf.py           ← Keras training script
 evaluate.py           ← model metrics helper
 calibrate.py          ← reliability plot helper
 cross_validate.py     ← k-fold validation helper
+baseline.py          ← logistic-regression baseline
 
 README.md             ← you are here
 TODO.md               ← roadmap tasks

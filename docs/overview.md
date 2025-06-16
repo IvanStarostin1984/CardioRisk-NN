@@ -29,4 +29,7 @@ inputs.
 
 6. Run `python cross_validate.py --folds 5` for a quick k-fold score.
 
+7. Run `python baseline.py --seed 0` to train a logistic-regression
+   baseline and save `baseline.pkl`.
+
 Future docs will detail the dataset and training options once implemented.
