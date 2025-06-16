@@ -60,8 +60,9 @@ argument and prints ROC‑AUC. The module's `evaluate()` function (not the CLI)
 performs a short training run used in the tests.
 `calibrate.py` reports the Brier score and saves a reliability plot image for
 any saved model.
-`cross_validate.py` runs five quick training runs by default and prints the
-mean ROC-AUC.
+`cross_validate.py` runs several quick training runs and accepts a
+`--backend {torch,tf}` flag to choose which trainer to use. It prints the mean
+ROC-AUC over the folds.
 
 Repository layout:
 
