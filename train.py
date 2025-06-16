@@ -37,6 +37,20 @@ def _train_epoch(
         optimizer.step()
 
 
+def _init_model(n_features: int):
+    """Return model, criterion and optimizer."""
+    model = build_mlp(n_features)
+    criterion = nn.BCEWithLogitsLoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    return model, criterion, optimizer
+
+
+def _make_loader(x_train: torch.Tensor, y_train: torch.Tensor) -> DataLoader:
+    """Return a training DataLoader."""
+    dataset = TensorDataset(x_train, y_train.unsqueeze(1))
+    return DataLoader(dataset, batch_size=64, shuffle=True)
+
+
 def train_model(
     fast: bool,
     seed: int,
@@ -45,14 +59,8 @@ def train_model(
     """Train the MLP and return ROC-AUC."""
     torch.manual_seed(seed)
     x_train, x_test, y_train, y_test = _load_split(seed)
-    model = build_mlp(x_train.shape[1])
-    criterion = nn.BCEWithLogitsLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-    loader = DataLoader(
-        TensorDataset(x_train, y_train.unsqueeze(1)),
-        batch_size=64,
-        shuffle=True,
-    )
+    model, criterion, optimizer = _init_model(x_train.shape[1])
+    loader = _make_loader(x_train, y_train)
     epochs = 3 if fast else 200
     for _ in range(epochs):
         _train_epoch(model, loader, criterion, optimizer)
