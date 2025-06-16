@@ -21,6 +21,22 @@ def _load_split(seed: int):
     return x_train, x_test, y_train, y_test
 
 
+def _train_epoch(
+    model: nn.Module,
+    loader: DataLoader,
+    criterion: nn.Module,
+    optimizer: torch.optim.Optimizer,
+):
+    """Train one epoch."""
+    model.train()
+    for features, target in loader:
+        optimizer.zero_grad()
+        out = model(features)
+        loss = criterion(out, target)
+        loss.backward()
+        optimizer.step()
+
+
 def train_model(
     fast: bool,
     seed: int,
@@ -39,12 +55,7 @@ def train_model(
     )
     epochs = 3 if fast else 200
     for _ in range(epochs):
-        for features, target in loader:
-            optimizer.zero_grad()
-            out = model(features)
-            loss = criterion(out, target)
-            loss.backward()
-            optimizer.step()
+        _train_epoch(model, loader, criterion, optimizer)
 
     if model_path:
         torch.save(model, model_path)

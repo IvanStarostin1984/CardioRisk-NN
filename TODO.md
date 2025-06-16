@@ -42,3 +42,4 @@
 - [x] TensorFlow backend (`train_tf.py`, CLI `--backend tf`)
 - [x] Dockerfile for exact reproducibility
 - [x] Switch `train.py` to a PyTorch loop using `build_mlp`
+- [x] Refactor training and calibration helpers for clarity
