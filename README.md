@@ -51,6 +51,8 @@ Add `--fast` for a quick demo with early stopping (patience 5, max 20 epochs)
 and `--model-path` to set the output file.
 `train.py` saves `model.pt` while `train_tf.py` defaults to `model_tf.h5`. Both
 exit with status 1 when ROC‑AUC is below 0.90.
+`train_tf.py` also applies early stopping with patience 5 so longer runs stop
+once the loss plateaus.
 
 `train.py` trains the MLP and saves `model.pt` when ROC‑AUC ≥ 0.90.
 `evaluate.py` loads a saved `model.pt` by default via the `--model-path`

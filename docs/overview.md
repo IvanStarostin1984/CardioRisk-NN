@@ -21,8 +21,14 @@ inputs.
 2. Run `python train.py --fast --seed 0` for a PyTorch demo or
    `python train_tf.py --fast --seed 0` for the Keras version.
 
+3. The scripts save `model.pt` or `model_tf.h5` and exit with code `1` if
+   ROC-AUC < 0.90.
+   The Keras training uses early stopping with patience 5 so long runs finish
+   early when the loss stops improving.
+
 3. The scripts split the data 80/20 for validation. Training stops when the
    validation ROC-AUC has not improved for 5 epochs.
+
 
 4. Models are saved as `model.pt` or `model_tf.h5` and the scripts exit with
    code `1` if ROC-AUC < 0.90.

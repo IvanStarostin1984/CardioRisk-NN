@@ -42,18 +42,30 @@ def train_model(
     fast: bool,
     seed: int,
     model_path: str | None = "model_tf.h5",
-) -> float:
-    """Train the Keras MLP and return ROC-AUC."""
+) -> tuple[float, int]:
+    """Train the Keras MLP and return ROC-AUC and epochs used."""
     np.random.seed(seed)
     tf.random.set_seed(seed)
     x_train, x_test, y_train, y_test = _load_split(seed)
     model = _build_model(x_train.shape[1])
     epochs = 3 if fast else 200
-    model.fit(x_train, y_train, epochs=epochs, batch_size=64, verbose=0)
+    callback = tf.keras.callbacks.EarlyStopping(
+        monitor="val_loss", patience=5, restore_best_weights=True
+    )
+    history = model.fit(
+        x_train,
+        y_train,
+        epochs=epochs,
+        batch_size=64,
+        verbose=0,
+        callbacks=[callback],
+        validation_split=0.2,
+    )
     if model_path:
         model.save(model_path)
     preds = model.predict(x_test, verbose=0).squeeze()
-    return roc_auc_score(y_test, preds)
+    auc = roc_auc_score(y_test, preds)
+    return auc, len(history.history["loss"])
 
 
 def main(args=None):
@@ -62,7 +74,7 @@ def main(args=None):
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--model-path", default="model_tf.h5")
     parsed = parser.parse_args(args)
-    auc = train_model(parsed.fast, parsed.seed, parsed.model_path)
+    auc, _ = train_model(parsed.fast, parsed.seed, parsed.model_path)
     print(f"ROC-AUC: {auc:.3f}")
     if auc < 0.90:
         sys.exit(1)
