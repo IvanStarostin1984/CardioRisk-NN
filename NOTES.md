@@ -175,3 +175,6 @@
 
 - 2025-08-02: Updated tests to call `train.train_model` directly, capturing
   early-stopping output. Reason: follow refactor removing CLI dependency.
+- 2025-08-03: Clarified TODO TensorFlow backend entry and noted train.py early
+  stopping bullet. Reason: keep TODO in sync with code; decisions: CLI has no
+  --backend flag.

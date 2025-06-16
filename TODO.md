@@ -45,7 +45,7 @@
 ## 4. Stretch goals
 
 - [x] Optional calibration script & reliability plot
-- [x] TensorFlow backend (`train_tf.py`, CLI `--backend tf`)
+- [x] TensorFlow backend provided by `train_tf.py` script (no `--backend` flag)
 - [x] Dockerfile for exact reproducibility
 - [x] Switch `train.py` to a PyTorch loop using `build_mlp`
 - [x] Refactor training and calibration helpers for clarity
@@ -55,4 +55,5 @@
   Document keeping pins in sync with `setup.sh` in AGENTS.
 - [x] Add early stopping to Keras trainer with patience 5 and update tests
   and docs.
+- [x] Added early stopping to `train.py` with fixed patience 5 (see NOTES 2025-07-31).
 - [x] Expose CLI flag for early stopping patience.
