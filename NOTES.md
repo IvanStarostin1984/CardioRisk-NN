@@ -126,3 +126,5 @@
 
 - 2025-07-22: Wrapped `calibrate.main` call in tests to satisfy flake8 line
   length. Installed TensorFlow so tests run. Reason: fix style error.
+
+- 2025-07-23: Reduced blank lines before args in tests/test_calibrate.py and ran black/flake8. Reason: fix style per guidelines.
