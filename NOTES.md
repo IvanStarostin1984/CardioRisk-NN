@@ -110,6 +110,10 @@
   and cleaned AGENTS file roles. Ticked TODO item to mention the 3-epoch test.
   Reason: keep documentation consistent with the code.
 
+- 2025-07-21: Moved training loop to `_train_epoch` and split plotting helper
+  in `calibrate.py`. Added `.markdownlintignore` for codex.md. Reason: refactor
+  for clarity and keep linters green.
+
 - 2025-07-22: Added requirements.txt and changed CI to install from it and run
   setup.sh. Updated AGENTS accordingly. Reason: keep installs consistent.
 
