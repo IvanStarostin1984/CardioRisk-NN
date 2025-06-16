@@ -200,3 +200,6 @@
 
 - 2025-06-16: Noted conflict-marker check in AGENTS; cleaned NOTES markers.
   Reason: prevent accidental commits with unresolved merges.
+- 2025-08-06: fast mode in `train_tf.py` now trains for 12 epochs.
+  Updated cross-validate tests, README and docs to match. Reason: ensure
+  quick runs hit higher ROC-AUC as requested.

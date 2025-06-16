@@ -62,3 +62,5 @@
 - [x] Optional `--backend` flag in cross_validate.py to choose PyTorch or
   TensorFlow backend and tests for the TensorFlow path.
 - [x] Add baseline.py with logistic regression and tests.
+- [x] Increase fast-mode epochs for TensorFlow trainer to 12 and update
+  docs and tests so cross-validation stays under 40 s.
