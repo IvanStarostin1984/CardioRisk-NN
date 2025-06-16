@@ -10,3 +10,5 @@ dist/
 
 
 model.pkl
+*.pt
+*.h5

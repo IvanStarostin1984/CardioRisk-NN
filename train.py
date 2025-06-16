@@ -32,7 +32,7 @@ def _train_epoch(
     for features, target in loader:
         optimizer.zero_grad()
         out = model(features)
-        loss = criterion(out, target)
+        loss = criterion(out, target.unsqueeze(1))
         loss.backward()
         optimizer.step()
 
@@ -46,7 +46,9 @@ def _init_model(n_features: int):
 
 
 def _make_loader(
-    x: torch.Tensor, y: torch.Tensor, shuffle: bool = True
+    x: torch.Tensor,
+    y: torch.Tensor,
+    shuffle: bool = True,
 ) -> DataLoader:
     """Return a DataLoader for the given tensors."""
     dataset = TensorDataset(x, y.unsqueeze(1))
@@ -61,7 +63,11 @@ def _split_train_valid(
     train_size = len(x_train) - val_size
     gen = torch.Generator().manual_seed(seed)
     dataset = TensorDataset(x_train, y_train)
-    train_ds, val_ds = random_split(dataset, [train_size, val_size], generator=gen)
+    train_ds, val_ds = random_split(
+        dataset,
+        [train_size, val_size],
+        generator=gen,
+    )
     return (
         DataLoader(train_ds, batch_size=64, shuffle=True),
         DataLoader(val_ds, batch_size=64, shuffle=False),

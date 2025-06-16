@@ -156,3 +156,5 @@
 - 2025-06-16: Cleaned docs/overview bullet list.
   Combined model saving with exit code and mentioned early stop once.
   Reason: tidy docs.
+- 2025-06-16: Ignored `*.pt` and `*.h5` in `.gitignore` to keep large
+  trained models out of version control.
