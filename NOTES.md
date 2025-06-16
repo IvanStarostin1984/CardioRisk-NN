@@ -168,6 +168,10 @@
   Adjusted fast-mode learning rate so test seed 0 stays below the 0.90 AUC
   threshold. Reason: loss function expected `[batch,1]` targets and tests rely on
   failing fast mode.
+
 - 2025-08-02: Documented exit code rule in AGENTS and noted tests should use
   train.train_model() or train_tf.train_model() to avoid SystemExit. CI
   failed when tests called main(); fixed by calling helpers.
+
+- 2025-08-02: Updated tests to call `train.train_model` directly, capturing
+  early-stopping output. Reason: follow refactor removing CLI dependency.
