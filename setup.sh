@@ -7,7 +7,7 @@ pip install --extra-index-url https://download.pytorch.org/whl/cpu torch==2.3.*
 
 # Core libraries
 
-pip install pandas scikit-learn matplotlib
+pip install pandas scikit-learn joblib matplotlib
 
 # TensorFlow CPU
 pip install tensorflow==2.19.*

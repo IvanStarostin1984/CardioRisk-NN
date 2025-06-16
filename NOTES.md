@@ -201,6 +201,12 @@
 - 2025-06-16: Noted conflict-marker check in AGENTS; cleaned NOTES markers.
   Reason: prevent accidental commits with unresolved merges.
 
+- 2025-08-06: Added `joblib` to the dependency lists and updated
+  `setup.sh`. Documented the PyTorch/TensorFlow pin policy in `AGENTS`.
+  Reason: baseline model saves with `joblib` and pins must stay in sync.
+  Decisions: keep torch and tensorflow pinned to minor versions in both
+  files.
+
 - 2025-08-06: evaluate.load_data uses data_utils.load_data and returns
   a DataLoader.
   calibrate now imports from data_utils. Added test for loader output.
