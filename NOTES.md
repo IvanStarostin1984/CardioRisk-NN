@@ -143,3 +143,6 @@
 
 - 2025-06-16: Documented `npx --yes markdownlint-cli` in AGENTS to catch
   markdown line length issues before pushing.
+- 2025-07-25: Added EarlyStopping to `train_tf.py` (patience 5), returned
+  epoch count for tests and updated docs. Reason: improve training stability
+  and cover TODO item.

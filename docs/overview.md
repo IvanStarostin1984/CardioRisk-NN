@@ -23,6 +23,8 @@ inputs.
 
 3. The scripts save `model.pt` or `model_tf.h5` and exit with code `1` if
    ROC-AUC < 0.90.
+   The Keras training uses early stopping with patience 5 so long runs finish
+   early when the loss stops improving.
 
 4. Run `python calibrate.py` to print the Brier score and save a
    reliability plot for the saved model.

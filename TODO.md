@@ -50,3 +50,5 @@
 
 - [x] Pin torch==2.3.\* and tensorflow==2.19.\* in requirements.txt.
   Document keeping pins in sync with `setup.sh` in AGENTS.
+- [x] Add early stopping to Keras trainer with patience 5 and update tests
+  and docs.
