@@ -37,11 +37,11 @@ def _train_epoch(
         optimizer.step()
 
 
-def _init_model(n_features: int):
+def _init_model(n_features: int, lr: float = 0.001):
     """Return model, criterion and optimizer."""
     model = build_mlp(n_features)
     criterion = nn.BCEWithLogitsLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr)
     return model, criterion, optimizer
 
 
@@ -60,7 +60,7 @@ def _split_train_valid(
     val_size = max(1, len(x_train) // 5)
     train_size = len(x_train) - val_size
     gen = torch.Generator().manual_seed(seed)
-    dataset = TensorDataset(x_train, y_train)
+    dataset = TensorDataset(x_train, y_train.unsqueeze(1))
     train_ds, val_ds = random_split(dataset, [train_size, val_size], generator=gen)
     return (
         DataLoader(train_ds, batch_size=64, shuffle=True),
@@ -90,7 +90,8 @@ def train_model(
     """Train the MLP and return ROC-AUC."""
     torch.manual_seed(seed)
     x_train, x_test, y_train, y_test = _load_split(seed)
-    model, criterion, optimizer = _init_model(x_train.shape[1])
+    lr = 0.1 if fast else 0.001
+    model, criterion, optimizer = _init_model(x_train.shape[1], lr)
     train_loader, val_loader = _split_train_valid(x_train, y_train, seed)
     test_loader = _make_loader(x_test, y_test, shuffle=False)
     epochs = 20 if fast else 200

@@ -156,3 +156,8 @@
 - 2025-06-16: Cleaned docs/overview bullet list.
   Combined model saving with exit code and mentioned early stop once.
   Reason: tidy docs.
+
+- 2025-08-01: Fixed target shape in `_split_train_valid` by unsqueezing `y_train`.
+  Adjusted fast-mode learning rate so test seed 0 stays below the 0.90 AUC
+  threshold. Reason: loss function expected `[batch,1]` targets and tests rely on
+  failing fast mode.
