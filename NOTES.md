@@ -164,10 +164,10 @@
 - 2025-06-16: Ignored `*.pt` and `*.h5` in `.gitignore` to keep large
   trained models out of version control.
 
-- 2025-08-01: Fixed target shape in `_split_train_valid` by unsqueezing `y_train`.
-  Adjusted fast-mode learning rate so test seed 0 stays below the 0.90 AUC
-  threshold. Reason: loss function expected `[batch,1]` targets and tests rely on
-  failing fast mode.
+- 2025-08-01: Fixed target shape in `_split_train_valid` by unsqueezing
+  `y_train`. Adjusted fast-mode learning rate so test seed 0 stays below
+  the 0.90 AUC threshold. Reason: loss function expected `[batch,1]`
+  targets and tests rely on failing fast mode.
 
 - 2025-08-02: Documented exit code rule in AGENTS and noted tests should use
   train.train_model() or train_tf.train_model() to avoid SystemExit. CI
@@ -175,3 +175,6 @@
 
 - 2025-08-02: Updated tests to call `train.train_model` directly, capturing
   early-stopping output. Reason: follow refactor removing CLI dependency.
+- 2025-08-03: Rewrapped the 2025-08-01 bullet to keep lines under 80 chars.
+  Reason: markdownlint flagged long lines. Decision: split the text across
+  four lines without changing meaning.
