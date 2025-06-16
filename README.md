@@ -54,7 +54,8 @@ python baseline.py --seed 0
 ```
 
 Add `--fast` for a quick demo with early stopping. Use `--patience N` (default
-5, max 20 epochs in fast mode) and `--model-path` to set the output file.
+5, max 20 epochs in fast mode for `train.py`, 12 for `train_tf.py`) and
+`--model-path` to set the output file.
 `train.py` saves `model.pt` while `train_tf.py` defaults to `model_tf.h5`. Both
 exit with status 1 when ROC‑AUC is below 0.90.
 `train_tf.py` also applies early stopping and accepts the same `--patience`
