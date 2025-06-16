@@ -52,3 +52,4 @@
   Document keeping pins in sync with `setup.sh` in AGENTS.
 - [x] Add early stopping to Keras trainer with patience 5 and update tests
   and docs.
+- [ ] Expose CLI flag for early stopping patience.
