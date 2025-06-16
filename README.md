@@ -60,6 +60,8 @@ argument and prints ROC‑AUC. The module's `evaluate()` function (not the CLI)
 performs a short training run used in the tests.
 `calibrate.py` reports the Brier score and saves a reliability plot image for
 any saved model.
+`cross_validate.py` runs five quick training runs by default and prints the
+mean ROC-AUC.
 
 Repository layout:
 
@@ -71,6 +73,7 @@ train.py              ← MLP training script
 train_tf.py           ← Keras training script
 evaluate.py           ← model metrics helper
 calibrate.py          ← reliability plot helper
+cross_validate.py     ← k-fold validation helper
 
 README.md             ← you are here
 TODO.md               ← roadmap tasks
