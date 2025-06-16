@@ -1,9 +1,5 @@
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-import train  # noqa: E402
-import evaluate  # noqa: E402
+from cardiorisk import train  # noqa: E402
+from cardiorisk import evaluate  # noqa: E402
 
 
 def test_evaluate_saved_model(tmp_path):

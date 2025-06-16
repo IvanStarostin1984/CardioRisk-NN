@@ -1,9 +1,7 @@
 import time
-import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-import train_tf  # noqa: E402
+from cardiorisk import train_tf  # noqa: E402
 
 
 def test_tf_training_stops_early():

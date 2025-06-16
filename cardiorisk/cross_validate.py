@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 
-import train
+from . import train
 
 
 def cross_validate(folds: int = 5) -> float:

@@ -7,8 +7,8 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader, TensorDataset, random_split
 
-from data_utils import load_data
-from model import build_mlp
+from .data_utils import load_data
+from .model import build_mlp
 
 
 def _load_split(seed: int):

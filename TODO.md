@@ -59,3 +59,4 @@
 - [x] Added early stopping to `train.py` with fixed patience 5 (see NOTES 2025-07-31).
 - [x] Expose CLI flag for early stopping patience.
 - [x] Add cross_validate.py helper and tests.
+- [x] Package modules under `cardiorisk/` with `setup.cfg` entry points.

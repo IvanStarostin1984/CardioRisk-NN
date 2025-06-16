@@ -8,7 +8,7 @@ from sklearn.calibration import CalibrationDisplay
 from sklearn.metrics import brier_score_loss
 import matplotlib.pyplot as plt
 
-from evaluate import load_data
+from .evaluate import load_data
 
 
 def _save_reliability_plot(

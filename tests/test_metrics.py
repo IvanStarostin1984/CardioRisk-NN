@@ -1,8 +1,4 @@
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-from evaluate import evaluate  # noqa: E402
+from cardiorisk.evaluate import evaluate  # noqa: E402
 
 
 def test_roc_auc():

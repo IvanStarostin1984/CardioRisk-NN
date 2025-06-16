@@ -8,7 +8,7 @@ import torch
 from sklearn.metrics import roc_auc_score
 from torch.utils.data import DataLoader, TensorDataset
 
-from train import train_model, _load_split
+from .train import train_model, _load_split
 
 
 def evaluate(seed: int = 0) -> float:

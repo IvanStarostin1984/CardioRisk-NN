@@ -187,3 +187,7 @@
 - 2025-08-04: Added cross_validate.py for k-fold evaluation with tests and docs.
   Reason: expose simple validation helper. Decisions: use seeded splits calling
   train.train_model.
+- 2025-08-06: Moved all scripts into a `cardiorisk` package and added
+  `setup.cfg` with console entry points. Updated tests and docs to install via
+  `pip install -e .` and run commands like `cardiorisk-train`. Reason: prepare
+  for packaging and easier CLI use. Decisions: kept version 0.1.0.

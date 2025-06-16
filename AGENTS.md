@@ -20,14 +20,16 @@ It always builds the Sphinx docs with `sphinx-build`.
    packages with `pip install -r requirements.txt` and then calls
    `bash setup.sh` for parity. Keep the version pins in
    `requirements.txt` mirrored in `setup.sh` so local installs match CI.
-2. *(Optional)* build the Docker image with `docker build -t cardiorisk .`.
-3. Branch off **main** – name `feat/<topic>`.
-4. Keep edits to *distinct* source files where possible.
-5. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
-6. Run `npx markdownlint-cli '**/*.md'` before pushing. The file `codex.md`
+2. Install the package with `pip install -e .` so entry points like
+   `cardiorisk-train` work.
+3. *(Optional)* build the Docker image with `docker build -t cardiorisk .`.
+4. Branch off **main** – name `feat/<topic>`.
+5. Keep edits to *distinct* source files where possible.
+6. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
+7. Run `npx markdownlint-cli '**/*.md'` before pushing. The file `codex.md`
    is excluded via `.markdownlintignore`.
-7. If you change tests, linters, or build scripts, also update **AGENTS.md**.
-8. A task is *done* only when CI is **all green**.
+8. If you change tests, linters, or build scripts, also update **AGENTS.md**.
+9. A task is *done* only when CI is **all green**.
    Docs-only commits run only the markdown jobs; code commits run the full test suite.
 
 ## 3. Coding standards
@@ -60,6 +62,7 @@ It always builds the Sphinx docs with `sphinx-build`.
 | `AGENTS.md` | *this* contributor guide |
 
 | `setup.sh` | dependency installer (PyTorch & TensorFlow) |
+| `setup.cfg` | package metadata & entry points |
 
 | `.github/workflows/ci.yml` | lints & tests in CI |
 | `Dockerfile` | optional container image |

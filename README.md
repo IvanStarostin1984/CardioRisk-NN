@@ -20,7 +20,7 @@ disease.
 * **Speed** – trains a 13-32-16-1 MLP to ≥ 0.90 test accuracy and ROC-AUC ≈
   0.93 in ~45 s on two vCPUs.
 * **Self-contained** – data file is vendored; no network needed after setup.
-* **Scriptable** – `train.py` offers a simple CLI with `--fast` and `--seed`.
+* **Scriptable** – install with `pip install -e .` and run `cardiorisk-train` or `cardiorisk-train-tf`.
 
 ---
 
@@ -30,6 +30,7 @@ disease.
 
 ```bash
 bash setup.sh
+pip install -e .
 ```
 
 `setup.sh` installs **PyTorch 2.3.x** and **TensorFlow 2.x** from CPU wheels so
@@ -38,29 +39,29 @@ runs stay GPU-free and reproducible.
 Run the PyTorch training script with, for example:
 
 ```bash
-python train.py --seed 0
+cardiorisk-train --seed 0
 ```
 
 The Keras variant runs similarly:
 
 ```bash
-python train_tf.py --seed 0
+cardiorisk-train-tf --seed 0
 ```
 
 Add `--fast` for a quick demo with early stopping. Use `--patience N` (default
 5, max 20 epochs in fast mode) and `--model-path` to set the output file.
-`train.py` saves `model.pt` while `train_tf.py` defaults to `model_tf.h5`. Both
+`cardiorisk-train` saves `model.pt` while `cardiorisk-train-tf` defaults to `model_tf.h5`. Both
 exit with status 1 when ROC‑AUC is below 0.90.
-`train_tf.py` also applies early stopping and accepts the same `--patience`
+`cardiorisk-train-tf` also applies early stopping and accepts the same `--patience`
 flag so longer runs stop once the loss plateaus.
 
-`train.py` trains the MLP and saves `model.pt` when ROC‑AUC ≥ 0.90.
-`evaluate.py` loads a saved `model.pt` by default via the `--model-path`
+`cardiorisk-train` trains the MLP and saves `model.pt` when ROC‑AUC ≥ 0.90.
+`cardiorisk-evaluate` loads a saved `model.pt` by default via the `--model-path`
 argument and prints ROC‑AUC. The module's `evaluate()` function (not the CLI)
 performs a short training run used in the tests.
-`calibrate.py` reports the Brier score and saves a reliability plot image for
+`cardiorisk-calibrate` reports the Brier score and saves a reliability plot image for
 any saved model.
-`cross_validate.py` runs five quick training runs by default and prints the
+`cardiorisk-cross-validate` runs five quick training runs by default and prints the
 mean ROC-AUC.
 
 Repository layout:
@@ -69,11 +70,11 @@ Repository layout:
 data/heart.csv        ← 303 × 14 (13 features + target)
 setup.sh              ← fast dependency installer (≤ 45 s)
 
-train.py              ← MLP training script
-train_tf.py           ← Keras training script
-evaluate.py           ← model metrics helper
-calibrate.py          ← reliability plot helper
-cross_validate.py     ← k-fold validation helper
+cardiorisk/train.py   ← MLP training script
+cardiorisk/train_tf.py ← Keras training script
+cardiorisk/evaluate.py ← model metrics helper
+cardiorisk/calibrate.py ← reliability plot helper
+cardiorisk/cross_validate.py ← k-fold validation helper
 
 README.md             ← you are here
 TODO.md               ← roadmap tasks

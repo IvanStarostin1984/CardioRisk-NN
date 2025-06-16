@@ -1,9 +1,6 @@
 import time
-import sys
-from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-import cross_validate  # noqa: E402
+from cardiorisk import cross_validate  # noqa: E402
 
 
 def test_cross_validation_runs_quickly():
