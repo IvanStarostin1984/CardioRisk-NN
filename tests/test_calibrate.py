@@ -18,6 +18,7 @@ def test_calibration_runtime(tmp_path):
         train.main(["--fast", "--seed", "0", "--model-path", str(model_path)])
     assert model_path.exists()
 
+
     args = [
         "--model-path",
         str(model_path),
@@ -25,5 +26,6 @@ def test_calibration_runtime(tmp_path):
         str(plot_path),
     ]
     calibrate.main(args)
+
     assert plot_path.exists()
     assert time.time() - start < 10

@@ -8,7 +8,7 @@ import torch
 from sklearn.metrics import roc_auc_score
 from torch.utils.data import DataLoader, TensorDataset
 
-from train import train_model
+from train import train_model, _load_split
 
 
 def evaluate(seed: int = 0) -> float:
@@ -28,20 +28,16 @@ def load_data(batch_size: int = 64) -> DataLoader:
     return DataLoader(dataset, batch_size=batch_size)
 
 
-def evaluate_saved_model(model_path: Path) -> float:
+def evaluate_saved_model(model_path: Path, seed: int = 0) -> float:
     """Load a saved model and print ROC-AUC."""
-    loader = load_data()
+    _, x_test, _, y_test = _load_split(seed)
     model = torch.load(model_path, map_location="cpu")
     model.eval()
 
-    preds, labels = [], []
     with torch.no_grad():
-        for features, target in loader:
-            out = model(features).squeeze()
-            preds.extend(out.tolist())
-            labels.extend(target.tolist())
+        preds = model(x_test).squeeze()
 
-    auc = roc_auc_score(labels, preds)
+    auc = roc_auc_score(y_test.numpy(), preds.numpy())
     print(f"ROC-AUC: {auc:.3f}")
     return auc
 

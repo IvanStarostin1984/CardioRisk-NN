@@ -23,6 +23,7 @@
 - [x] `tests/test_smoke.py` – import modules
 - [x] `tests/test_train_fast.py` – 3-epoch fast run under 20 s
 - [x] `tests/test_metrics.py` – check AUC ≥ 0.85 on fixed seed
+- [x] Add test for `evaluate_saved_model` ensuring ROC-AUC ≥ 0.90
 
 ## 3. Documentation
 

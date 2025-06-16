@@ -110,6 +110,10 @@
   and cleaned AGENTS file roles. Ticked TODO item to mention the 3-epoch test.
   Reason: keep documentation consistent with the code.
 
+- 2025-07-22: Added test_evaluate_saved_model to verify evaluate_saved_model
+  returns ROC-AUC >= 0.90 after fast training.
+  Reason: cover saved-model evaluation.
+
 - 2025-07-21: Moved training loop to `_train_epoch` and split plotting helper
   in `calibrate.py`. Added `.markdownlintignore` for codex.md. Reason: refactor
   for clarity and keep linters green.
