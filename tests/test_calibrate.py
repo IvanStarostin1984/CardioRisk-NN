@@ -18,7 +18,6 @@ def test_calibration_runtime(tmp_path):
         train.main(["--fast", "--seed", "0", "--model-path", str(model_path)])
     assert model_path.exists()
 
-
     args = [
         "--model-path",
         str(model_path),
