@@ -43,3 +43,4 @@
 - [x] Dockerfile for exact reproducibility
 - [x] Switch `train.py` to a PyTorch loop using `build_mlp`
 - [x] Refactor training and calibration helpers for clarity
+- [x] Add requirements.txt and use it in CI
