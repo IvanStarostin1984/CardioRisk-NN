@@ -20,7 +20,8 @@ inputs.
 
 2. Run `python train.py --fast --seed 0` or `python train_tf.py --fast`.
 
-3. Data split 80/20; training stops after 5 stale ROC-AUC epochs.
+3. Data split 80/20; early stopping triggers after `--patience` stale
+   validation epochs (default 5).
 
 4. Models saved as `model.pt` or `model_tf.h5`; scripts exit 1 if AUC < 0.90.
 

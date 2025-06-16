@@ -42,6 +42,7 @@ def train_model(
     fast: bool,
     seed: int,
     model_path: str | None = "model_tf.h5",
+    patience: int = 5,
 ) -> tuple[float, int]:
     """Train the Keras MLP and return ROC-AUC and epochs used."""
     np.random.seed(seed)
@@ -50,7 +51,7 @@ def train_model(
     model = _build_model(x_train.shape[1])
     epochs = 3 if fast else 200
     callback = tf.keras.callbacks.EarlyStopping(
-        monitor="val_loss", patience=5, restore_best_weights=True
+        monitor="val_loss", patience=patience, restore_best_weights=True
     )
     history = model.fit(
         x_train,
@@ -73,8 +74,11 @@ def main(args=None):
     parser.add_argument("--fast", action="store_true")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--model-path", default="model_tf.h5")
+    parser.add_argument("--patience", type=int, default=5)
     parsed = parser.parse_args(args)
-    auc, _ = train_model(parsed.fast, parsed.seed, parsed.model_path)
+    auc, _ = train_model(
+        parsed.fast, parsed.seed, parsed.model_path, patience=parsed.patience
+    )
     print(f"ROC-AUC: {auc:.3f}")
     if auc < 0.90:
         sys.exit(1)
