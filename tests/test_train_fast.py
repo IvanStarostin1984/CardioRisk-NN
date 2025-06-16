@@ -12,7 +12,7 @@ def test_fast_training_runs_under_20s(capsys):
     if model_file.exists():
         model_file.unlink()
 
-    train.main(["--fast", "--seed", "0"])
+    train.train_model(True, seed=0, model_path="model.pt")
 
     out = capsys.readouterr().out
     assert "Early stopping" in out
