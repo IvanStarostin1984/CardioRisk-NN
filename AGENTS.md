@@ -36,6 +36,8 @@ It always builds the Sphinx docs with `sphinx-build`.
 * 4‑space indent, `black` line length = 88.
 * Validate inputs early; raise on bad data.
 * End every file with a newline; keep Markdown lines ≤ 80 chars.
+* Run `npx --yes markdownlint-cli '**/*.md'` (or install globally) to ensure
+  Markdown lines stay within 80 characters. This catches issues before pushing.
 
 ## 4. Documentation style
 
