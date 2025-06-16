@@ -19,7 +19,10 @@ It always builds the Sphinx docs with `sphinx-build`.
    (PyTorch, TensorFlow, pandas, scikit-learn). CI installs the same
    packages with `pip install -r requirements.txt` and then calls
    `bash setup.sh` for parity. Keep the version pins in
-   `requirements.txt` mirrored in `setup.sh` so local installs match CI.
+`requirements.txt` mirrored in `setup.sh` so local installs match CI.
+PyTorch and TensorFlow are pinned to minor versions (`torch==2.3.*`,
+`tensorflow==2.19.*`). Bump both files together so CI and local installs
+stay consistent.
 2. *(Optional)* build the Docker image with `docker build -t cardiorisk .`.
 3. Branch off **main** – name `feat/<topic>`.
 4. Keep edits to *distinct* source files where possible.

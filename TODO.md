@@ -62,3 +62,7 @@
 - [x] Optional `--backend` flag in cross_validate.py to choose PyTorch or
   TensorFlow backend and tests for the TensorFlow path.
 - [x] Add baseline.py with logistic regression and tests.
+
+## 5. Maintenance
+
+- [x] Add joblib to requirements and install it in setup.sh.
