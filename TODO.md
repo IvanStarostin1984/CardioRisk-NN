@@ -59,4 +59,6 @@
 - [x] Added early stopping to `train.py` with fixed patience 5 (see NOTES 2025-07-31).
 - [x] Expose CLI flag for early stopping patience.
 - [x] Add cross_validate.py helper and tests.
+- [x] Optional `--backend` flag in cross_validate.py to choose PyTorch or
+  TensorFlow backend and tests for the TensorFlow path.
 - [x] Add baseline.py with logistic regression and tests.
