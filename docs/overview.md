@@ -19,6 +19,7 @@ inputs.
 1. Install dependencies with `bash setup.sh`.
 
 2. Run `python train.py --fast --seed 0` or `python train_tf.py --fast`.
+   Fast mode uses 20 epochs for the PyTorch trainer and 12 for TensorFlow.
 
 3. Data split 80/20; early stopping triggers after `--patience` stale
    validation epochs (default 5).
