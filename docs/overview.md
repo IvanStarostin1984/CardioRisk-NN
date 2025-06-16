@@ -27,4 +27,6 @@ inputs.
 
 5. Run `python calibrate.py` to save a reliability plot and Brier score.
 
+6. Run `python cross_validate.py --folds 5` for a quick k-fold score.
+
 Future docs will detail the dataset and training options once implemented.
