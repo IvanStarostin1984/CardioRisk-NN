@@ -179,3 +179,6 @@
 - 2025-08-03: Clarified TODO TensorFlow backend entry and noted train.py early
   stopping bullet. Reason: keep TODO in sync with code; decisions: CLI has no
   --backend flag.
+- 2025-08-04: Added cross_validate.py for k-fold evaluation with tests and docs.
+  Reason: expose simple validation helper. Decisions: use seeded splits calling
+  train.train_model.
