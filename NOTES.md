@@ -179,3 +179,6 @@
 - 2025-08-03: Clarified TODO TensorFlow backend entry and noted train.py early
   stopping bullet. Reason: keep TODO in sync with code; decisions: CLI has no
   --backend flag.
+- 2025-08-04: Updated test_evaluate_saved_model to call train.train_model()
+  instead of train.main to avoid SystemExit.
+  Reason: follow AGENTS guidance.
