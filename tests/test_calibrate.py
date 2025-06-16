@@ -12,7 +12,8 @@ def test_calibration_runtime(tmp_path):
     model_path = tmp_path / "model.pt"
     plot_path = tmp_path / "cal.png"
 
-    train.train_model(True, seed=0, model_path=str(model_path), patience=1)
+    train.main(["--fast", "--seed", "0", "--model-path", str(model_path)])
+
     assert model_path.exists()
 
     args = [
