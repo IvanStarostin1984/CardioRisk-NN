@@ -24,6 +24,20 @@ def _load_split(seed: int):
     return x_train, x_test, y_train, y_test
 
 
+def _build_model(input_dim: int) -> tf.keras.Model:
+    """Return a compiled Keras MLP."""
+    model = tf.keras.Sequential(
+        [
+            tf.keras.layers.Input(shape=(input_dim,)),
+            tf.keras.layers.Dense(32, activation="relu"),
+            tf.keras.layers.Dense(16, activation="relu"),
+            tf.keras.layers.Dense(1, activation="sigmoid"),
+        ]
+    )
+    model.compile(optimizer="adam", loss="binary_crossentropy")
+    return model
+
+
 def train_model(
     fast: bool,
     seed: int,
@@ -33,15 +47,7 @@ def train_model(
     np.random.seed(seed)
     tf.random.set_seed(seed)
     x_train, x_test, y_train, y_test = _load_split(seed)
-    model = tf.keras.Sequential(
-        [
-            tf.keras.layers.Input(shape=(x_train.shape[1],)),
-            tf.keras.layers.Dense(32, activation="relu"),
-            tf.keras.layers.Dense(16, activation="relu"),
-            tf.keras.layers.Dense(1, activation="sigmoid"),
-        ]
-    )
-    model.compile(optimizer="adam", loss="binary_crossentropy")
+    model = _build_model(x_train.shape[1])
     epochs = 3 if fast else 200
     model.fit(x_train, y_train, epochs=epochs, batch_size=64, verbose=0)
     if model_path:
