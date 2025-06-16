@@ -38,6 +38,7 @@
   `evaluate()` runs the short training used in tests
 - [x] Add `.markdownlint.json` ignoring `codex.md`
 - [x] Wrap long entry in NOTES.md to satisfy markdownlint
+- [x] Consolidate workflow steps in `docs/overview.md`
 
 ## 4. Stretch goals
 

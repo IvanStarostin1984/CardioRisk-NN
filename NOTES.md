@@ -152,3 +152,7 @@
   README, docs and tests accordingly. Reason: expose better training behaviour.
   Decisions: patience fixed at five epochs and max epochs increased to 20 in
   fast mode.
+
+- 2025-06-16: Cleaned docs/overview bullet list.
+  Combined model saving with exit code and mentioned early stop once.
+  Reason: tidy docs.
