@@ -175,6 +175,7 @@
 
 - 2025-08-02: Updated tests to call `train.train_model` directly, capturing
   early-stopping output. Reason: follow refactor removing CLI dependency.
-- 2025-08-03: Rewrapped the 2025-08-01 bullet to keep lines under 80 chars.
-  Reason: markdownlint flagged long lines. Decision: split the text across
-  four lines without changing meaning.
+
+- 2025-08-03: Clarified TODO TensorFlow backend entry and noted train.py early
+  stopping bullet. Reason: keep TODO in sync with code; decisions: CLI has no
+  --backend flag.
