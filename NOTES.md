@@ -139,5 +139,7 @@
 - 2025-07-23: Reduced blank lines before args in tests/test_calibrate.py
   and ran black/flake8. Reason: fix style per guidelines.
 
+- 2025-07-24: Fixed NOTES.md line length to satisfy markdownlint.
+
 - 2025-06-16: Documented `npx --yes markdownlint-cli` in AGENTS to catch
   markdown line length issues before pushing.

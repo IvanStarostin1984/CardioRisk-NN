@@ -37,6 +37,7 @@
 - [x] Clarify in README that `evaluate.py` loads `model.pt` by default and that
   `evaluate()` runs the short training used in tests
 - [x] Add `.markdownlint.json` ignoring `codex.md`
+- [x] Wrap long entry in NOTES.md to satisfy markdownlint
 
 ## 4. Stretch goals
 
