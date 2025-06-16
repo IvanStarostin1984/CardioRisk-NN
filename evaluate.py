@@ -3,12 +3,12 @@
 import argparse
 from pathlib import Path
 
-import pandas as pd
 import torch
 from sklearn.metrics import roc_auc_score
 from torch.utils.data import DataLoader, TensorDataset
 
 from train import train_model, _load_split
+from data_utils import load_data as _load_tensors
 
 
 def evaluate(seed: int = 0) -> float:
@@ -17,14 +17,11 @@ def evaluate(seed: int = 0) -> float:
 
 
 def load_data(batch_size: int = 64) -> DataLoader:
-    """Load the Cleveland heart dataset as a DataLoader."""
-    df = pd.read_csv(Path("data") / "heart.csv", na_values="?")
-    df = df.fillna(df.mean(numeric_only=True))
-    df = df.astype(float)
-    df["target"] = (df["target"] > 0).astype(float)
-    X = df.drop(columns=["target"]).to_numpy(dtype="float32")
-    y = df["target"].to_numpy(dtype="float32")
-    dataset = TensorDataset(torch.from_numpy(X), torch.from_numpy(y))
+    """Return full dataset loader via :func:`data_utils.load_data`."""
+    x_train, x_test, y_train, y_test = _load_tensors()
+    features = torch.cat([x_train, x_test])
+    targets = torch.cat([y_train, y_test])
+    dataset = TensorDataset(features, targets)
     return DataLoader(dataset, batch_size=batch_size)
 
 

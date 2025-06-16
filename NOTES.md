@@ -200,3 +200,7 @@
 
 - 2025-06-16: Noted conflict-marker check in AGENTS; cleaned NOTES markers.
   Reason: prevent accidental commits with unresolved merges.
+- 2025-08-06: evaluate.load_data uses data_utils.load_data and returns
+  a DataLoader.
+  calibrate now imports from data_utils. Added test for loader output.
+  Reason: remove code duplication and keep API consistent.

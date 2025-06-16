@@ -62,3 +62,7 @@
 - [x] Optional `--backend` flag in cross_validate.py to choose PyTorch or
   TensorFlow backend and tests for the TensorFlow path.
 - [x] Add baseline.py with logistic regression and tests.
+
+## 5. Maintenance
+
+- [x] Simplify evaluate.load_data using data_utils.load_data

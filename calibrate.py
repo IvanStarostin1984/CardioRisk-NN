@@ -7,8 +7,9 @@ import torch
 from sklearn.calibration import CalibrationDisplay
 from sklearn.metrics import brier_score_loss
 import matplotlib.pyplot as plt
+from torch.utils.data import DataLoader, TensorDataset
 
-from evaluate import load_data
+from data_utils import load_data
 
 
 def _save_reliability_plot(
@@ -24,7 +25,10 @@ def _save_reliability_plot(
 
 def calibrate_model(model_path: Path, plot_path: Path) -> float:
     """Compute Brier score and save reliability plot."""
-    loader = load_data()
+    x_train, x_test, y_train, y_test = load_data()
+    features = torch.cat([x_train, x_test])
+    targets = torch.cat([y_train, y_test])
+    loader = DataLoader(TensorDataset(features, targets), batch_size=64)
     model = torch.load(model_path, map_location="cpu")
     model.eval()
 
