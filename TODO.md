@@ -46,3 +46,6 @@
 - [x] Switch `train.py` to a PyTorch loop using `build_mlp`
 - [x] Refactor training and calibration helpers for clarity
 - [x] Add requirements.txt and use it in CI
+
+- [x] Pin torch==2.3.\* and tensorflow==2.19.\* in requirements.txt.
+  Document keeping pins in sync with `setup.sh` in AGENTS.
