@@ -198,6 +198,5 @@
   docs/overview. Reason: provide a simple reference model. Decisions: exit with
   code 1 when AUC < 0.84 to mirror train.py behaviour.
 
-- 2025-08-06: Removed leftover merge conflict markers in NOTES.md after merging
-  baseline and cross_validate features. Reason: keep history clean. Decisions:
-  kept both bullet entries.
+- 2025-06-16: Noted conflict-marker check in AGENTS; cleaned NOTES markers.
+  Reason: prevent accidental commits with unresolved merges.
