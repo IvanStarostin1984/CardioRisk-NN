@@ -187,15 +187,17 @@
 - 2025-08-04: Added cross_validate.py for k-fold evaluation with tests and docs.
   Reason: expose simple validation helper. Decisions: use seeded splits calling
   train.train_model.
-<<<<<<< codex/add---backend-argument-to-cross_validate.py
 
 - 2025-08-05: Added `--backend {torch,tf}` option to cross_validate.py so users
   can validate with the Keras trainer. Created new test_cross_validate_tf to
   cover the TensorFlow path and updated README and docs. Reason: support
   optional TensorFlow workflow.
-=======
+
 - 2025-08-05: Added baseline.py logistic regression with CLI flags `--seed` and
   `--model-path`. Created test_baseline.py and documented usage in README and
   docs/overview. Reason: provide a simple reference model. Decisions: exit with
   code 1 when AUC < 0.84 to mirror train.py behaviour.
->>>>>>> main
+
+- 2025-08-06: Removed leftover merge conflict markers in NOTES.md after merging
+  baseline and cross_validate features. Reason: keep history clean. Decisions:
+  kept both bullet entries.
