@@ -61,3 +61,4 @@
 - [x] Add cross_validate.py helper and tests.
 - [x] Optional `--backend` flag in cross_validate.py to choose PyTorch or
   TensorFlow backend and tests for the TensorFlow path.
+- [x] Add baseline.py with logistic regression and tests.
