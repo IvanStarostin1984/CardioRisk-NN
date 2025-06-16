@@ -1,3 +1,4 @@
+<!-- markdownlint-disable -->
 # OpenAI Codex 2025 — Consolidated Technical Specification
 
 *v4 (16 Jun 2025 – lean, duplicate‑free, citation‑free)*
