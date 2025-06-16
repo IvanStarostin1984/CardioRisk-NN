@@ -32,7 +32,7 @@ def _train_epoch(
     for features, target in loader:
         optimizer.zero_grad()
         out = model(features)
-        loss = criterion(out, target)
+        loss = criterion(out, target.unsqueeze(1))
         loss.backward()
         optimizer.step()
 
@@ -46,7 +46,9 @@ def _init_model(n_features: int, lr: float = 0.001):
 
 
 def _make_loader(
-    x: torch.Tensor, y: torch.Tensor, shuffle: bool = True
+    x: torch.Tensor,
+    y: torch.Tensor,
+    shuffle: bool = True,
 ) -> DataLoader:
     """Return a DataLoader for the given tensors."""
     dataset = TensorDataset(x, y.unsqueeze(1))
@@ -60,8 +62,14 @@ def _split_train_valid(
     val_size = max(1, len(x_train) // 5)
     train_size = len(x_train) - val_size
     gen = torch.Generator().manual_seed(seed)
-    dataset = TensorDataset(x_train, y_train.unsqueeze(1))
-    train_ds, val_ds = random_split(dataset, [train_size, val_size], generator=gen)
+
+    dataset = TensorDataset(x_train, y_train)
+    train_ds, val_ds = random_split(
+        dataset,
+        [train_size, val_size],
+        generator=gen,
+    )
+
     return (
         DataLoader(train_ds, batch_size=64, shuffle=True),
         DataLoader(val_ds, batch_size=64, shuffle=False),
@@ -86,6 +94,7 @@ def train_model(
     fast: bool,
     seed: int,
     model_path: str | None = "model.pt",
+    patience: int = 5,
 ) -> float:
     """Train the MLP and return ROC-AUC."""
     torch.manual_seed(seed)
@@ -105,7 +114,7 @@ def train_model(
             stale = 0
         else:
             stale += 1
-        if stale >= 5:
+        if stale >= patience:
             print(f"Early stopping at epoch {epoch + 1}")
             break
 
@@ -121,8 +130,11 @@ def main(args=None):
     parser.add_argument("--fast", action="store_true")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--model-path", default="model.pt")
+    parser.add_argument("--patience", type=int, default=5)
     parsed = parser.parse_args(args)
-    auc = train_model(parsed.fast, parsed.seed, parsed.model_path)
+    auc = train_model(
+        parsed.fast, parsed.seed, parsed.model_path, patience=parsed.patience
+    )
     print(f"ROC-AUC: {auc:.3f}")
     if auc < 0.90:
         sys.exit(1)

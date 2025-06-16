@@ -2,8 +2,6 @@ import time
 import sys
 from pathlib import Path
 
-import pytest
-
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 import train  # noqa: E402
 import calibrate  # noqa: E402
@@ -14,8 +12,7 @@ def test_calibration_runtime(tmp_path):
     model_path = tmp_path / "model.pt"
     plot_path = tmp_path / "cal.png"
 
-    with pytest.raises(SystemExit):
-        train.main(["--fast", "--seed", "0", "--model-path", str(model_path)])
+    train.train_model(True, seed=0, model_path=str(model_path), patience=1)
     assert model_path.exists()
 
     args = [

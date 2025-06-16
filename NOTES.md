@@ -153,6 +153,10 @@
   Decisions: patience fixed at five epochs and max epochs increased to 20 in
   fast mode.
 
+- 2025-08-01: Exposed `--patience` flag in both training scripts and updated
+  tests and docs. Reason: configurable early stopping from TODO list. Decisions:
+  default remains 5 epochs to match prior behaviour.
+
 - 2025-06-16: Cleaned docs/overview bullet list.
   Combined model saving with exit code and mentioned early stop once.
   Reason: tidy docs.
