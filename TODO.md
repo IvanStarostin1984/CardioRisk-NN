@@ -66,3 +66,6 @@
 ## 5. Maintenance
 
 - [x] Add joblib to requirements and install it in setup.sh.
+- [x] Simplify evaluate.load_data using data_utils.load_data
+- [x] Increase fast-mode epochs for TensorFlow trainer to 12 and update
+  docs and tests so cross-validation stays under 40 s.
