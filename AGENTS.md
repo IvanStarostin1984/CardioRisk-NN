@@ -42,6 +42,7 @@ It always builds the Sphinx docs with `sphinx-build`.
 * Surround headings/lists/code with blank lines.
 * Surround headings, lists and code with blank lines.
 * Run `npx markdownlint-cli '**/*.md'` before pushing.
+* `codex.md` is excluded via `.markdownlint.json`.
 
 ## 5. File roles
 

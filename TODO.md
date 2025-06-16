@@ -36,6 +36,7 @@
 - [x] Refresh README/doc overview after scikit-learn migration
 - [x] Clarify in README that `evaluate.py` loads `model.pt` by default and that
   `evaluate()` runs the short training used in tests
+- [x] Add `.markdownlint.json` ignoring `codex.md`
 
 ## 4. Stretch goals
 
