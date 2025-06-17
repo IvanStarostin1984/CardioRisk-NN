@@ -8,6 +8,6 @@ import cross_validate  # noqa: E402
 
 def test_cross_validation_runs_quickly():
     start = time.time()
-    mean_auc = cross_validate.cross_validate(folds=5)
+    mean_auc = cross_validate.cross_validate(folds=5, fast=True)
     assert mean_auc >= 0.85
     assert time.time() - start < 30

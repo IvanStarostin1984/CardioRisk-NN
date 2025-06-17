@@ -229,3 +229,6 @@ Reason: document dataset details.
 - 2025-08-08: Removed stray blank line after the dataset docs entry.
   Reason: GitHub Actions failed markdownlint MD012.
   Ensure the linter is run before pushing.
+- 2025-08-09: cross_validate now accepts `fast` flag and CLI exposes `--fast`.
+  Updated tests, README and docs to use fast mode by default. Reason: align
+  validation helper with training scripts.

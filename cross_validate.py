@@ -8,15 +8,24 @@ import train
 import train_tf
 
 
-def cross_validate(folds: int = 5, backend: str = "torch") -> float:
-    """Return mean ROC-AUC over several random splits."""
+def cross_validate(folds: int = 5, backend: str = "torch", fast: bool = True) -> float:
+    """Return mean ROC-AUC over several random splits.
+
+    Parameters
+    ----------
+    folds:
+        Number of splits to run.
+    backend:
+        Training backend, ``"torch"`` or ``"tf"``.
+    fast:
+        If ``True`` use the fast training mode (default).
+    """
     aucs: list[float] = []
     for seed in range(folds):
         if backend == "torch":
-            auc = train.train_model(True, seed=seed, model_path=None)
+            auc = train.train_model(fast, seed=seed, model_path=None)
         else:
-            # Use full training for TensorFlow so AUC stays high in tests
-            auc = train_tf.train_model(False, seed=seed, model_path=None)[0]
+            auc = train_tf.train_model(fast, seed=seed, model_path=None)[0]
         aucs.append(auc)
     return float(sum(aucs) / len(aucs))
 
@@ -30,8 +39,9 @@ def main(args: list[str] | None = None) -> None:
         default="torch",
         help="training backend",
     )
+    parser.add_argument("--fast", action="store_true", default=True)
     parsed = parser.parse_args(args)
-    mean_auc = cross_validate(parsed.folds, backend=parsed.backend)
+    mean_auc = cross_validate(parsed.folds, backend=parsed.backend, fast=parsed.fast)
     print(f"Mean ROC-AUC: {mean_auc:.3f}")
 
 
