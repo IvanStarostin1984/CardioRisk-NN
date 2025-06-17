@@ -51,6 +51,7 @@ def _train_fold_torch(
     return float(train._calc_auc(model, va_loader))
 
 
+
 def _train_fold_tf(
     x_tr: torch.Tensor,
     y_tr: torch.Tensor,
@@ -63,6 +64,14 @@ def _train_fold_tf(
     import numpy as np
     import tensorflow as tf
     from sklearn.metrics import roc_auc_score
+
+def cross_validate(
+    folds: int = 5,
+    backend: str = "torch",
+    fast: bool = True,
+) -> float:
+    """Return mean ROC-AUC over several random splits.
+
 
     np.random.seed(seed)
     tf.random.set_seed(seed)
@@ -119,11 +128,22 @@ def main(args: list[str] | None = None) -> None:
         default="torch",
         help="training backend",
     )
+
     parser.add_argument("--fast", action="store_true", default=True)
     parser.add_argument("--seed", type=int, default=0)
     parsed = parser.parse_args(args)
     mean_auc = cross_validate(
         parsed.folds, backend=parsed.backend, fast=parsed.fast, seed=parsed.seed
+
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--fast", dest="fast", action="store_true")
+    group.add_argument("--no-fast", dest="fast", action="store_false")
+    parser.set_defaults(fast=True)
+    parsed = parser.parse_args(args)
+    mean_auc = cross_validate(
+        parsed.folds,
+        backend=parsed.backend,
+        fast=parsed.fast,
     )
     print(f"Mean ROC-AUC: {mean_auc:.3f}")
 

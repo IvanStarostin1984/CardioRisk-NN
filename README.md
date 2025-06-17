@@ -35,6 +35,9 @@ bash setup.sh
 `setup.sh` installs **PyTorch 2.3.x** and **TensorFlow 2.x** from CPU wheels so
 runs stay GPU-free and reproducible.
 
+All helpers read `data/heart.csv` using a path relative to the module, so you
+can run scripts from any directory.
+
 Run the PyTorch training script with, for example:
 
 ```bash
@@ -73,6 +76,9 @@ any saved model.
 `KFold`. Use `--backend {torch,tf}` to pick the trainer, `--seed` for
 reproducible splits, and `--fast` (default) for a shorter run. The script prints
 the mean ROC‑AUC over the folds.
+`cross_validate.py` runs several quick training runs. Fast mode is on by
+default; add `--no-fast` to disable it. Use `--backend {torch,tf}` to choose
+which trainer to use. The script prints the mean ROC-AUC over the folds.
 
 Repository layout:
 

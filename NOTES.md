@@ -245,7 +245,21 @@ Reason: document dataset details.
 - 2025-08-09: Documented that `evaluate_saved_model` needs the same seed used
   during training because the test split depends on it. Updated README and
   overview docs accordingly. Reason: avoid misleading evaluations.
+
 - 2025-08-10: Refactored `cross_validate.cross_validate` to use `KFold` for
   deterministic splits. Added `--seed` flag, updated tests and docs. Reason:
   complete TODO refactor and ensure reproducible validation. Decisions: kept
   training helpers in `train.py` and `train_tf.py` for consistency.
+
+- 2025-08-10: load_data now uses a path relative to the module.
+  Updated README quick-start accordingly.
+  Reason: allow running scripts from any directory.
+
+- 2025-08-10: cross_validate CLI now uses mutually exclusive `--fast` and
+  `--no-fast` flags with fast mode on by default. Updated README, docs and added
+  regression test to verify disabling fast mode. Reason: allow slow training
+  without negating the default convenience.
+
+- 2025-08-10: Removed duplicate cross_validate step in docs/overview and
+  renumbered the list. Reason: tidy workflow docs. Decision: kept the `--fast`
+  bullet because fast mode is default.
