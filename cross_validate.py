@@ -21,6 +21,56 @@ def _load_dataset(seed: int) -> Tuple[torch.Tensor, torch.Tensor]:
     return x, y
 
 
+def _run_epochs(
+    model: torch.nn.Module,
+    crit: torch.nn.Module,
+    opt: torch.optim.Optimizer,
+    tr_loader: torch.utils.data.DataLoader,
+    val_loader: torch.utils.data.DataLoader,
+    epochs: int,
+) -> dict[str, torch.Tensor] | None:
+    """Return best state dict from early stopped training."""
+    best_state, best, stale = None, 0.0, 0
+    for _ in range(epochs):
+        train._train_epoch(model, tr_loader, crit, opt)
+        val_auc = train._calc_auc(model, val_loader)
+        if val_auc > best:
+            best, stale = val_auc, 0
+            best_state = {k: v.clone() for k, v in model.state_dict().items()}
+        else:
+            stale += 1
+        if stale >= 5:
+            break
+    return best_state
+
+
+def _prep_fold(
+    x_tr: torch.Tensor,
+    y_tr: torch.Tensor,
+    x_va: torch.Tensor,
+    y_va: torch.Tensor,
+    fast: bool,
+    seed: int,
+) -> tuple[
+    torch.nn.Module,
+    torch.nn.Module,
+    torch.optim.Optimizer,
+    torch.utils.data.DataLoader,
+    torch.utils.data.DataLoader,
+    torch.utils.data.DataLoader,
+]:
+    """Return model and loaders for one fold."""
+    mean = x_tr.mean(0, keepdim=True)
+    std = x_tr.std(0, unbiased=False, keepdim=True)
+    x_tr = (x_tr - mean) / (std + 1e-6)
+    x_va = (x_va - mean) / (std + 1e-6)
+    lr = 0.1 if fast else 0.001
+    model, crit, opt = train._init_model(x_tr.shape[1], lr)
+    tr_loader, val_loader = train._split_train_valid(x_tr, y_tr, seed)
+    va_loader = train._make_loader(x_va, y_va, shuffle=False)
+    return model, crit, opt, tr_loader, val_loader, va_loader
+
+
 def _train_fold_torch(
     x_tr: torch.Tensor,
     y_tr: torch.Tensor,
@@ -31,25 +81,13 @@ def _train_fold_torch(
 ) -> float:
     """Return ROC-AUC for one fold using the PyTorch trainer."""
     torch.manual_seed(seed)
-    mean = x_tr.mean(0, keepdim=True)
-    std = x_tr.std(0, unbiased=False, keepdim=True)
-    x_tr = (x_tr - mean) / (std + 1e-6)
-    x_va = (x_va - mean) / (std + 1e-6)
-    lr = 0.1 if fast else 0.001
-    model, crit, opt = train._init_model(x_tr.shape[1], lr)
-    tr_loader, val_loader = train._split_train_valid(x_tr, y_tr, seed)
-    va_loader = train._make_loader(x_va, y_va, shuffle=False)
+    model, crit, opt, tr_loader, val_loader, va_loader = _prep_fold(
+        x_tr, y_tr, x_va, y_va, fast, seed
+    )
     epochs = 20 if fast else 200
-    best, stale = 0.0, 0
-    for _ in range(epochs):
-        train._train_epoch(model, tr_loader, crit, opt)
-        val_auc = train._calc_auc(model, val_loader)
-        if val_auc > best:
-            best, stale = val_auc, 0
-        else:
-            stale += 1
-        if stale >= 5:
-            break
+    best_state = _run_epochs(model, crit, opt, tr_loader, val_loader, epochs)
+    if best_state:
+        model.load_state_dict(best_state)
     return float(train._calc_auc(model, va_loader))
 
 
