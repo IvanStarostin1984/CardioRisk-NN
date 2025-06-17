@@ -13,3 +13,4 @@ def test_load_data_returns_loader():
     assert isinstance(features, torch.Tensor)
     assert isinstance(target, torch.Tensor)
     assert features.shape[0] <= 8
+    assert target.shape[1] == 1

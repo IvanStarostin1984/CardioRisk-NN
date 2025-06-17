@@ -73,3 +73,5 @@
   docs and tests so cross-validation stays under 40 s.
 - [x] Regression test ensures fast mode uses 12 epochs after accidental change.
 - [x] Fix MD012 blank line issue in NOTES.md.
+- [x] Standardise loader targets to `(batch,1)` and drop unsqueeze from
+  `train._train_epoch`.

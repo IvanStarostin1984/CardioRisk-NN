@@ -229,3 +229,7 @@ Reason: document dataset details.
 - 2025-08-08: Removed stray blank line after the dataset docs entry.
   Reason: GitHub Actions failed markdownlint MD012.
   Ensure the linter is run before pushing.
+
+- 2025-08-09: Standardised loader target shape to `(batch,1)` and removed
+  extra `unsqueeze` in `train._train_epoch`. Updated calibrate loader and tests
+  accordingly. Reason: simplify loss calls and keep loaders consistent.

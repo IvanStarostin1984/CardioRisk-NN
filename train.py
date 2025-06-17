@@ -32,7 +32,7 @@ def _train_epoch(
     for features, target in loader:
         optimizer.zero_grad()
         out = model(features)
-        loss = criterion(out, target.unsqueeze(1))
+        loss = criterion(out, target)
         loss.backward()
         optimizer.step()
 
@@ -63,7 +63,7 @@ def _split_train_valid(
     train_size = len(x_train) - val_size
     gen = torch.Generator().manual_seed(seed)
 
-    dataset = TensorDataset(x_train, y_train)
+    dataset = TensorDataset(x_train, y_train.unsqueeze(1))
     train_ds, val_ds = random_split(
         dataset,
         [train_size, val_size],

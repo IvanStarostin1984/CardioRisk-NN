@@ -21,7 +21,7 @@ def load_data(batch_size: int = 64) -> DataLoader:
     x_train, x_test, y_train, y_test = _load_tensors()
     features = torch.cat([x_train, x_test])
     targets = torch.cat([y_train, y_test])
-    dataset = TensorDataset(features, targets)
+    dataset = TensorDataset(features, targets.unsqueeze(1))
     return DataLoader(dataset, batch_size=batch_size)
 
 

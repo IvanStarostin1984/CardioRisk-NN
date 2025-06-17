@@ -28,7 +28,8 @@ def calibrate_model(model_path: Path, plot_path: Path) -> float:
     x_train, x_test, y_train, y_test = load_data()
     features = torch.cat([x_train, x_test])
     targets = torch.cat([y_train, y_test])
-    loader = DataLoader(TensorDataset(features, targets), batch_size=64)
+    dataset = TensorDataset(features, targets.unsqueeze(1))
+    loader = DataLoader(dataset, batch_size=64)
     model = torch.load(model_path, map_location="cpu")
     model.eval()
 
@@ -38,7 +39,7 @@ def calibrate_model(model_path: Path, plot_path: Path) -> float:
             logits = model(features).squeeze()
             prob = torch.sigmoid(logits)
             probs.extend(prob.tolist())
-            labels.extend(target.tolist())
+            labels.extend(target.squeeze(1).tolist())
 
     brier = brier_score_loss(labels, probs)
     _save_reliability_plot(labels, probs, plot_path)
