@@ -215,3 +215,5 @@
 - 2025-08-06: fast mode in `train_tf.py` now trains for 12 epochs.
   Updated cross-validate tests, README and docs to match. Reason: ensure
   quick runs hit higher ROC-AUC as requested.
+- 2025-08-07: Fixed regression where fast mode ran 15 epochs.
+  Added test asserting 12-epoch training. Reason: keep docs and code in sync.

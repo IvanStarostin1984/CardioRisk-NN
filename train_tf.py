@@ -50,7 +50,7 @@ def train_model(
     x_train, x_test, y_train, y_test = _load_split(seed)
     model = _build_model(x_train.shape[1])
 
-    epochs = 15 if fast else 200
+    epochs = 12 if fast else 200
 
     callback = tf.keras.callbacks.EarlyStopping(
         monitor="val_loss", patience=patience, restore_best_weights=True

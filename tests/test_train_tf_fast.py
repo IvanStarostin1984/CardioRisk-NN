@@ -18,3 +18,8 @@ def test_tf_training_stops_early():
     assert time.time() - start < 20
     assert model_file.exists()
     model_file.unlink()
+
+
+def test_tf_fast_mode_epochs():
+    _, epochs = train_tf.train_model(True, seed=0, model_path=None)
+    assert epochs == 12
