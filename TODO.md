@@ -79,3 +79,4 @@
   `train._train_epoch`.
 - [x] Add `fast` flag to `cross_validate` with CLI support and update tests.
 - [x] Consolidate `markdownlint-cli` instructions in AGENTS.md to use `--yes`.
+- [x] Use module-relative path in `data_utils.load_data` and update README.

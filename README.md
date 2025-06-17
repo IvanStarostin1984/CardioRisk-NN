@@ -35,6 +35,9 @@ bash setup.sh
 `setup.sh` installs **PyTorch 2.3.x** and **TensorFlow 2.x** from CPU wheels so
 runs stay GPU-free and reproducible.
 
+All helpers read `data/heart.csv` using a path relative to the module, so you
+can run scripts from any directory.
+
 Run the PyTorch training script with, for example:
 
 ```bash
