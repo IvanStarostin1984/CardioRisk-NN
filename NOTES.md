@@ -300,3 +300,7 @@ Reason: document dataset details.
 
 - 2025-08-17: Marked TODO about trailing spaces as completed because AGENTS
   already lists the rule. Reason: cleanup.
+- 2025-08-18: `cross_validate._train_fold_torch` now restores the best model
+  state before scoring and tests check AUC doesn't drop. Reason: follow-up
+  from TODO; decisions: used small helpers to stay under 20 lines per
+  function.
