@@ -35,6 +35,7 @@ stay consistent.
 9. If you change tests, linters, or build scripts, also update **AGENTS.md**.
 10. A task is *done* only when CI is **all green**.
    Docs-only commits run only the markdown jobs; code commits run the full test suite.
+11. If you fork or rename the repo, update the CI badge links in `README.md`.
 
 ## 3. Coding standards
 
