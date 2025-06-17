@@ -280,6 +280,11 @@ Reason: document dataset details.
   'npx --yes markdown-link-check README.md' and updated AGENTS.
   Reason: prevent CI prompts.
 
+- 2025-08-14: Ran black on cross_validate and tests. 
+  Updated tests to satisfy flake8 line length and confirmed CI checks locally.
+  Reason: keep formatting consistent.
+
+
 - 2025-08-14: Fixed formatting in docs and updated AGENTS to require running
   `black`, `flake8` and tests locally before committing. Reason: ensure
   consistent style and test coverage.
