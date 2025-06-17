@@ -16,7 +16,7 @@ disease.
 ## Why this repo matters
 
 * **Medical relevance in 30 kB** – uses the Cleveland subset of the classic UCI
-  Heart-Disease data (303 patients × 13 features).
+  Heart-Disease data (303 patients × 13 features). See [dataset overview](docs/dataset.md).
 * **Speed** – trains a 13-32-16-1 MLP to ≥ 0.90 test accuracy and ROC-AUC ≈
   0.93 in ~45 s on two vCPUs.
 * **Self-contained** – data file is vendored; no network needed after setup.
@@ -92,7 +92,7 @@ AGENTS.md             ← contributor & CI guidelines
 ```
 
 See [docs/overview.md](docs/overview.md) for a sketch of the MLP and
-the training workflow.
+the training workflow. Dataset columns are described in [docs/dataset.md](docs/dataset.md).
 
 ### `.env` file
 

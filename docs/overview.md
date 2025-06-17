@@ -34,4 +34,4 @@ inputs.
 7. Run `python baseline.py --seed 0` to train a logistic-regression
    baseline and save `baseline.pkl`.
 
-Future docs will detail the dataset and training options once implemented.
+See [dataset.md](dataset.md) for the dataset columns.

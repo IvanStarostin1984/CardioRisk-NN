@@ -42,6 +42,7 @@
 - [x] Add `.markdownlint.json` ignoring `codex.md`
 - [x] Wrap long entry in NOTES.md to satisfy markdownlint
 - [x] Consolidate workflow steps in `docs/overview.md`
+- [x] Document dataset columns in docs/dataset.md and link from README.
 - [x] Document `cross_validate` and `baseline` modules in the Sphinx index
 
 ## 4. Stretch goals
