@@ -35,10 +35,7 @@ inputs.
 
 7. Run `python calibrate.py` to save a reliability plot and Brier score.
 
-8. Run `python cross_validate.py --folds 5 --backend torch` (or `tf`) for a
-   quick k-fold score.
-
-9. Run `python baseline.py --seed 0` to train a logistic-regression
+8. Run `python baseline.py --seed 0` to train a logistic-regression
    baseline and save `baseline.pkl`.
 
 See [dataset.md](dataset.md) for the dataset columns.

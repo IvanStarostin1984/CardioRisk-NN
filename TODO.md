@@ -46,6 +46,7 @@
 - [x] Document `cross_validate` and `baseline` modules in the Sphinx index
 - [x] Clarify that `evaluate_saved_model` needs the same seed used for training
   so the test split matches.
+- [x] Remove redundant cross_validate step in docs/overview and renumber.
 
 ## 4. Stretch goals
 
