@@ -44,6 +44,8 @@
 - [x] Consolidate workflow steps in `docs/overview.md`
 - [x] Document dataset columns in docs/dataset.md and link from README.
 - [x] Document `cross_validate` and `baseline` modules in the Sphinx index
+- [x] Clarify that `evaluate_saved_model` needs the same seed used for training
+  so the test split matches.
 
 ## 4. Stretch goals
 
@@ -75,3 +77,5 @@
 - [x] Fix MD012 blank line issue in NOTES.md.
 - [x] Standardise loader targets to `(batch,1)` and drop unsqueeze from
   `train._train_epoch`.
+- [x] Add `fast` flag to `cross_validate` with CLI support and update tests.
+- [x] Consolidate `markdownlint-cli` instructions in AGENTS.md to use `--yes`.

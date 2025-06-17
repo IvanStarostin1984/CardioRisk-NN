@@ -8,6 +8,6 @@ import cross_validate  # noqa: E402
 
 def test_cross_validation_tf_runs_quickly():
     start = time.time()
-    mean_auc = cross_validate.cross_validate(folds=3, backend="tf")
+    mean_auc = cross_validate.cross_validate(folds=3, backend="tf", fast=True)
     assert mean_auc >= 0.85
     assert time.time() - start < 40

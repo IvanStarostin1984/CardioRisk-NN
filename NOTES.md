@@ -233,3 +233,15 @@ Reason: document dataset details.
 - 2025-08-09: Standardised loader target shape to `(batch,1)` and removed
   extra `unsqueeze` in `train._train_epoch`. Updated calibrate loader and tests
   accordingly. Reason: simplify loss calls and keep loaders consistent.
+
+- 2025-08-09: cross_validate now accepts `fast` flag and CLI exposes `--fast`.
+  Updated tests, README and docs to use fast mode by default. Reason: align
+  validation helper with training scripts.
+
+- 2025-06-17: Consolidated markdownlint instructions in AGENTS.md to a single
+  step using `npx --yes markdownlint-cli '**/*.md'`. Reason: remove duplicate
+  guidance so contributors have one clear rule.
+
+- 2025-08-09: Documented that `evaluate_saved_model` needs the same seed used
+  during training because the test split depends on it. Updated README and
+  overview docs accordingly. Reason: avoid misleading evaluations.
