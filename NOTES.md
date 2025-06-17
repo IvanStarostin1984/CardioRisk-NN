@@ -279,3 +279,7 @@ Reason: document dataset details.
 - 2025-08-13: Made README link check non-interactive using
   'npx --yes markdown-link-check README.md' and updated AGENTS.
   Reason: prevent CI prompts.
+
+- 2025-08-14: Fixed formatting in docs and updated AGENTS to require running
+  `black`, `flake8` and tests locally before committing. Reason: ensure
+  consistent style and test coverage.
