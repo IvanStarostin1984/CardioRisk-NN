@@ -80,6 +80,9 @@
   `train._train_epoch`.
 - [x] Add `fast` flag to `cross_validate` with CLI support and update tests.
 - [x] Consolidate `markdownlint-cli` instructions in AGENTS.md to use `--yes`.
+- [x] Refactor `cross_validate.cross_validate` to use
+  `sklearn.model_selection.KFold` with deterministic splits and update tests and
+  docs.
 - [x] Use module-relative path in `data_utils.load_data` and update README.
 - [x] Added `--no-fast` option to cross_validate to disable fast mode while
   keeping the default intact (see NOTES 2025-08-10).

@@ -246,6 +246,11 @@ Reason: document dataset details.
   during training because the test split depends on it. Updated README and
   overview docs accordingly. Reason: avoid misleading evaluations.
 
+- 2025-08-10: Refactored `cross_validate.cross_validate` to use `KFold` for
+  deterministic splits. Added `--seed` flag, updated tests and docs. Reason:
+  complete TODO refactor and ensure reproducible validation. Decisions: kept
+  training helpers in `train.py` and `train_tf.py` for consistency.
+
 - 2025-08-10: load_data now uses a path relative to the module.
   Updated README quick-start accordingly.
   Reason: allow running scripts from any directory.
