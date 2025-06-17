@@ -286,3 +286,5 @@ Reason: document dataset details.
 
 - 2025-08-14: Wrapped NOTES entries around lines 267-276 to 80-char width and
   checked spacing. Reason: docs style cleanup.
+- 2025-08-15: Inserted workflow bullet in AGENTS to run `black .`, `flake8 .`
+  and `pytest -v` before pushing. Reason: clarify local checks.
