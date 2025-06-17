@@ -31,8 +31,9 @@ stay consistent.
 7. Run `npx --yes markdownlint-cli '**/*.md'` and
    `npx --yes markdown-link-check README.md` before pushing. The file
    `codex.md` is excluded via `.markdownlintignore` and `.markdownlint.json`.
-8. If you change tests, linters, or build scripts, also update **AGENTS.md**.
-9. A task is *done* only when CI is **all green**.
+8. Run `black .`, `flake8 .` and `pytest -v` before pushing.
+9. If you change tests, linters, or build scripts, also update **AGENTS.md**.
+10. A task is *done* only when CI is **all green**.
    Docs-only commits run only the markdown jobs; code commits run the full test suite.
 
 ## 3. Coding standards
