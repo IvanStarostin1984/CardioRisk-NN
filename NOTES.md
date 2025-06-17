@@ -294,3 +294,6 @@ Reason: document dataset details.
   and `pytest -v` before pushing. Reason: clarify local checks.
 - 2025-08-16: Removed trailing space in NOTES entry and collapsed blank line.
   Reason: CI failure due to markdownlint MD009/MD012.
+
+- 2025-08-17: Marked TODO about trailing spaces as completed because AGENTS
+  already lists the rule. Reason: cleanup.
