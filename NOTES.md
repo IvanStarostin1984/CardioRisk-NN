@@ -309,5 +309,15 @@ Reason: document dataset details.
   state before scoring and tests check AUC doesn't drop. Reason: follow-up
   from TODO; decisions: used small helpers to stay under 20 lines per
   function.
+
 - 2025-08-19: Inserted reminder in AGENTS to update README CI badge links when
   the repo is forked or renamed. Reason: avoid stale URLs.
+
+- 2025-08-19: Inserted reminder in AGENTS to update README CI badge links when
+  the repo is forked or renamed. Reason: avoid stale URLs.
+
+- 2025-08-19: Inserted reminder in AGENTS to update README CI badge links when
+  the repo is forked or renamed. Reason: avoid stale URLs.
+
+- 2025-08-19: Fixed README CI badge path to this repo. Reason: red badge because
+  placeholder path `example/CardioRisk-NN` was used.
