@@ -246,6 +246,11 @@ Reason: document dataset details.
   during training because the test split depends on it. Updated README and
   overview docs accordingly. Reason: avoid misleading evaluations.
 
+- 2025-08-10: cross_validate CLI now uses mutually exclusive `--fast` and
+  `--no-fast` flags with fast mode on by default. Updated README, docs and added
+  regression test to verify disabling fast mode. Reason: allow slow training
+  without negating the default convenience.
+
 - 2025-08-10: Removed duplicate cross_validate step in docs/overview and
   renumbered the list. Reason: tidy workflow docs. Decision: kept the `--fast`
   bullet because fast mode is default.

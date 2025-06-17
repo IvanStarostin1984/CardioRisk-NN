@@ -69,9 +69,9 @@ same seed used for training because the test split depends on it. The module's
 tests.
 `calibrate.py` reports the Brier score and saves a reliability plot image for
 any saved model.
-`cross_validate.py` runs several quick training runs. It accepts a `--fast`
-flag (on by default) and a `--backend {torch,tf}` option to choose which trainer
-to use. The script prints the mean ROC-AUC over the folds.
+`cross_validate.py` runs several quick training runs. Fast mode is on by
+default; add `--no-fast` to disable it. Use `--backend {torch,tf}` to choose
+which trainer to use. The script prints the mean ROC-AUC over the folds.
 
 Repository layout:
 

@@ -8,7 +8,11 @@ import train
 import train_tf
 
 
-def cross_validate(folds: int = 5, backend: str = "torch", fast: bool = True) -> float:
+def cross_validate(
+    folds: int = 5,
+    backend: str = "torch",
+    fast: bool = True,
+) -> float:
     """Return mean ROC-AUC over several random splits.
 
     Parameters
@@ -39,9 +43,16 @@ def main(args: list[str] | None = None) -> None:
         default="torch",
         help="training backend",
     )
-    parser.add_argument("--fast", action="store_true", default=True)
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--fast", dest="fast", action="store_true")
+    group.add_argument("--no-fast", dest="fast", action="store_false")
+    parser.set_defaults(fast=True)
     parsed = parser.parse_args(args)
-    mean_auc = cross_validate(parsed.folds, backend=parsed.backend, fast=parsed.fast)
+    mean_auc = cross_validate(
+        parsed.folds,
+        backend=parsed.backend,
+        fast=parsed.fast,
+    )
     print(f"Mean ROC-AUC: {mean_auc:.3f}")
 
 
