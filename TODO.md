@@ -98,3 +98,5 @@
   scoring to ensure ROC-AUC does not regress.
 - [x] Fix README CI badge path to this repo.
 - [x] Document that running tests locally requires `bash setup.sh` first.
+- [x] `train.train_model` restores the best validation weights before saving
+  and scoring.

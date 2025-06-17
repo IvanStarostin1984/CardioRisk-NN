@@ -22,7 +22,7 @@ inputs.
    Fast mode uses 20 epochs for the PyTorch trainer and 12 for TensorFlow.
 
 3. Data split 80/20; early stopping triggers after `--patience` stale
-   validation epochs (default 5).
+   validation epochs (default 5) and the best weights are restored.
 
 4. Models saved as `model.pt` or `model_tf.h5`; `train.py` and `train_tf.py`
    exit with code 1 if AUC < 0.90. `baseline.py` exits with code 1 if AUC

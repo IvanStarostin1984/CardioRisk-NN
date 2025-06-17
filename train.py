@@ -105,6 +105,7 @@ def train_model(
     test_loader = _make_loader(x_test, y_test, shuffle=False)
     epochs = 20 if fast else 200
     best_auc = 0.0
+    best_state: dict[str, torch.Tensor] | None = None
     stale = 0
     for epoch in range(epochs):
         _train_epoch(model, train_loader, criterion, optimizer)
@@ -112,11 +113,15 @@ def train_model(
         if val_auc > best_auc:
             best_auc = val_auc
             stale = 0
+            best_state = {k: v.clone() for k, v in model.state_dict().items()}
         else:
             stale += 1
         if stale >= patience:
             print(f"Early stopping at epoch {epoch + 1}")
             break
+
+    if best_state:
+        model.load_state_dict(best_state)
 
     if model_path:
         torch.save(model, model_path)
