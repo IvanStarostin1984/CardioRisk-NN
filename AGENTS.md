@@ -27,7 +27,9 @@ It always builds the Sphinx docs with `sphinx-build`.
 3. Branch off **main** – name `feat/<topic>`.
 4. Keep edits to *distinct* source files where possible.
 5. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
-6. Search for conflict markers with `git grep '<<<<<<<'` before committing.
+6. Search for conflict markers with:
+   git grep -n '<<<<<<<\|=======\|>>>>>>>'
+   before committing. Leftover markers often cause markdownlint errors (e.g. MD032).
 7. Run `npx --yes markdownlint-cli '**/*.md'` and
    `npx --yes markdown-link-check README.md` before pushing. The file
    `codex.md` is excluded via `.markdownlintignore` and `.markdownlint.json`.
