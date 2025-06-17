@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import torch
@@ -5,7 +7,8 @@ import torch
 
 def load_data(test_size: float = 0.2, random_state: int = 42):
     """Load heart.csv and split into train/test sets."""
-    df = pd.read_csv("data/heart.csv", na_values="?")
+    csv_path = Path(__file__).resolve().parent / "data" / "heart.csv"
+    df = pd.read_csv(csv_path, na_values="?")
     df = df.fillna(df.mean(numeric_only=True))
     df = df.astype(float)
     df["target"] = (df["target"] > 0).astype(float)
