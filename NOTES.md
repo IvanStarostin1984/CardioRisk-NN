@@ -280,10 +280,9 @@ Reason: document dataset details.
   'npx --yes markdown-link-check README.md' and updated AGENTS.
   Reason: prevent CI prompts.
 
-- 2025-08-14: Ran black on cross_validate and tests. 
+- 2025-08-14: Ran black on cross_validate and tests.
   Updated tests to satisfy flake8 line length and confirmed CI checks locally.
   Reason: keep formatting consistent.
-
 
 - 2025-08-14: Fixed formatting in docs and updated AGENTS to require running
   `black`, `flake8` and tests locally before committing. Reason: ensure
@@ -293,3 +292,5 @@ Reason: document dataset details.
   checked spacing. Reason: docs style cleanup.
 - 2025-08-15: Inserted workflow bullet in AGENTS to run `black .`, `flake8 .`
   and `pytest -v` before pushing. Reason: clarify local checks.
+- 2025-08-16: Removed trailing space in NOTES entry and collapsed blank line.
+  Reason: CI failure due to markdownlint MD009/MD012.

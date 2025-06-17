@@ -89,3 +89,5 @@
 - [x] Deduplicated cross_validate docs and renumbered workflow steps.
 - [x] Use non-interactive `markdown-link-check` in CI.
 - [x] Require running `black`, `flake8` and tests locally before committing.
+
+- [ ] Document trailing-space rule in AGENTS.

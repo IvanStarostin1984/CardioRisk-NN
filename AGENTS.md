@@ -53,8 +53,10 @@ stay consistent.
 * Use fenced code blocks with language hint.
 * Surround headings/lists/code with blank lines.
 * Surround headings, lists and code with blank lines.
-* Keep exactly one blank line between NOTES.md entries – markdownlint (rule MD012)
-  flags multiple blank lines.
+* Keep exactly one blank line between NOTES.md entries.
+  markdownlint (rule MD012) flags multiple blank lines.
+* Avoid trailing spaces—markdownlint (rule MD009) fails if a line ends with spaces.
+  Run `npx markdownlint-cli '**/*.md'` to check.
 
 ## 5. File roles
 
