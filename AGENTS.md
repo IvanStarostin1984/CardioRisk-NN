@@ -55,6 +55,8 @@ stay consistent.
 * Surround headings, lists and code with blank lines.
 * Run `npx markdownlint-cli '**/*.md'` before pushing.
 * `codex.md` is excluded via `.markdownlint.json`.
+* Keep exactly one blank line between NOTES.md entries – markdownlint (rule MD012)
+  flags multiple blank lines.
 
 ## 5. File roles
 
