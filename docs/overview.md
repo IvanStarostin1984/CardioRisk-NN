@@ -36,6 +36,8 @@ inputs.
    `--no-fast` for the full 200 epochs.
 
 7. Run `python calibrate.py` to save a reliability plot and Brier score.
+   The script uses the same preprocessing as `train.py` so the mean and
+   standard deviation come from the training split.
 
 8. Run `python baseline.py --seed 0` to train a logistic-regression baseline
    and save `baseline.pkl`.

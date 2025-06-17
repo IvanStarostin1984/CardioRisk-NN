@@ -16,13 +16,18 @@ def test_calibration_runtime(tmp_path):
 
     assert model_path.exists()
 
+    brier = calibrate.calibrate_model(model_path, plot_path, seed=0)
+
     args = [
         "--model-path",
         str(model_path),
         "--plot-path",
         str(plot_path),
+        "--seed",
+        "0",
     ]
     calibrate.main(args)
 
     assert plot_path.exists()
+    assert brier < 0.15
     assert time.time() - start < 10

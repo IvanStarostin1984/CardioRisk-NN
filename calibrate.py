@@ -9,7 +9,7 @@ from sklearn.metrics import brier_score_loss
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader, TensorDataset
 
-from data_utils import load_data
+from train import _load_split
 
 
 def _save_reliability_plot(
@@ -23,13 +23,16 @@ def _save_reliability_plot(
     plt.close(disp.figure_)
 
 
-def calibrate_model(model_path: Path, plot_path: Path) -> float:
-    """Compute Brier score and save reliability plot."""
-    x_train, x_test, y_train, y_test = load_data()
+def calibrate_model(model_path: Path, plot_path: Path, seed: int = 0) -> float:
+    """Compute Brier score and save reliability plot.
+
+    Features are normalised using the training split mean and std.
+    """
+    x_train, x_test, y_train, y_test = _load_split(seed)
     features = torch.cat([x_train, x_test])
     targets = torch.cat([y_train, y_test])
     dataset = TensorDataset(features, targets.unsqueeze(1))
-    loader = DataLoader(dataset, batch_size=64)
+    loader = DataLoader(dataset, batch_size=64, shuffle=False)
     model = torch.load(model_path, map_location="cpu")
     model.eval()
 
@@ -51,8 +54,9 @@ def main(args=None) -> None:
     parser = argparse.ArgumentParser(description="Model calibration metrics")
     parser.add_argument("--model-path", default="model.pt", type=Path)
     parser.add_argument("--plot-path", default="calibration.png", type=Path)
+    parser.add_argument("--seed", type=int, default=0)
     parsed = parser.parse_args(args)
-    calibrate_model(parsed.model_path, parsed.plot_path)
+    calibrate_model(parsed.model_path, parsed.plot_path, seed=parsed.seed)
 
 
 if __name__ == "__main__":
