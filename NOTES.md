@@ -225,3 +225,7 @@ Reason: document dataset details.
 
 - 2025-08-07: Documented `cross_validate` and `baseline` modules in the API
   docs. Reason: keep Sphinx reference complete.
+
+- 2025-08-08: Removed stray blank line after the dataset docs entry.
+  Reason: GitHub Actions failed markdownlint MD012.
+  Ensure the linter is run before pushing.
