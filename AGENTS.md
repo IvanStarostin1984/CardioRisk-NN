@@ -28,7 +28,8 @@ stay consistent.
 4. Keep edits to *distinct* source files where possible.
 5. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
 6. Search for conflict markers with `git grep '<<<<<<<'` before committing.
-7. Run `npx --yes markdownlint-cli '**/*.md'` before pushing. The file
+7. Run `npx --yes markdownlint-cli '**/*.md'` and
+   `npx --yes markdown-link-check README.md` before pushing. The file
    `codex.md` is excluded via `.markdownlintignore` and `.markdownlint.json`.
 8. If you change tests, linters, or build scripts, also update **AGENTS.md**.
 9. A task is *done* only when CI is **all green**.
