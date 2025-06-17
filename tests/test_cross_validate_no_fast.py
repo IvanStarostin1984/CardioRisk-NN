@@ -17,7 +17,15 @@ def test_main_no_fast(monkeypatch):
 
     monkeypatch.setattr(cross_validate, "cross_validate", fake_cv)
     cross_validate.main(
-        ["--no-fast", "--backend", "tf", "--folds", "2", "--seed", "5"]
+        [
+            "--no-fast",
+            "--backend",
+            "tf",
+            "--folds",
+            "2",
+            "--seed",
+            "5",
+        ]
     )
     assert called["fast"] is False
     assert called["folds"] == 2

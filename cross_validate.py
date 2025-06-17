@@ -101,7 +101,6 @@ def cross_validate(
     fast: bool = True,
     seed: int = 0,
 ) -> float:
-
     """Return mean ROC-AUC over a KFold split."""
 
     x, y = _load_dataset(seed)
@@ -136,8 +135,10 @@ def main(args: list[str] | None = None) -> None:
     parser.add_argument("--seed", type=int, default=0)
     parsed = parser.parse_args(args)
     mean_auc = cross_validate(
-        parsed.folds, backend=parsed.backend, fast=parsed.fast, seed=parsed.seed
-
+        parsed.folds,
+        backend=parsed.backend,
+        fast=parsed.fast,
+        seed=parsed.seed,
     )
     print(f"Mean ROC-AUC: {mean_auc:.3f}")
 
