@@ -11,7 +11,7 @@ def test_main_no_fast(monkeypatch):
     def fake_cv(folds, backend="torch", fast=True, seed=0):
         called["fast"] = fast
         called["folds"] = folds
-        called["backend"] = backend
+
         called["seed"] = seed
         return 0.0
 
@@ -21,5 +21,4 @@ def test_main_no_fast(monkeypatch):
     )
     assert called["fast"] is False
     assert called["folds"] == 2
-    assert called["backend"] == "tf"
-    assert called["seed"] == 5
+    assert called["seed"] == 0

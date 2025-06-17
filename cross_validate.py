@@ -101,15 +101,20 @@ def cross_validate(
     fast: bool = True,
     seed: int = 0,
 ) -> float:
-    """Return mean ROC-AUC across ``folds`` splits."""
+
+    """Return mean ROC-AUC over a KFold split."""
+
     x, y = _load_dataset(seed)
     kf = KFold(n_splits=folds, shuffle=True, random_state=seed)
     aucs: list[float] = []
     for i, (tr, va) in enumerate(kf.split(x)):
-        if backend == "tf":
+        if backend == "torch":
+            auc = _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
+        elif backend == "tf":
             auc = _train_fold_tf(x[tr], y[tr], x[va], y[va], fast, seed + i)
         else:
-            auc = _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
+            raise ValueError("backend must be 'torch' or 'tf'")
+
         aucs.append(auc)
     return float(sum(aucs) / len(aucs))
 
@@ -123,17 +128,16 @@ def main(args: list[str] | None = None) -> None:
         default="torch",
         help="training backend",
     )
-    parser.add_argument("--seed", type=int, default=0)
+
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--fast", dest="fast", action="store_true")
     group.add_argument("--no-fast", dest="fast", action="store_false")
     parser.set_defaults(fast=True)
+    parser.add_argument("--seed", type=int, default=0)
     parsed = parser.parse_args(args)
     mean_auc = cross_validate(
-        parsed.folds,
-        backend=parsed.backend,
-        fast=parsed.fast,
-        seed=parsed.seed,
+        parsed.folds, backend=parsed.backend, fast=parsed.fast, seed=parsed.seed
+
     )
     print(f"Mean ROC-AUC: {mean_auc:.3f}")
 
