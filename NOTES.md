@@ -263,4 +263,11 @@ Reason: document dataset details.
 - 2025-08-10: Removed duplicate cross_validate step in docs/overview and
   renumbered the list. Reason: tidy workflow docs. Decision: kept the `--fast`
   bullet because fast mode is default.
-- 2025-08-11: Reimplemented cross_validate helpers with clearer docstrings and cleaned CLI. Added tests for float return and option parsing. Reason: finalise API after merge conflict.
+
+- 2025-08-11: Reimplemented cross_validate helpers with clearer docstrings and cleaned CLI.
+  Added tests for float return and option parsing. 
+  Reason: finalise API after merge conflict.
+
+- 2025-08-11: Deduplicated `cross_validate.py` docs in README and numbered the
+  workflow steps in `docs/overview.md`. Mentioned `--no-fast` in both places.
+  Reason: keep instructions concise and in sync with the CLI.

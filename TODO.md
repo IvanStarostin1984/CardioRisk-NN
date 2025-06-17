@@ -86,3 +86,4 @@
 - [x] Use module-relative path in `data_utils.load_data` and update README.
 - [x] Added `--no-fast` option to cross_validate to disable fast mode while
   keeping the default intact (see NOTES 2025-08-10).
+- [x] Deduplicated cross_validate docs and renumbered workflow steps.
