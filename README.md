@@ -145,5 +145,5 @@ The HTML pages appear in `docs/_build`.
   https://www.ncbi.nlm.nih.gov/pmc/)
 
 [ci-badge]:
-  https://img.shields.io/github/actions/workflow/status/example/CardioRisk-NN/ci.yml?branch=main
-[ci-link]: https://github.com/example
+  https://img.shields.io/github/actions/workflow/status/IvanStarostin1984/CardioRisk-NN/ci.yml?branch=main
+[ci-link]: https://github.com/IvanStarostin1984/CardioRisk-NN
