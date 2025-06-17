@@ -267,3 +267,4 @@ Reason: document dataset details.
 - 2025-08-11: Deduplicated `cross_validate.py` docs in README and numbered the
   workflow steps in `docs/overview.md`. Mentioned `--no-fast` in both places.
   Reason: keep instructions concise and in sync with the CLI.
+- 2025-08-12: Rewrote cross_validate.py to remove corrupted code. Updated CLI tests to include seed argument. Reason: previous file had syntax errors and outdated API.
