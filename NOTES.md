@@ -216,10 +216,12 @@
   Updated cross-validate tests, README and docs to match. Reason: ensure
   quick runs hit higher ROC-AUC as requested.
 
+- 2025-08-07: Fixed regression where fast mode ran 15 epochs.
+  Added test asserting 12-epoch training. Reason: keep docs and code in sync.
+
 - 2025-08-07: Added docs/dataset.md describing the 13 features and target.
 Linked from README, overview and Sphinx index.
 Reason: document dataset details.
 
 - 2025-08-07: Documented `cross_validate` and `baseline` modules in the API
   docs. Reason: keep Sphinx reference complete.
-
