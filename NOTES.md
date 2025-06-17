@@ -321,3 +321,8 @@ Reason: document dataset details.
 
 - 2025-08-19: Fixed README CI badge path to this repo. Reason: red badge because
   placeholder path `example/CardioRisk-NN` was used.
+
+- 2025-08-20: `train.train_model` now clones the best state dict whenever
+  validation AUC improves and reloads it after early stopping. Added a
+  regression test and updated the docs. Reason: ensure the saved model is the
+  best one.
