@@ -75,3 +75,4 @@
   docs and tests so cross-validation stays under 40 s.
 - [x] Regression test ensures fast mode uses 12 epochs after accidental change.
 - [x] Fix MD012 blank line issue in NOTES.md.
+- [x] Consolidate `markdownlint-cli` instructions in AGENTS.md to use `--yes`.
