@@ -230,6 +230,10 @@ Reason: document dataset details.
   Reason: GitHub Actions failed markdownlint MD012.
   Ensure the linter is run before pushing.
 
+- 2025-08-09: cross_validate now accepts `fast` flag and CLI exposes `--fast`.
+  Updated tests, README and docs to use fast mode by default. Reason: align
+  validation helper with training scripts.
+
 - 2025-06-17: Consolidated markdownlint instructions in AGENTS.md to a single
   step using `npx --yes markdownlint-cli '**/*.md'`. Reason: remove duplicate
   guidance so contributors have one clear rule.
