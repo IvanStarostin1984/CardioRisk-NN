@@ -14,9 +14,11 @@ from data_utils import load_data as _load_tensors
 
 
 def _load_dataset(seed: int) -> Tuple[torch.Tensor, torch.Tensor]:
-    """Return the full dataset as tensors."""
-    x_train, x_test, y_train, y_test = _load_tensors(random_state=seed)
-    return torch.cat([x_train, x_test]), torch.cat([y_train, y_test])
+    """Return the entire dataset as feature and target tensors."""
+    x_tr, x_te, y_tr, y_te = _load_tensors(random_state=seed)
+    x = torch.cat([x_tr, x_te])
+    y = torch.cat([y_tr, y_te])
+    return x, y
 
 
 def _train_fold_torch(
@@ -27,7 +29,7 @@ def _train_fold_torch(
     fast: bool,
     seed: int,
 ) -> float:
-    """Train one fold using PyTorch."""
+    """Return ROC-AUC for one fold using the PyTorch trainer."""
     torch.manual_seed(seed)
     mean = x_tr.mean(0, keepdim=True)
     std = x_tr.std(0, unbiased=False, keepdim=True)
@@ -51,7 +53,6 @@ def _train_fold_torch(
     return float(train._calc_auc(model, va_loader))
 
 
-
 def _train_fold_tf(
     x_tr: torch.Tensor,
     y_tr: torch.Tensor,
@@ -60,18 +61,10 @@ def _train_fold_tf(
     fast: bool,
     seed: int,
 ) -> float:
-    """Train one fold using TensorFlow."""
+    """Return ROC-AUC for one fold using the TensorFlow trainer."""
     import numpy as np
     import tensorflow as tf
     from sklearn.metrics import roc_auc_score
-
-def cross_validate(
-    folds: int = 5,
-    backend: str = "torch",
-    fast: bool = True,
-) -> float:
-    """Return mean ROC-AUC over several random splits.
-
 
     np.random.seed(seed)
     tf.random.set_seed(seed)
@@ -103,18 +96,20 @@ def cross_validate(
 
 
 def cross_validate(
-    folds: int = 5, backend: str = "torch", fast: bool = True, seed: int = 0
+    folds: int = 5,
+    backend: str = "torch",
+    fast: bool = True,
+    seed: int = 0,
 ) -> float:
-    """Return mean ROC-AUC over a KFold split."""
-
+    """Return mean ROC-AUC across ``folds`` splits."""
     x, y = _load_dataset(seed)
     kf = KFold(n_splits=folds, shuffle=True, random_state=seed)
     aucs: list[float] = []
     for i, (tr, va) in enumerate(kf.split(x)):
-        if backend == "torch":
-            auc = _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
-        else:
+        if backend == "tf":
             auc = _train_fold_tf(x[tr], y[tr], x[va], y[va], fast, seed + i)
+        else:
+            auc = _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
         aucs.append(auc)
     return float(sum(aucs) / len(aucs))
 
@@ -128,13 +123,7 @@ def main(args: list[str] | None = None) -> None:
         default="torch",
         help="training backend",
     )
-
-    parser.add_argument("--fast", action="store_true", default=True)
     parser.add_argument("--seed", type=int, default=0)
-    parsed = parser.parse_args(args)
-    mean_auc = cross_validate(
-        parsed.folds, backend=parsed.backend, fast=parsed.fast, seed=parsed.seed
-
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--fast", dest="fast", action="store_true")
     group.add_argument("--no-fast", dest="fast", action="store_false")
@@ -144,6 +133,7 @@ def main(args: list[str] | None = None) -> None:
         parsed.folds,
         backend=parsed.backend,
         fast=parsed.fast,
+        seed=parsed.seed,
     )
     print(f"Mean ROC-AUC: {mean_auc:.3f}")
 
