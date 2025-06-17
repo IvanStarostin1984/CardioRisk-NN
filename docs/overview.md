@@ -24,7 +24,9 @@ inputs.
 3. Data split 80/20; early stopping triggers after `--patience` stale
    validation epochs (default 5).
 
-4. Models saved as `model.pt` or `model_tf.h5`; scripts exit 1 if AUC < 0.90.
+4. Models saved as `model.pt` or `model_tf.h5`; `train.py` and `train_tf.py`
+   exit with code 1 if AUC < 0.90. `baseline.py` exits with code 1 if AUC
+   < 0.84.
 
 5. Call `evaluate_saved_model(path, seed)` with the same seed used during
    training. The test split depends on the seed so metrics match only when the
@@ -40,6 +42,12 @@ inputs.
    standard deviation come from the training split.
 
 8. Run `python baseline.py --seed 0` to train a logistic-regression baseline
-   and save `baseline.pkl`.
+   and save `baseline.pkl`. In tests, call `baseline.train_model()` directly
+   to read the AUC without triggering a SystemExit:
+
+   ```python
+   import baseline
+   auc = baseline.train_model(seed=0, model_path="baseline.pkl")
+   ```
 
 See [dataset.md](dataset.md) for the dataset columns.

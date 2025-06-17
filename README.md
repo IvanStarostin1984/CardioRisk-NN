@@ -56,6 +56,14 @@ The logistic-regression baseline runs as:
 python baseline.py --seed 0
 ```
 
+Running `baseline.py` exits with status 1 when ROC-AUC is below 0.84. Use
+`baseline.train_model()` if you need the AUC without the exit:
+
+```python
+import baseline
+auc = baseline.train_model(seed=0, model_path="baseline.pkl")
+```
+
 Add `--fast` for a quick demo with early stopping. Use `--patience N` (default
 5, max 20 epochs in fast mode for `train.py`, 12 for `train_tf.py`) and
 `--model-path` to set the output file.

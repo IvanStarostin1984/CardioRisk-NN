@@ -300,3 +300,7 @@ Reason: document dataset details.
 
 - 2025-08-17: Marked TODO about trailing spaces as completed because AGENTS
   already lists the rule. Reason: cleanup.
+
+- 2025-08-18: Documented baseline exit code behaviour and example call to
+  baseline.train_model in README and docs. Reason: clarify how to avoid the
+  SystemExit when ROC-AUC is below threshold.
