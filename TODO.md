@@ -79,3 +79,5 @@
   `train._train_epoch`.
 - [x] Add `fast` flag to `cross_validate` with CLI support and update tests.
 - [x] Consolidate `markdownlint-cli` instructions in AGENTS.md to use `--yes`.
+- [x] Added `--no-fast` option to cross_validate to disable fast mode while
+  keeping the default intact (see NOTES 2025-08-10).

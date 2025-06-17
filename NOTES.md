@@ -245,3 +245,8 @@ Reason: document dataset details.
 - 2025-08-09: Documented that `evaluate_saved_model` needs the same seed used
   during training because the test split depends on it. Updated README and
   overview docs accordingly. Reason: avoid misleading evaluations.
+
+- 2025-08-10: cross_validate CLI now uses mutually exclusive `--fast` and
+  `--no-fast` flags with fast mode on by default. Updated README, docs and added
+  regression test to verify disabling fast mode. Reason: allow slow training
+  without negating the default convenience.
