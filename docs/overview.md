@@ -31,12 +31,14 @@ inputs.
    seeds align.
 
 6. Run `python cross_validate.py --folds 5 --fast --backend torch` (or `tf`)
-   for a quick k-fold score. Fast mode is enabled by default.
+   for a quick k-fold score. Splits come from `sklearn.model_selection.KFold`
+   and can be reproduced with `--seed 0` (default). Fast mode is enabled by
+   default.
 
 7. Run `python calibrate.py` to save a reliability plot and Brier score.
 
 8. Run `python cross_validate.py --folds 5 --backend torch` (or `tf`) for a
-   quick k-fold score.
+   quick k-fold score. Pass `--seed` to repeat the same splits.
 
 9. Run `python baseline.py --seed 0` to train a logistic-regression
    baseline and save `baseline.pkl`.
