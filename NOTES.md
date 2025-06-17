@@ -229,6 +229,11 @@ Reason: document dataset details.
 - 2025-08-08: Removed stray blank line after the dataset docs entry.
   Reason: GitHub Actions failed markdownlint MD012.
   Ensure the linter is run before pushing.
+
 - 2025-06-17: Consolidated markdownlint instructions in AGENTS.md to a single
   step using `npx --yes markdownlint-cli '**/*.md'`. Reason: remove duplicate
   guidance so contributors have one clear rule.
+
+- 2025-08-09: Documented that `evaluate_saved_model` needs the same seed used
+  during training because the test split depends on it. Updated README and
+  overview docs accordingly. Reason: avoid misleading evaluations.
