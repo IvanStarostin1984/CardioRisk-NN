@@ -18,3 +18,12 @@ CardioRisk-NN API
 
 .. automodule:: data_utils
    :members:
+
+.. include:: ../dataset.md
+   :literal:
+
+.. automodule:: cross_validate
+   :members:
+
+.. automodule:: baseline
+   :members:
