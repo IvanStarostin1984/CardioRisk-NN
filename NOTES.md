@@ -297,3 +297,6 @@ Reason: document dataset details.
 - 2025-08-17: calibrate_model now normalises features using the training split.
   Tests assert Brier < 0.15. README and overview mention shared preprocessing.
   Reason: align calibration with training; decisions: reuse train._load_split.
+
+- 2025-08-17: Marked TODO about trailing spaces as completed because AGENTS
+  already lists the rule. Reason: cleanup.
