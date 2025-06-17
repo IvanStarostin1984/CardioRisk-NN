@@ -21,4 +21,4 @@ def test_main_no_fast(monkeypatch):
     )
     assert called["fast"] is False
     assert called["folds"] == 2
-    assert called["seed"] == 0
+    assert called["seed"] == 5
