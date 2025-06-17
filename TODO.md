@@ -90,4 +90,7 @@
 - [x] Use non-interactive `markdown-link-check` in CI.
 - [x] Require running `black`, `flake8` and tests locally before committing.
 
+- [x] Calibrate.py uses the same preprocessing as `train.py` and tests assert
+  Brier < 0.15.
+
 - [ ] Document trailing-space rule in AGENTS.

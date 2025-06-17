@@ -70,8 +70,8 @@ argument and prints ROC‑AUC. Call `evaluate_saved_model(path, seed)` with the
 same seed used for training because the test split depends on it. The module's
 `evaluate()` function (not the CLI) performs a short training run used in the
 tests.
-`calibrate.py` reports the Brier score and saves a reliability plot image for
-any saved model.
+`calibrate.py` uses the same preprocessing as `train.py` to report the Brier
+score and save a reliability plot image for any saved model.
 `cross_validate.py` performs k-fold cross validation with scikit-learn's
 `KFold`. Use `--backend {torch,tf}` to choose the trainer, `--seed` for
 reproducible splits, and `--no-fast` to disable the default fast mode. The
