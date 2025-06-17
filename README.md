@@ -35,6 +35,15 @@ bash setup.sh
 `setup.sh` installs **PyTorch 2.3.x** and **TensorFlow 2.x** from CPU wheels so
 runs stay GPU-free and reproducible.
 
+Run the script once before running tests:
+
+```bash
+pytest -v
+```
+
+CI first executes `pip install -r requirements.txt` and then `bash setup.sh`
+so local test runs mirror the pipeline.
+
 All helpers read `data/heart.csv` using a path relative to the module, so you
 can run scripts from any directory.
 

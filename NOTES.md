@@ -321,3 +321,9 @@ Reason: document dataset details.
 
 - 2025-08-19: Fixed README CI badge path to this repo. Reason: red badge because
   placeholder path `example/CardioRisk-NN` was used.
+
+- 2025-08-20: Clarified in README quick-start and AGENTS workflow that
+  `bash setup.sh` must run before tests.
+  CI runs `pip install -r requirements.txt` then
+  `bash setup.sh` so local runs match.
+  Reason: avoid missing PyTorch/TensorFlow errors.

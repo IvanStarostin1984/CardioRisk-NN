@@ -97,3 +97,4 @@
 - [x] Save best state dict during each validation fold and reload it before
   scoring to ensure ROC-AUC does not regress.
 - [x] Fix README CI badge path to this repo.
+- [x] Document that running tests locally requires `bash setup.sh` first.
