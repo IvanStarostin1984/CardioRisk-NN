@@ -280,5 +280,9 @@ Reason: document dataset details.
   'npx --yes markdown-link-check README.md' and updated AGENTS.
   Reason: prevent CI prompts.
 
+- 2025-08-14: Fixed formatting in docs and updated AGENTS to require running
+  `black`, `flake8` and tests locally before committing. Reason: ensure
+  consistent style and test coverage.
+
 - 2025-08-14: Wrapped NOTES entries around lines 267-276 to 80-char width and
   checked spacing. Reason: docs style cleanup.
