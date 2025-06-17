@@ -313,5 +313,8 @@ Reason: document dataset details.
 - 2025-08-19: Inserted reminder in AGENTS to update README CI badge links when
   the repo is forked or renamed. Reason: avoid stale URLs.
 
+- 2025-08-19: Inserted reminder in AGENTS to update README CI badge links when
+  the repo is forked or renamed. Reason: avoid stale URLs.
+
 - 2025-08-19: Fixed README CI badge path to this repo. Reason: red badge because
   placeholder path `example/CardioRisk-NN` was used.
