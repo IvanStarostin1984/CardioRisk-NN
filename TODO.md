@@ -92,5 +92,7 @@
 - [x] Calibrate.py uses the same preprocessing as `train.py` and tests assert
   Brier < 0.15.
 - [x] Document trailing-space rule in AGENTS.
+- [x] Document baseline exit code and `baseline.train_model()` example in README
+   and docs.
 - [x] Save best state dict during each validation fold and reload it before
   scoring to ensure ROC-AUC does not regress.
