@@ -46,6 +46,7 @@
 - [x] Document `cross_validate` and `baseline` modules in the Sphinx index
 - [x] Clarify that `evaluate_saved_model` needs the same seed used for training
   so the test split matches.
+- [x] Remove redundant cross_validate step in docs/overview and renumber.
 
 ## 4. Stretch goals
 
@@ -80,3 +81,5 @@
 - [x] Add `fast` flag to `cross_validate` with CLI support and update tests.
 - [x] Consolidate `markdownlint-cli` instructions in AGENTS.md to use `--yes`.
 - [x] Use module-relative path in `data_utils.load_data` and update README.
+- [x] Added `--no-fast` option to cross_validate to disable fast mode while
+  keeping the default intact (see NOTES 2025-08-10).
