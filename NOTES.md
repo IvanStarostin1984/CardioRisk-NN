@@ -313,12 +313,6 @@ Reason: document dataset details.
 - 2025-08-19: Inserted reminder in AGENTS to update README CI badge links when
   the repo is forked or renamed. Reason: avoid stale URLs.
 
-- 2025-08-19: Inserted reminder in AGENTS to update README CI badge links when
-  the repo is forked or renamed. Reason: avoid stale URLs.
-
-- 2025-08-19: Inserted reminder in AGENTS to update README CI badge links when
-  the repo is forked or renamed. Reason: avoid stale URLs.
-
 - 2025-08-19: Fixed README CI badge path to this repo. Reason: red badge because
   placeholder path `example/CardioRisk-NN` was used.
 
@@ -327,9 +321,19 @@ Reason: document dataset details.
   CI runs `pip install -r requirements.txt` then
   `bash setup.sh` so local runs match.
   Reason: avoid missing PyTorch/TensorFlow errors.
+  
 - 2025-08-20: `train.train_model` now clones the best state dict whenever
   validation AUC improves and reloads it after early stopping. Added a
   regression test and updated the docs. Reason: ensure the saved model is the
   best one.
 
 - 2025-08-21: AGENTS now lists all conflict-marker patterns to grep before committing.
+  `bash setup.sh` must run before tests. CI runs `pip install -r requirements.txt`
+  then `bash setup.sh` so local runs match. Reason: avoid missing
+  PyTorch/TensorFlow errors.
+
+- 2025-08-20: `train.train_model` now clones the best state dict whenever
+  validation AUC improves and reloads it after early stopping. Added a regression
+  test and updated the docs. Reason: ensure the saved model is the best one.
+
+- 2025-08-21: Removed merge markers from NOTES and deduplicated entries.
