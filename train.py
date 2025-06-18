@@ -90,6 +90,33 @@ def _calc_auc(model: nn.Module, loader: DataLoader) -> float:
     return roc_auc_score(targets, preds)
 
 
+def _train_with_patience(
+    model: nn.Module,
+    crit: nn.Module,
+    opt: torch.optim.Optimizer,
+    train_loader: DataLoader,
+    val_loader: DataLoader,
+    epochs: int,
+    patience: int,
+) -> dict[str, torch.Tensor] | None:
+    """Return best state dict from early stopped training."""
+    best_auc = 0.0
+    best_state: dict[str, torch.Tensor] | None = None
+    stale = 0
+    for epoch in range(epochs):
+        _train_epoch(model, train_loader, crit, opt)
+        val_auc = _calc_auc(model, val_loader)
+        if val_auc > best_auc:
+            best_auc, stale = val_auc, 0
+            best_state = {k: v.clone() for k, v in model.state_dict().items()}
+        else:
+            stale += 1
+        if stale >= patience:
+            print(f"Early stopping at epoch {epoch + 1}")
+            break
+    return best_state
+
+
 def train_model(
     fast: bool,
     seed: int,
@@ -100,34 +127,18 @@ def train_model(
     torch.manual_seed(seed)
     x_train, x_test, y_train, y_test = _load_split(seed)
     lr = 0.1 if fast else 0.001
-    model, criterion, optimizer = _init_model(x_train.shape[1], lr)
-    train_loader, val_loader = _split_train_valid(x_train, y_train, seed)
+    model, crit, opt = _init_model(x_train.shape[1], lr)
+    tr_loader, val_loader = _split_train_valid(x_train, y_train, seed)
     test_loader = _make_loader(x_test, y_test, shuffle=False)
     epochs = 20 if fast else 200
-    best_auc = 0.0
-    best_state: dict[str, torch.Tensor] | None = None
-    stale = 0
-    for epoch in range(epochs):
-        _train_epoch(model, train_loader, criterion, optimizer)
-        val_auc = _calc_auc(model, val_loader)
-        if val_auc > best_auc:
-            best_auc = val_auc
-            stale = 0
-            best_state = {k: v.clone() for k, v in model.state_dict().items()}
-        else:
-            stale += 1
-        if stale >= patience:
-            print(f"Early stopping at epoch {epoch + 1}")
-            break
-
+    best_state = _train_with_patience(
+        model, crit, opt, tr_loader, val_loader, epochs, patience
+    )
     if best_state:
         model.load_state_dict(best_state)
-
     if model_path:
         torch.save(model, model_path)
-
-    auc = _calc_auc(model, test_loader)
-    return auc
+    return _calc_auc(model, test_loader)
 
 
 def main(args=None):

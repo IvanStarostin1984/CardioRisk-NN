@@ -380,3 +380,6 @@
 
 - 2025-08-27: Cleaned up leftover merge markers in NOTES to pass markdownlint.
   Reason: CI failed with MD032.
+
+- 2025-08-28: Refactored training functions so each body stays under 20 lines.
+  Added helper utilities and updated tests. Reason: maintain coding standards.

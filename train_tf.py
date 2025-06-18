@@ -38,6 +38,29 @@ def _build_model(input_dim: int) -> tf.keras.Model:
     return model
 
 
+def _fit_model(
+    model: tf.keras.Model,
+    x_train: np.ndarray,
+    y_train: np.ndarray,
+    fast: bool,
+    patience: int,
+) -> tf.keras.callbacks.History:
+    """Train the model with early stopping and return history."""
+    epochs = 12 if fast else 200
+    cb = tf.keras.callbacks.EarlyStopping(
+        monitor="val_loss", patience=patience, restore_best_weights=True
+    )
+    return model.fit(
+        x_train,
+        y_train,
+        epochs=epochs,
+        batch_size=64,
+        verbose=0,
+        callbacks=[cb],
+        validation_split=0.2,
+    )
+
+
 def train_model(
     fast: bool,
     seed: int,
@@ -49,21 +72,7 @@ def train_model(
     tf.random.set_seed(seed)
     x_train, x_test, y_train, y_test = _load_split(seed)
     model = _build_model(x_train.shape[1])
-
-    epochs = 12 if fast else 200
-
-    callback = tf.keras.callbacks.EarlyStopping(
-        monitor="val_loss", patience=patience, restore_best_weights=True
-    )
-    history = model.fit(
-        x_train,
-        y_train,
-        epochs=epochs,
-        batch_size=64,
-        verbose=0,
-        callbacks=[callback],
-        validation_split=0.2,
-    )
+    history = _fit_model(model, x_train, y_train, fast, patience)
     if model_path:
         model.save(model_path)
     preds = model.predict(x_test, verbose=0).squeeze()

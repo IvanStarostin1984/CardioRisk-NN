@@ -111,3 +111,5 @@
 - [x] Document running `black --check .` before pushing
   and fixing issues with `black .`
 - [x] Cleaned up leftover merge markers in NOTES to satisfy markdownlint.
+- [x] Refactor train.train_model, train_tf.train_model and cross_validate helpers
+  to keep function bodies under 20 lines.
