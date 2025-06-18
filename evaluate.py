@@ -26,7 +26,8 @@ def load_data(batch_size: int = 64) -> DataLoader:
 
 
 def evaluate_saved_model(
-    model_path: Path, seed: int = 0
+    model_path: Path,
+    seed: int = 0,
 ) -> tuple[float, float]:
     """Load a saved model and print ROC-AUC and F1."""
     _, x_test, _, y_test = _load_split(seed)

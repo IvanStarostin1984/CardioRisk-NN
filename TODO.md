@@ -126,4 +126,5 @@
 
 - [x] Add F1 score computation in `evaluate_saved_model` and update tests and
   docs.
+- [x] Format `evaluate.py` with black to fix CI style failure.
 - [ ] Release version 0.1.3 to PyPI
