@@ -397,3 +397,7 @@
 
 - 2025-08-29: Clarified MD032 blank line rule in AGENTS.
   Reason: prevent list-related markdownlint failures.
+- 2025-08-30: Documented importing heavy dependencies for type hints under
+  if TYPE_CHECKING in AGENTS. Reason: avoid flake8 F821 while keeping
+  imports lightweight.
+

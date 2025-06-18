@@ -56,6 +56,9 @@ It always builds the Sphinx docs with `sphinx-build`.
   to avoid exits.
 * `baseline.py` exits with code 1 when ROC-AUC < 0.84.
   Call `baseline.train_model()` in tests to avoid the exit.
+* Import heavy packages used only for type hints inside `if TYPE_CHECKING:`
+  blocks. This avoids flake8 F821 and keeps runtime imports light. Run
+  `flake8 .` after updating such hints.
 
 ## 4. Documentation style
 
