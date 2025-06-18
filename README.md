@@ -101,6 +101,11 @@ CSV file:
 python predict.py --model-path model.pt --output preds.csv --seed 0
 ```
 
+`KFold`. Use `--backend {torch,tf,baseline}` to choose the trainer (MLP,
+  Keras or logistic regression), `--seed` for reproducible splits, and
+  `--no-fast` to disable the default fast mode. The
+  script prints the mean ROC-AUC over the folds.
+
 ### Install as a package
 
 ```bash

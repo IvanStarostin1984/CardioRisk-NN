@@ -107,3 +107,4 @@
   and `tf.keras.utils.set_random_seed`.
 - [x] Document running `git diff --check` to catch trailing whitespace.
 - [x] Add predict.py with CSV output, tests and docs.
+- [x] Add baseline backend option in cross_validate with tests and docs.
