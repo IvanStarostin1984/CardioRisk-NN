@@ -121,3 +121,9 @@
 - [x] Document using `if TYPE_CHECKING:` for heavy type hints in AGENTS.
 - [x] Expose `--patience` flag in cross_validate and pass through to early
   stopping.
+
+## 6. Recent additions
+
+- [x] Add F1 score computation in `evaluate_saved_model` and update tests and
+  docs.
+- [ ] Release version 0.1.3 to PyPI

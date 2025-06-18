@@ -409,3 +409,12 @@
 - 2025-08-31: cross_validate.py exposes a `--patience` flag and parameter,
   passing it to both the PyTorch and TensorFlow loops. Reason: unify
   early-stopping configuration with the training scripts.
+
+- 2025-08-31: `evaluate_saved_model` now also computes F1 score alongside
+  ROC-AUC. Updated tests and docs to mention both metrics. Reason: expose
+  classification quality beyond AUC. Decisions: threshold probabilities at
+  0.5 and require F1 ≥ 0.80 in tests.
+
+- 2025-09-01: Added description, readme, license and author fields to pyproject,
+  bumped version to 0.1.3 and updated README install example.
+  Reason: finalise package metadata for release.

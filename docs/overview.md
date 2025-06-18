@@ -29,8 +29,8 @@ inputs.
    < 0.84.
 
 5. Call `evaluate_saved_model(path, seed)` with the same seed used during
-   training. The test split depends on the seed so metrics match only when the
-   seeds align.
+   training. The helper prints ROC-AUC and F1 score. The test split depends on
+   the seed so metrics match only when the seeds align.
 
 6. Run `python cross_validate.py --folds 5 --backend torch` (or `tf` or
    `baseline`) for k-fold evaluation. Splits come from
