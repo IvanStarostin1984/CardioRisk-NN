@@ -332,14 +332,13 @@ Reason: document dataset details.
   then `bash setup.sh` so local runs match. Reason: avoid missing
   PyTorch/TensorFlow errors.
 
-- 2025-08-21: Removed merge markers from NOTES and deduplicated entries.
-<<<<<<< codex/clean-up-markdown-and-update-notes.md
-
 - 2025-08-22: Removed duplicate bullet about cloning best state dict.
   Reason: tidy NOTES and avoid confusion.
-=======
+
 - 2025-08-22: Added pyproject.toml using setuptools to package the project
   and expose console scripts.
   README shows pip install usage.
   Reason: simplify installation and version management.
->>>>>>> main
+
+- 2025-08-23: Cleaned up merge markers in NOTES and restored historical
+  bullets. Reason: keep history clear.
