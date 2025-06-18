@@ -180,17 +180,18 @@ def cross_validate(
         if backend == "torch":
             auc = _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
         elif backend == "tf":
-            auc = _train_fold_tf(
-                x[tr], y[tr], x[va], y[va], fast, seed + i
-            )
+            auc = _train_fold_tf(x[tr], y[tr], x[va], y[va], fast, seed + i)
         elif backend == "baseline":
             auc = _train_fold_baseline(
-                x[tr], y[tr], x[va], y[va], fast, seed + i
+                x[tr],
+                y[tr],
+                x[va],
+                y[va],
+                fast,
+                seed + i,
             )
         else:
-            raise ValueError(
-                "backend must be 'torch', 'tf' or 'baseline'"
-            )
+            raise ValueError("backend must be 'torch', 'tf' or 'baseline'")
 
         aucs.append(auc)
     return float(sum(aucs) / len(aucs))
