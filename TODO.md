@@ -128,4 +128,5 @@
   docs.
 - [x] Document installing dev tools
   with `pip install black flake8 pytest sphinx` after setup.sh in AGENTS.
+- [x] Format `evaluate.py` with black to fix CI style failure.
 - [ ] Release version 0.1.3 to PyPI

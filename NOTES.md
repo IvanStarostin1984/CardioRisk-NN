@@ -418,6 +418,10 @@
 - 2025-09-01: Added description, readme, license and author fields to pyproject,
   bumped version to 0.1.3 and updated README install example.
   Reason: finalise package metadata for release.
+
 - 2025-09-02: Documented installing dev tools via
   'pip install black flake8 pytest sphinx' after setup.sh in AGENTS.
   Reason: keep local checks consistent with CI.
+
+- 2025-09-02: Reformatted evaluate.py with black after CI failed on line length.
+  Confirmed flake8 and all tests pass.
