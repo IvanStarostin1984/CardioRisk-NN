@@ -330,10 +330,9 @@
   regression test and updated the docs. Reason: ensure the saved model is the
   best one.
 
-- 2025-08-21: AGENTS now lists all conflict-marker patterns to grep before committing.
-  `bash setup.sh` must run before tests. CI runs `pip install -r requirements.txt`
-  then `bash setup.sh` so local runs match. Reason: avoid missing
-  PyTorch/TensorFlow errors.
+- 2025-08-21: AGENTS lists conflict-marker patterns to grep before committing.
+  Run `bash setup.sh` before tests. CI installs requirements then calls it.
+  Reason: avoid missing PyTorch/TensorFlow errors.
 
 - 2025-08-22: Removed duplicate bullet about cloning best state dict.
   Reason: tidy NOTES and avoid confusion.
@@ -426,5 +425,8 @@
 - 2025-09-02: Reformatted evaluate.py with black after CI failed on line length.
   Confirmed flake8 and all tests pass.
 
-- 2025-06-18: Reformatted evaluate.py with black and verified flake8 and tests pass. Reason: keep formatting consistent.
+- 2025-06-18: Reformatted evaluate.py with black. Flake8 and tests pass.
+  Reason: keep formatting consistent.
 
+- 2025-09-05: Wrapped long entries in NOTES and added bullet about wrapping in
+  AGENTS. Reason: fix MD013 failure.

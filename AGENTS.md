@@ -73,6 +73,8 @@ It always builds the Sphinx docs with `sphinx-build`.
   so the final entry can end with a blank line.
 * Avoid trailing spaces—markdownlint (rule MD009) fails if a line ends with spaces.
   Run `npx markdownlint-cli '**/*.md'` to check.
+* Break long NOTES.md bullets across multiple lines with two-space indentation
+  so each line stays ≤ 80 characters.
 * Follow every list with a blank line—even after the last item—so
   markdownlint rule MD032 passes.
 
