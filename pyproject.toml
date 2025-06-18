@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cardiorisk-nn"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "torch==2.3.*",
+    "tensorflow==2.19.*",
+    "pandas",
+    "scikit-learn",
+    "joblib",
+    "matplotlib",
+]
+
+[project.scripts]
+cardiorisk-train = "train:main"
+cardiorisk-train-tf = "train_tf:main"
+cardiorisk-evaluate = "evaluate:main"
+cardiorisk-calibrate = "calibrate:main"
+cardiorisk-cross-validate = "cross_validate:main"
+cardiorisk-baseline = "baseline:main"
