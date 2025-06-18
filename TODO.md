@@ -124,3 +124,4 @@
 
 - [x] Add F1 score computation in `evaluate_saved_model` and update tests and
   docs.
+- [ ] Release version 0.1.3 to PyPI

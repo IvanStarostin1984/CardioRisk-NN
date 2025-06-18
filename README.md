@@ -105,7 +105,7 @@ python predict.py --model-path model.pt --output preds.csv --seed 0
 ### Install as a package
 
 ```bash
-pip install .
+pip install cardiorisk-nn==0.1.3
 ```
 
 This installs console commands like `cardiorisk-train` and `cardiorisk-evaluate`.

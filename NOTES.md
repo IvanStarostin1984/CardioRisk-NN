@@ -410,3 +410,7 @@
   ROC-AUC. Updated tests and docs to mention both metrics. Reason: expose
   classification quality beyond AUC. Decisions: threshold probabilities at
   0.5 and require F1 ≥ 0.80 in tests.
+
+- 2025-09-01: Added description, readme, license and author fields to pyproject,
+  bumped version to 0.1.3 and updated README install example.
+  Reason: finalise package metadata for release.
