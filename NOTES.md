@@ -390,3 +390,7 @@
 
 - 2025-06-18: Deduplicated cross_validate bullet in README and listed all
   backends (torch, tf, baseline). Reason: cleanup docs.
+
+- 2025-06-18: Inserted trailing blank line after last NOTES entry
+  to stop MD032. Updated .markdownlint.json (MD012 maximum 2).
+  Reason: keep linting green.
