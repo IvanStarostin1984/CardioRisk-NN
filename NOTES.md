@@ -380,3 +380,7 @@
 
 - 2025-08-27: Cleaned up leftover merge markers in NOTES to pass markdownlint.
   Reason: CI failed with MD032.
+
+- 2025-08-28: Declared root modules in pyproject and packaged heart.csv.
+  Bumped version to 0.1.2 after verifying console scripts
+   and data_utils.load_data. Reason: ensure wheel works out-of-the-box.

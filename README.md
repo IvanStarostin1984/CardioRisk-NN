@@ -125,6 +125,9 @@ cardiorisk-baseline --seed 0
 cardiorisk-predict --model-path model.pt --output preds.csv
 ```
 
+The dataset file ships with the wheel, so `data_utils.load_data()` works
+without extra paths.
+
 Repository layout:
 
 ```text
