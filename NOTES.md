@@ -394,3 +394,6 @@
 - 2025-06-18: Inserted trailing blank line after last NOTES entry
   to stop MD032. Updated .markdownlint.json (MD012 maximum 2).
   Reason: keep linting green.
+
+- 2025-08-29: Clarified MD032 blank line rule in AGENTS.
+  Reason: prevent list-related markdownlint failures.
