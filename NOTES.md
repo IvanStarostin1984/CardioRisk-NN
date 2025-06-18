@@ -405,3 +405,7 @@
 - 2025-08-30: Documented importing heavy dependencies for type hints under
   if TYPE_CHECKING in AGENTS. Reason: avoid flake8 F821 while keeping
   imports lightweight.
+
+- 2025-08-31: cross_validate.py exposes a `--patience` flag and parameter,
+  passing it to both the PyTorch and TensorFlow loops. Reason: unify
+  early-stopping configuration with the training scripts.

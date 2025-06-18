@@ -119,3 +119,5 @@
 - [x] Guarded TensorFlow imports using TYPE_CHECKING and wrapped long
   return lines in cross_validate helper.
 - [x] Document using `if TYPE_CHECKING:` for heavy type hints in AGENTS.
+- [x] Expose `--patience` flag in cross_validate and pass through to early
+  stopping.
