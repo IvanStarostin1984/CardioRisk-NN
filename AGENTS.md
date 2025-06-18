@@ -30,15 +30,17 @@ It always builds the Sphinx docs with `sphinx-build`.
 6. Search for conflict markers with:
    git grep -n '<<<<<<<\|=======\|>>>>>>>'
    before committing. Leftover markers often cause markdownlint errors (e.g. MD032).
-7. Run `npx --yes markdownlint-cli '**/*.md'` and
+7. Run `git diff --check` to catch trailing whitespace before committing.
+8. Run `npx --yes markdownlint-cli '**/*.md'` and
    `npx --yes markdown-link-check README.md` before pushing. The file
    `codex.md` is excluded via `.markdownlintignore` and `.markdownlint.json`.
-8. Run `black .`, `flake8 .` and `pytest -v` before pushing.
-9. If you change tests, linters, or build scripts, also update **AGENTS.md**.
-10. A task is *done* only when CI is **all green**.
-   Docs-only commits run only the markdown jobs; code commits run the full test suite.
-11. If you fork or rename the repo, update the CI badge links in `README.md`.
-12. Bump the version in `pyproject.toml` whenever packaging or console scripts change.
+9. Run `black .`, `flake8 .` and `pytest -v` before pushing.
+10. If you change tests, linters, or build scripts, also update **AGENTS.md**.
+11. A task is *done* only when CI is **all green**.
+    Docs-only commits run only the markdown jobs;
+    code commits run the full test suite.
+12. If you fork or rename the repo, update the CI badge links in `README.md`.
+13. Bump the version in `pyproject.toml` whenever packaging or console scripts change.
 
 ## 3. Coding standards
 
