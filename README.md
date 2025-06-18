@@ -180,8 +180,10 @@ The HTML pages appear in `docs/_build`.
 
 * [UCI ML Repository – Heart Disease data set](https://archive.ics.uci.edu)
 * [Kaggle mirror with cleaned CSV](https://kaggle.com)
+<!-- markdown-link-check-disable -->
 * [Typical logistic-regression baseline ROC-AUC ≈ 0.84-0.90](
   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4885402/)
+<!-- markdown-link-check-enable -->
 
 [ci-badge]:
   https://img.shields.io/github/actions/workflow/status/IvanStarostin1984/CardioRisk-NN/ci.yml?branch=main

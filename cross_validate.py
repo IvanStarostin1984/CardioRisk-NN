@@ -91,32 +91,40 @@ def _train_fold_torch(
     return float(train._calc_auc(model, va_loader))
 
 
-def _train_fold_tf(
-    x_tr: torch.Tensor,
-    y_tr: torch.Tensor,
-    x_va: torch.Tensor,
-    y_va: torch.Tensor,
-    fast: bool,
-    seed: int,
-) -> float:
-    """Return ROC-AUC for one fold using the TensorFlow trainer."""
+def _setup_tf(seed: int):
+    """Return tensorflow module with seeds set."""
     import numpy as np
     import tensorflow as tf
-    from sklearn.metrics import roc_auc_score
 
     np.random.seed(seed)
     tf.random.set_seed(seed)
     tf.keras.backend.clear_session()
     tf.keras.utils.set_random_seed(seed)
-    x_tr = x_tr.numpy()
-    y_tr = y_tr.numpy()
-    x_va = x_va.numpy()
-    y_va = y_va.numpy()
+    return tf
+
+
+def _prep_tf_data(
+    x_tr: torch.Tensor,
+    y_tr: torch.Tensor,
+    x_va: torch.Tensor,
+    y_va: torch.Tensor,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Convert tensors to normalised numpy arrays."""
+    x_tr, x_va = x_tr.numpy(), x_va.numpy()
+    y_tr, y_va = y_tr.numpy(), y_va.numpy()
     mean = x_tr.mean(axis=0, keepdims=True)
     std = x_tr.std(axis=0, keepdims=True)
     x_tr = (x_tr - mean) / (std + 1e-6)
     x_va = (x_va - mean) / (std + 1e-6)
-    model = train_tf._build_model(x_tr.shape[1])
+    return x_tr, y_tr, x_va, y_va
+
+
+def _fit_tf_model(
+    model: "tf.keras.Model", x_tr: np.ndarray, y_tr: np.ndarray, fast: bool
+) -> None:
+    """Train Keras model with early stopping."""
+    import tensorflow as tf
+
     epochs = 12 if fast else 200
     cb = tf.keras.callbacks.EarlyStopping(
         monitor="val_loss", patience=5, restore_best_weights=True
@@ -130,6 +138,23 @@ def _train_fold_tf(
         callbacks=[cb],
         validation_split=0.2,
     )
+
+
+def _train_fold_tf(
+    x_tr: torch.Tensor,
+    y_tr: torch.Tensor,
+    x_va: torch.Tensor,
+    y_va: torch.Tensor,
+    fast: bool,
+    seed: int,
+) -> float:
+    """Return ROC-AUC for one fold using the TensorFlow trainer."""
+    from sklearn.metrics import roc_auc_score
+
+    tf = _setup_tf(seed)
+    x_tr, y_tr, x_va, y_va = _prep_tf_data(x_tr, y_tr, x_va, y_va)
+    model = train_tf._build_model(x_tr.shape[1])
+    _fit_tf_model(model, x_tr, y_tr, fast)
     preds = model.predict(x_va, verbose=0).squeeze()
     auc = roc_auc_score(y_va, preds)
     return float(auc)
@@ -168,32 +193,20 @@ def cross_validate(
     fast: bool = True,
     seed: int = 0,
 ) -> float:
-    """Return mean ROC-AUC over a KFold split.
+    """Return mean ROC-AUC over a KFold split."""
 
-    `backend` may be ``torch``, ``tf`` or ``baseline``.
-    """
+    def _run_fold(i: int, tr, va) -> float:
+        if backend == "torch":
+            return _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
+        if backend == "tf":
+            return _train_fold_tf(x[tr], y[tr], x[va], y[va], fast, seed + i)
+        if backend == "baseline":
+            return _train_fold_baseline(x[tr], y[tr], x[va], y[va], fast, seed + i)
+        raise ValueError("backend must be 'torch', 'tf' or 'baseline'")
 
     x, y = _load_dataset(seed)
     kf = KFold(n_splits=folds, shuffle=True, random_state=seed)
-    aucs: list[float] = []
-    for i, (tr, va) in enumerate(kf.split(x)):
-        if backend == "torch":
-            auc = _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
-        elif backend == "tf":
-            auc = _train_fold_tf(x[tr], y[tr], x[va], y[va], fast, seed + i)
-        elif backend == "baseline":
-            auc = _train_fold_baseline(
-                x[tr],
-                y[tr],
-                x[va],
-                y[va],
-                fast,
-                seed + i,
-            )
-        else:
-            raise ValueError("backend must be 'torch', 'tf' or 'baseline'")
-
-        aucs.append(auc)
+    aucs = [_run_fold(i, tr, va) for i, (tr, va) in enumerate(kf.split(x))]
     return float(sum(aucs) / len(aucs))
 
 
