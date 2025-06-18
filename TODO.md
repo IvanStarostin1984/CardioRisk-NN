@@ -111,3 +111,5 @@
 - [x] Document running `black --check .` before pushing
   and fixing issues with `black .`
 - [x] Cleaned up leftover merge markers in NOTES to satisfy markdownlint.
+
+- [x] Include data/heart.csv in wheel so load_data works after `pip install .`.

@@ -381,5 +381,11 @@
 - 2025-08-27: Cleaned up leftover merge markers in NOTES to pass markdownlint.
   Reason: CI failed with MD032.
 
+<<<<<<< codex/update-pyproject.toml-and-verify-packaging
+- 2025-08-28: Declared root modules in pyproject and packaged heart.csv.
+  Bumped version to 0.1.2 after verifying console scripts
+   and data_utils.load_data. Reason: ensure wheel works out-of-the-box.
+=======
 - 2025-06-18: Deduplicated cross_validate bullet in README and listed all
   backends (torch, tf, baseline). Reason: cleanup docs.
+>>>>>>> main
