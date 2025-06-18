@@ -373,9 +373,10 @@
   logistic regression. Added test_cross_validate_baseline and updated
   docs/README. Reason: provide reference performance via simple model.
 
-<<<<<<< codex/update-code-formatting-instructions-in-agents.md
 - 2025-08-26: Added rule in AGENTS to run 'black --check .' and fix issues
   with 'black .' before pushing. Reason: clarify formatting step.
-=======
+
 - 2025-08-26: formatted cross_validate.py with black to fix CI failure.
->>>>>>> main
+
+- 2025-08-27: Cleaned up leftover merge markers in NOTES to pass markdownlint.
+  Reason: CI failed with MD032.
