@@ -17,15 +17,15 @@
 - 2025-06-14: added Cleveland dataset and empty train.py placeholder.
   Reason: prepare for training scripts.
   Decisions: used UCI CSV and simple main guard as per TODO roadmap.
-  
+
 - 2025-07-05: Cleaned README duplication and removed stale references.
   Merged AGENTS workflow sections and kept single roadmap in TODO.
   Reason: tidy docs and reflect actual CI behaviour.
-  
+
 - 2025-07-07: Clarified README that `train.py` is a stub and removed CLI
   commands. Reason: keep docs in sync with TODO item about implementing the
   training CLI.
-  
+
 - 2025-07-09: Marked README placeholders task done in TODO.
   Reason: reflect prior docs cleanup; decisions: none.
 
@@ -324,7 +324,7 @@
   CI runs `pip install -r requirements.txt` then
   `bash setup.sh` so local runs match.
   Reason: avoid missing PyTorch/TensorFlow errors.
-  
+
 - 2025-08-20: `train.train_model` now clones the best state dict whenever
   validation AUC improves and reloads it after early stopping. Added a
   regression test and updated the docs. Reason: ensure the saved model is the
@@ -339,6 +339,7 @@
   Reason: tidy NOTES and avoid confusion.
 
 - 2025-08-21: Removed merge markers from NOTES and deduplicated entries.
+
 - 2025-08-22: Removed duplicate bullet about cloning best state dict.
   Reason: tidy NOTES and avoid confusion.
 
@@ -357,3 +358,6 @@
 - 2025-08-24: Documented running `git diff --check` after conflict search
   in AGENTS. Reason: catch trailing spaces early. Decisions: renumbered later
   steps.
+
+- 2025-08-24: Removed trailing spaces from NOTES and deleted stray bullet.
+  Reason: satisfy lint check; decisions: used sed and perl to clean.
