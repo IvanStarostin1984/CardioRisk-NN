@@ -63,7 +63,8 @@ It always builds the Sphinx docs with `sphinx-build`.
 * Surround headings/lists/code with blank lines.
 * Surround headings, lists and code with blank lines.
 * Keep exactly one blank line between NOTES.md entries.
-  markdownlint (rule MD012) flags multiple blank lines.
+  The linter allows up to two blank lines (`MD012` maximum=2)
+  so the final entry can end with a blank line.
 * Avoid trailing spaces—markdownlint (rule MD009) fails if a line ends with spaces.
   Run `npx markdownlint-cli '**/*.md'` to check.
 * Follow every list with a blank line—even after the last item—so

@@ -115,3 +115,4 @@
   to keep function bodies under 20 lines.
 
 - [x] Include data/heart.csv in wheel so load_data works after `pip install .`.
+- [x] Fixed MD032 by adding trailing blank line in NOTES.

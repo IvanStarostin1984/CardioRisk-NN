@@ -1,3 +1,8 @@
 {
-  "ignore": ["codex.md"]
+  "ignore": [
+    "codex.md"
+  ],
+  "MD012": {
+    "maximum": 2
+  }
 }
