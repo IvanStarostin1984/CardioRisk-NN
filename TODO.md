@@ -108,3 +108,5 @@
 - [x] Document running `git diff --check` to catch trailing whitespace.
 - [x] Add predict.py with CSV output, tests and docs.
 - [x] Add baseline backend option in cross_validate with tests and docs.
+- [x] Document running `black --check .` before pushing
+  and fixing issues with `black .`

@@ -372,3 +372,6 @@
 - 2025-08-25: cross_validate now supports a `baseline` backend using
   logistic regression. Added test_cross_validate_baseline and updated
   docs/README. Reason: provide reference performance via simple model.
+
+- 2025-08-26: Added rule in AGENTS to run 'black --check .' and fix issues
+  with 'black .' before pushing. Reason: clarify formatting step.
