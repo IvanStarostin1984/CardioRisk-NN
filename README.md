@@ -90,21 +90,16 @@ same seed used for training because the test split depends on it. The module's
 tests.
 `calibrate.py` uses the same preprocessing as `train.py` to report the Brier
 score and save a reliability plot image for any saved model.
-`cross_validate.py` performs k-fold cross validation with scikit-learn's
-`KFold`. Use `--backend {torch,tf}` to choose the trainer, `--seed` for
-reproducible splits, and `--no-fast` to disable the default fast mode. The
-script prints the mean ROC-AUC over the folds.
+`cross_validate.py` runs k-fold validation.
+Use `--backend {torch,tf,baseline}` to pick a trainer,
+`--seed` for reproducible splits and `--no-fast` to disable fast mode.
+The script outputs the mean ROC-AUC.
 `predict.py` loads a saved `model.pt` and writes predicted probabilities to a
 CSV file:
 
 ```bash
 python predict.py --model-path model.pt --output preds.csv --seed 0
 ```
-
-`KFold`. Use `--backend {torch,tf,baseline}` to choose the trainer (MLP,
-  Keras or logistic regression), `--seed` for reproducible splits, and
-  `--no-fast` to disable the default fast mode. The
-  script prints the mean ROC-AUC over the folds.
 
 ### Install as a package
 

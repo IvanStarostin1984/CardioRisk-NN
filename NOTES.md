@@ -380,3 +380,6 @@
 
 - 2025-08-27: Cleaned up leftover merge markers in NOTES to pass markdownlint.
   Reason: CI failed with MD032.
+
+- 2025-06-18: Deduplicated cross_validate bullet in README and listed all
+  backends (torch, tf, baseline). Reason: cleanup docs.
