@@ -15,7 +15,6 @@ def evaluate(seed: int = 0) -> float:
     """Run a short training to compute ROC-AUC."""
     return train_model(fast=True, seed=seed, model_path=None)
 
-
 def load_data(batch_size: int = 64) -> DataLoader:
     """Return full dataset loader via :func:`data_utils.load_data`."""
     x_train, x_test, y_train, y_test = _load_tensors()
@@ -24,11 +23,8 @@ def load_data(batch_size: int = 64) -> DataLoader:
     dataset = TensorDataset(features, targets.unsqueeze(1))
     return DataLoader(dataset, batch_size=batch_size)
 
+def evaluate_saved_model(model_path: Path, seed: int = 0) -> tuple[float, float]:
 
-def evaluate_saved_model(
-    model_path: Path,
-    seed: int = 0,
-) -> tuple[float, float]:
     """Load a saved model and print ROC-AUC and F1."""
     _, x_test, _, y_test = _load_split(seed)
     model = torch.load(model_path, map_location="cpu")

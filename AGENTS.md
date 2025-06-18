@@ -23,27 +23,30 @@ It always builds the Sphinx docs with `sphinx-build`.
    `setup.sh` so local installs match CI. PyTorch and TensorFlow are
    pinned to minor versions (`torch==2.3.*`, `tensorflow==2.19.*`). Bump
    both files together so CI and local installs stay consistent.
-2. *(Optional)* build the Docker image with `docker build -t cardiorisk .`.
-3. Branch off **main** – name `feat/<topic>`.
-4. Keep edits to *distinct* source files where possible.
-5. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
-6. Search for conflict markers with:
+2. Install the dev tools with `pip install black flake8 pytest sphinx`
+   after running `setup.sh`. This keeps your local checks consistent
+   with CI.
+3. *(Optional)* build the Docker image with `docker build -t cardiorisk .`.
+4. Branch off **main** – name `feat/<topic>`.
+5. Keep edits to *distinct* source files where possible.
+6. Update **NOTES.md** (dated bullet) and **TODO.md** (tick or add task).
+7. Search for conflict markers with:
    git grep -n '<<<<<<<\|=======\|>>>>>>>'
    before committing. Leftover markers often cause markdownlint errors (e.g. MD032).
-7. Run `git diff --check` to catch trailing whitespace before committing.
+8. Run `git diff --check` to catch trailing whitespace before committing.
 
-8. Run `npx --yes markdownlint-cli '**/*.md'` and
+9. Run `npx --yes markdownlint-cli '**/*.md'` and
    `npx --yes markdown-link-check README.md` before pushing. The file
    `codex.md` is excluded via `.markdownlintignore` and `.markdownlint.json`.
-9. Run `black --check .` before pushing.
+10. Run `black --check .` before pushing.
    If it reports issues, run `black .` to format.
    Then re-run `black --check .`, `flake8 .` and `pytest -v`.
-10. If you change tests, linters, or build scripts, also update **AGENTS.md**.
-11. A task is *done* only when CI is **all green**.
+11. If you change tests, linters, or build scripts, also update **AGENTS.md**.
+12. A task is *done* only when CI is **all green**.
     Docs-only commits run only the markdown jobs;
     code commits run the full test suite.
-12. If you fork or rename the repo, update the CI badge links in `README.md`.
-13. Bump the version in `pyproject.toml` whenever packaging or console scripts change.
+13. If you fork or rename the repo, update the CI badge links in `README.md`.
+14. Bump the version in `pyproject.toml` whenever packaging or console scripts change.
 
 ## 3. Coding standards
 
