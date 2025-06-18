@@ -126,4 +126,6 @@
 
 - [x] Add F1 score computation in `evaluate_saved_model` and update tests and
   docs.
+- [x] Document installing dev tools
+  with `pip install black flake8 pytest sphinx` after setup.sh in AGENTS.
 - [ ] Release version 0.1.3 to PyPI
