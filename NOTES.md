@@ -405,3 +405,7 @@
 - 2025-08-30: Documented importing heavy dependencies for type hints under
   if TYPE_CHECKING in AGENTS. Reason: avoid flake8 F821 while keeping
   imports lightweight.
+
+- 2025-09-01: Added description, readme, license and author fields to pyproject,
+  bumped version to 0.1.3 and updated README install example.
+  Reason: finalise package metadata for release.

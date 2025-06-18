@@ -4,7 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cardiorisk-nn"
-version = "0.1.2"
+version = "0.1.3"
+description = "Neural network that predicts coronary artery disease"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Ivan Starostin", email = "ivan.starostin@ue-germany.de"},
+]
 requires-python = ">=3.10"
 dependencies = [
     "torch==2.3.*",
