@@ -339,7 +339,6 @@
   Reason: tidy NOTES and avoid confusion.
 
 - 2025-08-21: Removed merge markers from NOTES and deduplicated entries.
-- 
 - 2025-08-22: Removed duplicate bullet about cloning best state dict.
   Reason: tidy NOTES and avoid confusion.
 
@@ -354,3 +353,7 @@
 - 2025-08-23: `cross_validate._train_fold_tf` now clears the Keras session and
   sets the random seed via `tf.keras.utils.set_random_seed` before building
   the model. Reason: stabilise TensorFlow cross-validation tests.
+
+- 2025-08-24: Documented running `git diff --check` after conflict search
+  in AGENTS. Reason: catch trailing spaces early. Decisions: renumbered later
+  steps.
