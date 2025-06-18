@@ -113,3 +113,5 @@
 - [x] Cleaned up leftover merge markers in NOTES to satisfy markdownlint.
 - [x] Refactor train.train_model, train_tf.train_model and cross_validate helpers
   to keep function bodies under 20 lines.
+
+- [x] Include data/heart.csv in wheel so load_data works after `pip install .`.
