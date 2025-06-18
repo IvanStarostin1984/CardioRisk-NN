@@ -355,6 +355,9 @@
   sets the random seed via `tf.keras.utils.set_random_seed` before building
   the model. Reason: stabilise TensorFlow cross-validation tests.
 
+- 2025-08-24: Removed trailing spaces from NOTES and added AGENTS rule to run
+  `git diff --check` before commits. Reason: enforce whitespace hygiene.
+
 - 2025-08-24: Documented running `git diff --check` after conflict search
   in AGENTS. Reason: catch trailing spaces early. Decisions: renumbered later
   steps.

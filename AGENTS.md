@@ -30,7 +30,8 @@ It always builds the Sphinx docs with `sphinx-build`.
 6. Search for conflict markers with:
    git grep -n '<<<<<<<\|=======\|>>>>>>>'
    before committing. Leftover markers often cause markdownlint errors (e.g. MD032).
-7. Run `git diff --check` to spot trailing whitespace before committing.
+7. Run `git diff --check` to catch trailing whitespace before committing.
+
 8. Run `npx --yes markdownlint-cli '**/*.md'` and
    `npx --yes markdown-link-check README.md` before pushing. The file
    `codex.md` is excluded via `.markdownlintignore` and `.markdownlint.json`.
