@@ -119,4 +119,9 @@
 - [x] Guarded TensorFlow imports using TYPE_CHECKING and wrapped long
   return lines in cross_validate helper.
 - [x] Document using `if TYPE_CHECKING:` for heavy type hints in AGENTS.
+
+## 6. Recent additions
+
+- [x] Add F1 score computation in `evaluate_saved_model` and update tests and
+  docs.
 - [ ] Release version 0.1.3 to PyPI

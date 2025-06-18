@@ -16,5 +16,6 @@ def test_evaluate_saved_model(tmp_path):
     )
     assert model_path.exists()
 
-    auc = evaluate.evaluate_saved_model(model_path, seed=seed)
+    auc, f1 = evaluate.evaluate_saved_model(model_path, seed=seed)
     assert auc >= 0.90
+    assert f1 >= 0.80
