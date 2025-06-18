@@ -390,3 +390,6 @@
 
 - 2025-06-18: Deduplicated cross_validate bullet in README and listed all
   backends (torch, tf, baseline). Reason: cleanup docs.
+
+- 2025-08-29: Clarified MD032 blank line rule in AGENTS.
+  Reason: prevent list-related markdownlint failures.
