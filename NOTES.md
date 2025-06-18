@@ -337,3 +337,7 @@ Reason: document dataset details.
   test and updated the docs. Reason: ensure the saved model is the best one.
 
 - 2025-08-21: Removed merge markers from NOTES and deduplicated entries.
+- 2025-08-22: Added pyproject.toml using setuptools to package the project
+  and expose console scripts.
+  README shows pip install usage.
+  Reason: simplify installation and version management.

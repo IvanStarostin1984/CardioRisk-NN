@@ -38,6 +38,7 @@ It always builds the Sphinx docs with `sphinx-build`.
 10. A task is *done* only when CI is **all green**.
    Docs-only commits run only the markdown jobs; code commits run the full test suite.
 11. If you fork or rename the repo, update the CI badge links in `README.md`.
+12. Bump the version in `pyproject.toml` whenever packaging or console scripts change.
 
 ## 3. Coding standards
 

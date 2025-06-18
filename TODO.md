@@ -101,3 +101,4 @@
 - [x] `train.train_model` restores the best validation weights before saving
   and scoring.
 - [x] Document grep for all conflict markers in AGENTS.
+- [x] Package with setuptools via pyproject.toml and expose console scripts.
