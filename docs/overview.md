@@ -32,10 +32,11 @@ inputs.
    training. The test split depends on the seed so metrics match only when the
    seeds align.
 
-6. Run `python cross_validate.py --folds 5 --backend torch` (or `tf`) for
-   k-fold evaluation. Splits come from `sklearn.model_selection.KFold` and can
-   be reproduced with `--seed 0` (default). Fast mode is on by default; add
-   `--no-fast` for the full 200 epochs.
+6. Run `python cross_validate.py --folds 5 --backend torch` (or `tf` or
+   `baseline`) for k-fold evaluation. Splits come from
+   `sklearn.model_selection.KFold` and can be reproduced with `--seed 0`
+   (default). Fast mode is on by default; add `--no-fast` for the full
+   200 epochs.
 
 7. Run `python calibrate.py` to save a reliability plot and Brier score.
    The script uses the same preprocessing as `train.py` so the mean and

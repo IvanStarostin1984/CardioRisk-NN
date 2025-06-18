@@ -91,9 +91,10 @@ tests.
 `calibrate.py` uses the same preprocessing as `train.py` to report the Brier
 score and save a reliability plot image for any saved model.
 `cross_validate.py` performs k-fold cross validation with scikit-learn's
-`KFold`. Use `--backend {torch,tf}` to choose the trainer, `--seed` for
-reproducible splits, and `--no-fast` to disable the default fast mode. The
-script prints the mean ROC-AUC over the folds.
+`KFold`. Use `--backend {torch,tf,baseline}` to choose the trainer (MLP,
+  Keras or logistic regression), `--seed` for reproducible splits, and
+  `--no-fast` to disable the default fast mode. The
+  script prints the mean ROC-AUC over the folds.
 
 ### Install as a package
 

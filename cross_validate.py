@@ -135,13 +135,43 @@ def _train_fold_tf(
     return float(auc)
 
 
+def _train_fold_baseline(
+    x_tr: torch.Tensor,
+    y_tr: torch.Tensor,
+    x_va: torch.Tensor,
+    y_va: torch.Tensor,
+    fast: bool,
+    seed: int,
+) -> float:
+    """Return ROC-AUC for one fold using logistic regression."""
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.metrics import roc_auc_score
+    from sklearn.preprocessing import StandardScaler
+
+    x_tr = x_tr.numpy()
+    y_tr = y_tr.numpy()
+    x_va = x_va.numpy()
+    y_va = y_va.numpy()
+    scaler = StandardScaler().fit(x_tr)
+    x_tr = scaler.transform(x_tr)
+    x_va = scaler.transform(x_va)
+    model = LogisticRegression(max_iter=1000)
+    model.fit(x_tr, y_tr)
+    preds = model.predict_proba(x_va)[:, 1]
+    auc = roc_auc_score(y_va, preds)
+    return float(auc)
+
+
 def cross_validate(
     folds: int = 5,
     backend: str = "torch",
     fast: bool = True,
     seed: int = 0,
 ) -> float:
-    """Return mean ROC-AUC over a KFold split."""
+    """Return mean ROC-AUC over a KFold split.
+
+    `backend` may be ``torch``, ``tf`` or ``baseline``.
+    """
 
     x, y = _load_dataset(seed)
     kf = KFold(n_splits=folds, shuffle=True, random_state=seed)
@@ -150,9 +180,17 @@ def cross_validate(
         if backend == "torch":
             auc = _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
         elif backend == "tf":
-            auc = _train_fold_tf(x[tr], y[tr], x[va], y[va], fast, seed + i)
+            auc = _train_fold_tf(
+                x[tr], y[tr], x[va], y[va], fast, seed + i
+            )
+        elif backend == "baseline":
+            auc = _train_fold_baseline(
+                x[tr], y[tr], x[va], y[va], fast, seed + i
+            )
         else:
-            raise ValueError("backend must be 'torch' or 'tf'")
+            raise ValueError(
+                "backend must be 'torch', 'tf' or 'baseline'"
+            )
 
         aucs.append(auc)
     return float(sum(aucs) / len(aucs))
@@ -163,7 +201,7 @@ def main(args: list[str] | None = None) -> None:
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument(
         "--backend",
-        choices=["torch", "tf"],
+        choices=["torch", "tf", "baseline"],
         default="torch",
         help="training backend",
     )
