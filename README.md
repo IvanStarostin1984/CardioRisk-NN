@@ -95,6 +95,24 @@ score and save a reliability plot image for any saved model.
 reproducible splits, and `--no-fast` to disable the default fast mode. The
 script prints the mean ROC-AUC over the folds.
 
+### Install as a package
+
+```bash
+pip install .
+```
+
+This installs console commands like `cardiorisk-train` and `cardiorisk-evaluate`.
+Run them the same way as the Python scripts:
+
+```bash
+cardiorisk-train --seed 0
+cardiorisk-train-tf --seed 0
+cardiorisk-evaluate --model-path model.pt
+cardiorisk-calibrate --model-path model.pt
+cardiorisk-cross-validate --folds 5
+cardiorisk-baseline --seed 0
+```
+
 Repository layout:
 
 ```text
