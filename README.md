@@ -84,8 +84,9 @@ flag so longer runs stop once the loss plateaus.
 
 `train.py` trains the MLP and saves `model.pt` when ROC‑AUC ≥ 0.90.
 `evaluate.py` loads a saved `model.pt` by default via the `--model-path`
-argument and prints ROC‑AUC. Call `evaluate_saved_model(path, seed)` with the
-same seed used for training because the test split depends on it. The module's
+argument and prints ROC‑AUC and F1 score. Call
+`evaluate_saved_model(path, seed)` with the same seed used for training because
+the test split depends on it. The module's
 `evaluate()` function (not the CLI) performs a short training run used in the
 tests.
 `calibrate.py` uses the same preprocessing as `train.py` to report the Brier

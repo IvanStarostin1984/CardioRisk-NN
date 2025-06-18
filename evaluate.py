@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 
 import torch
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_auc_score, f1_score
 from torch.utils.data import DataLoader, TensorDataset
 
 from train import train_model, _load_split
@@ -25,18 +25,22 @@ def load_data(batch_size: int = 64) -> DataLoader:
     return DataLoader(dataset, batch_size=batch_size)
 
 
-def evaluate_saved_model(model_path: Path, seed: int = 0) -> float:
-    """Load a saved model and print ROC-AUC."""
+def evaluate_saved_model(
+    model_path: Path, seed: int = 0
+) -> tuple[float, float]:
+    """Load a saved model and print ROC-AUC and F1."""
     _, x_test, _, y_test = _load_split(seed)
     model = torch.load(model_path, map_location="cpu")
     model.eval()
 
     with torch.no_grad():
-        preds = model(x_test).squeeze()
+        logits = model(x_test).squeeze()
+        probs = torch.sigmoid(logits)
 
-    auc = roc_auc_score(y_test.numpy(), preds.numpy())
-    print(f"ROC-AUC: {auc:.3f}")
-    return auc
+    auc = roc_auc_score(y_test.numpy(), logits.numpy())
+    f1 = f1_score(y_test.numpy(), (probs >= 0.5).numpy())
+    print(f"ROC-AUC: {auc:.3f} F1: {f1:.3f}")
+    return auc, f1
 
 
 def main() -> None:
