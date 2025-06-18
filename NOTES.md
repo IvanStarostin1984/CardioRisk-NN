@@ -397,3 +397,7 @@
 
 - 2025-08-29: Clarified MD032 blank line rule in AGENTS.
   Reason: prevent list-related markdownlint failures.
+
+- 2025-08-30: Cleaned cross_validate imports and wrapped return lines.
+  Reason: maintain lint compliance by avoiding runtime TF import and keeping
+  line length under 79.

@@ -116,3 +116,6 @@
 
 - [x] Include data/heart.csv in wheel so load_data works after `pip install .`.
 - [x] Fixed MD032 by adding trailing blank line in NOTES.
+
+- [x] Guarded TensorFlow imports using TYPE_CHECKING and wrapped long
+  return lines in cross_validate helper.

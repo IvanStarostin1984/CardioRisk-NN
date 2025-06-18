@@ -3,14 +3,18 @@
 from __future__ import annotations
 
 import argparse
-from typing import Tuple
+from typing import Tuple, TYPE_CHECKING
 
 import torch
+import numpy as np
 from sklearn.model_selection import KFold
 
 import train
 import train_tf
 from data_utils import load_data as _load_tensors
+
+if TYPE_CHECKING:
+    import tensorflow as tf
 
 
 def _load_dataset(seed: int) -> Tuple[torch.Tensor, torch.Tensor]:
@@ -151,7 +155,7 @@ def _train_fold_tf(
     """Return ROC-AUC for one fold using the TensorFlow trainer."""
     from sklearn.metrics import roc_auc_score
 
-    tf = _setup_tf(seed)
+    _setup_tf(seed)
     x_tr, y_tr, x_va, y_va = _prep_tf_data(x_tr, y_tr, x_va, y_va)
     model = train_tf._build_model(x_tr.shape[1])
     _fit_tf_model(model, x_tr, y_tr, fast)
@@ -197,11 +201,32 @@ def cross_validate(
 
     def _run_fold(i: int, tr, va) -> float:
         if backend == "torch":
-            return _train_fold_torch(x[tr], y[tr], x[va], y[va], fast, seed + i)
+            return _train_fold_torch(
+                x[tr],
+                y[tr],
+                x[va],
+                y[va],
+                fast,
+                seed + i,
+            )
         if backend == "tf":
-            return _train_fold_tf(x[tr], y[tr], x[va], y[va], fast, seed + i)
+            return _train_fold_tf(
+                x[tr],
+                y[tr],
+                x[va],
+                y[va],
+                fast,
+                seed + i,
+            )
         if backend == "baseline":
-            return _train_fold_baseline(x[tr], y[tr], x[va], y[va], fast, seed + i)
+            return _train_fold_baseline(
+                x[tr],
+                y[tr],
+                x[va],
+                y[va],
+                fast,
+                seed + i,
+            )
         raise ValueError("backend must be 'torch', 'tf' or 'baseline'")
 
     x, y = _load_dataset(seed)
