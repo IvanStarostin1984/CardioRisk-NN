@@ -61,5 +61,18 @@ def test_auc_not_lower_than_old_impl():
         y[va],
         True,
         0,
+        5,
     )
     assert auc_new >= auc_old - 1e-4
+
+
+def test_main_patience(monkeypatch):
+    called = {}
+
+    def fake_cv(folds, backend="torch", fast=True, seed=0, patience=5):
+        called["patience"] = patience
+        return 0.0
+
+    monkeypatch.setattr(cross_validate, "cross_validate", fake_cv)
+    cross_validate.main(["--patience", "3"])
+    assert called["patience"] == 3

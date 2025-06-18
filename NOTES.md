@@ -406,6 +406,10 @@
   if TYPE_CHECKING in AGENTS. Reason: avoid flake8 F821 while keeping
   imports lightweight.
 
+- 2025-08-31: cross_validate.py exposes a `--patience` flag and parameter,
+  passing it to both the PyTorch and TensorFlow loops. Reason: unify
+  early-stopping configuration with the training scripts.
+
 - 2025-08-31: `evaluate_saved_model` now also computes F1 score alongside
   ROC-AUC. Updated tests and docs to mention both metrics. Reason: expose
   classification quality beyond AUC. Decisions: threshold probabilities at

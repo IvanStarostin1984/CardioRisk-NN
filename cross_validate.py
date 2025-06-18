@@ -32,6 +32,7 @@ def _run_epochs(
     tr_loader: torch.utils.data.DataLoader,
     val_loader: torch.utils.data.DataLoader,
     epochs: int,
+    patience: int,
 ) -> dict[str, torch.Tensor] | None:
     """Return best state dict from early stopped training."""
     best_state, best, stale = None, 0.0, 0
@@ -43,7 +44,7 @@ def _run_epochs(
             best_state = {k: v.clone() for k, v in model.state_dict().items()}
         else:
             stale += 1
-        if stale >= 5:
+        if stale >= patience:
             break
     return best_state
 
@@ -82,6 +83,7 @@ def _train_fold_torch(
     y_va: torch.Tensor,
     fast: bool,
     seed: int,
+    patience: int,
 ) -> float:
     """Return ROC-AUC for one fold using the PyTorch trainer."""
     torch.manual_seed(seed)
@@ -89,7 +91,15 @@ def _train_fold_torch(
         x_tr, y_tr, x_va, y_va, fast, seed
     )
     epochs = 20 if fast else 200
-    best_state = _run_epochs(model, crit, opt, tr_loader, val_loader, epochs)
+    best_state = _run_epochs(
+        model,
+        crit,
+        opt,
+        tr_loader,
+        val_loader,
+        epochs,
+        patience,
+    )
     if best_state:
         model.load_state_dict(best_state)
     return float(train._calc_auc(model, va_loader))
@@ -124,14 +134,18 @@ def _prep_tf_data(
 
 
 def _fit_tf_model(
-    model: "tf.keras.Model", x_tr: np.ndarray, y_tr: np.ndarray, fast: bool
+    model: "tf.keras.Model",
+    x_tr: np.ndarray,
+    y_tr: np.ndarray,
+    fast: bool,
+    patience: int,
 ) -> None:
     """Train Keras model with early stopping."""
     import tensorflow as tf
 
     epochs = 12 if fast else 200
     cb = tf.keras.callbacks.EarlyStopping(
-        monitor="val_loss", patience=5, restore_best_weights=True
+        monitor="val_loss", patience=patience, restore_best_weights=True
     )
     model.fit(
         x_tr,
@@ -151,6 +165,7 @@ def _train_fold_tf(
     y_va: torch.Tensor,
     fast: bool,
     seed: int,
+    patience: int,
 ) -> float:
     """Return ROC-AUC for one fold using the TensorFlow trainer."""
     from sklearn.metrics import roc_auc_score
@@ -158,7 +173,7 @@ def _train_fold_tf(
     _setup_tf(seed)
     x_tr, y_tr, x_va, y_va = _prep_tf_data(x_tr, y_tr, x_va, y_va)
     model = train_tf._build_model(x_tr.shape[1])
-    _fit_tf_model(model, x_tr, y_tr, fast)
+    _fit_tf_model(model, x_tr, y_tr, fast, patience)
     preds = model.predict(x_va, verbose=0).squeeze()
     auc = roc_auc_score(y_va, preds)
     return float(auc)
@@ -171,6 +186,7 @@ def _train_fold_baseline(
     y_va: torch.Tensor,
     fast: bool,
     seed: int,
+    patience: int,
 ) -> float:
     """Return ROC-AUC for one fold using logistic regression."""
     from sklearn.linear_model import LogisticRegression
@@ -196,6 +212,7 @@ def cross_validate(
     backend: str = "torch",
     fast: bool = True,
     seed: int = 0,
+    patience: int = 5,
 ) -> float:
     """Return mean ROC-AUC over a KFold split."""
 
@@ -208,6 +225,7 @@ def cross_validate(
                 y[va],
                 fast,
                 seed + i,
+                patience,
             )
         if backend == "tf":
             return _train_fold_tf(
@@ -217,6 +235,7 @@ def cross_validate(
                 y[va],
                 fast,
                 seed + i,
+                patience,
             )
         if backend == "baseline":
             return _train_fold_baseline(
@@ -226,6 +245,7 @@ def cross_validate(
                 y[va],
                 fast,
                 seed + i,
+                patience,
             )
         raise ValueError("backend must be 'torch', 'tf' or 'baseline'")
 
@@ -250,12 +270,14 @@ def main(args: list[str] | None = None) -> None:
     group.add_argument("--no-fast", dest="fast", action="store_false")
     parser.set_defaults(fast=True)
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--patience", type=int, default=5)
     parsed = parser.parse_args(args)
     mean_auc = cross_validate(
         parsed.folds,
         backend=parsed.backend,
         fast=parsed.fast,
         seed=parsed.seed,
+        patience=parsed.patience,
     )
     print(f"Mean ROC-AUC: {mean_auc:.3f}")
 

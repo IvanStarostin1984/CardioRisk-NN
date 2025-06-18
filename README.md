@@ -94,6 +94,7 @@ score and save a reliability plot image for any saved model.
 `cross_validate.py` runs k-fold validation.
 Use `--backend {torch,tf,baseline}` to pick a trainer,
 `--seed` for reproducible splits and `--no-fast` to disable fast mode.
+Add `--patience N` to change early stopping patience (default 5).
 The script outputs the mean ROC-AUC.
 `predict.py` loads a saved `model.pt` and writes predicted probabilities to a
 CSV file:

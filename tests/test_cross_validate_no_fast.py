@@ -8,10 +8,9 @@ import cross_validate  # noqa: E402
 def test_main_no_fast(monkeypatch):
     called = {}
 
-    def fake_cv(folds, backend="torch", fast=True, seed=0):
+    def fake_cv(folds, backend="torch", fast=True, seed=0, patience=5):
         called["fast"] = fast
         called["folds"] = folds
-
         called["seed"] = seed
         return 0.0
 
