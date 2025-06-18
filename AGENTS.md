@@ -35,7 +35,9 @@ It always builds the Sphinx docs with `sphinx-build`.
 8. Run `npx --yes markdownlint-cli '**/*.md'` and
    `npx --yes markdown-link-check README.md` before pushing. The file
    `codex.md` is excluded via `.markdownlintignore` and `.markdownlint.json`.
-9. Run `black .`, `flake8 .` and `pytest -v` before pushing.
+9. Run `black --check .` before pushing.
+   If it reports issues, run `black .` to format.
+   Then re-run `black --check .`, `flake8 .` and `pytest -v`.
 10. If you change tests, linters, or build scripts, also update **AGENTS.md**.
 11. A task is *done* only when CI is **all green**.
     Docs-only commits run only the markdown jobs;
