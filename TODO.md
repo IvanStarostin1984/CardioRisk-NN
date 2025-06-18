@@ -103,3 +103,5 @@
 - [x] Document grep for all conflict markers in AGENTS.
 - [x] Removed duplicate bullet in NOTES about cloning best state dict.
 - [x] Package with setuptools via pyproject.toml and expose console scripts.
+- [x] Stabilise TensorFlow cross-validation using `tf.keras.backend.clear_session()`
+  and `tf.keras.utils.set_random_seed`.

@@ -333,13 +333,12 @@ Reason: document dataset details.
   PyTorch/TensorFlow errors.
 
 - 2025-08-21: Removed merge markers from NOTES and deduplicated entries.
-<<<<<<< codex/clean-up-markdown-and-update-notes.md
-
 - 2025-08-22: Removed duplicate bullet about cloning best state dict.
   Reason: tidy NOTES and avoid confusion.
-=======
 - 2025-08-22: Added pyproject.toml using setuptools to package the project
   and expose console scripts.
   README shows pip install usage.
   Reason: simplify installation and version management.
->>>>>>> main
+- 2025-08-23: `cross_validate._train_fold_tf` now clears the Keras session and
+  sets the random seed via `tf.keras.utils.set_random_seed` before building
+  the model. Reason: stabilise TensorFlow cross-validation tests.

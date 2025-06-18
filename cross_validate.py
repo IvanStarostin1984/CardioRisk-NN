@@ -106,6 +106,8 @@ def _train_fold_tf(
 
     np.random.seed(seed)
     tf.random.set_seed(seed)
+    tf.keras.backend.clear_session()
+    tf.keras.utils.set_random_seed(seed)
     x_tr = x_tr.numpy()
     y_tr = y_tr.numpy()
     x_va = x_va.numpy()
