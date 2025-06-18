@@ -364,3 +364,6 @@
 
 - 2025-08-24: Removed trailing spaces from NOTES and deleted stray bullet.
   Reason: satisfy lint check; decisions: used sed and perl to clean.
+- 2025-08-25: Added predict.py to generate CSV predictions and updated
+  README, pyproject console scripts and tests. Reason: implement new
+  helper from TODO.

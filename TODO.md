@@ -106,3 +106,4 @@
 - [x] Stabilise TensorFlow cross-validation using `tf.keras.backend.clear_session()`
   and `tf.keras.utils.set_random_seed`.
 - [x] Document running `git diff --check` to catch trailing whitespace.
+- [x] Add predict.py with CSV output, tests and docs.

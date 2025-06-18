@@ -94,6 +94,12 @@ score and save a reliability plot image for any saved model.
 `KFold`. Use `--backend {torch,tf}` to choose the trainer, `--seed` for
 reproducible splits, and `--no-fast` to disable the default fast mode. The
 script prints the mean ROC-AUC over the folds.
+`predict.py` loads a saved `model.pt` and writes predicted probabilities to a
+CSV file:
+
+```bash
+python predict.py --model-path model.pt --output preds.csv --seed 0
+```
 
 ### Install as a package
 
@@ -111,6 +117,7 @@ cardiorisk-evaluate --model-path model.pt
 cardiorisk-calibrate --model-path model.pt
 cardiorisk-cross-validate --folds 5
 cardiorisk-baseline --seed 0
+cardiorisk-predict --model-path model.pt --output preds.csv
 ```
 
 Repository layout:
@@ -125,6 +132,7 @@ evaluate.py           ← model metrics helper
 calibrate.py          ← reliability plot helper
 cross_validate.py     ← k-fold validation helper
 baseline.py          ← logistic-regression baseline
+predict.py          ← save predictions to CSV
 
 README.md             ← you are here
 TODO.md               ← roadmap tasks
